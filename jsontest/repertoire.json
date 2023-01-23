@@ -1,0 +1,11 @@
+{ "routier" : 
+    { "office" : 210,
+	  "email" : "jean-christophe.routier@univ-lille.fr",
+	  "phonenumbers" : [ "9999", "1111" ]
+	},
+  "varre" :
+    { "office" : 206,
+	  "email" : "jean-stephane.varre@univ-lille.fr",
+	  "phonenumbers" : [ "2222", "3333", "4444" ]
+	}
+}
