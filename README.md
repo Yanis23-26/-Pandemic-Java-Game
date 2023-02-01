@@ -10,6 +10,9 @@
 # Sujet
 
 [Le sujet 2023](https://www.fil.univ-lille1.fr/portail/index.php?dipl=L&sem=S4&ue=Projet&label=Documents)
+# Lien Uml :
+
+
 
 # Livrables
 
@@ -40,6 +43,7 @@
 # Journal de bord
 
 ## Semaine 1
+# En premier lieu,on a commencé a lire l'enoncé du sujet puis on a entamé a l'analyser puis on a definie les classes, puis on a commencé a  faire l'UML classe par classe d'apres lénoncé du sujet,  
 
 ## Semaine 2
 
