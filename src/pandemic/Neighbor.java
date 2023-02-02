@@ -1,4 +1,4 @@
-package board;
+package pandemic;
 
 public class Neighbor {
 	private String name;
