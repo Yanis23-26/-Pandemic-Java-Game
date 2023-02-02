@@ -2,9 +2,9 @@ package pandemic;
 
 import java.util.List;
 
-public class Word { // this class contains all the sectors 
+public class World { // this class contains all the sectors 
 	private List<sectors> sectors; // the list of sectors in the map
-	    public Word(){
+	    public World(){
         this.sectors=new Arraylist<>();
     }
 	/** 
