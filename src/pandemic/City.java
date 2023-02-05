@@ -1,43 +1,19 @@
 package pandemic;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class City {
 	private String name;
-	private Double infectionRate;
+	private Map<Disease, Double> infectionRate;
 	private List <City>neighbors;
-	private List <Disease> diseases;
-	private Player currentPlayer;
+	private List<Player>players;
 	private Sector sector;
 	
-	public City(String name) {
+	public City(String name, Sector sector) {
 		this.name= name;
-		this.infectionRate=infectionRate;
 		this.neighbors=new ArrayList<>();
-		this.diseases= new ArrayList<>();
+		this.infectionRate= new HashMap<>();
 		this.sector=sector;
-		this.currentPlayer=currentPlayer;
+		this.players=new ArrayList<>();
 	}
-	public String getName() {
-		return this.name;
-	}
-	public Double getInfectionRate() {
-		 return this.infectionRate;
-	}
-	public void addCity(City city) {
-		this.neighbors.add(city);
-	}
-	
-	
-	public void addDiseases(Disease disease){
-		this.diseases.add(disease);
-	}
-	
-	
-	public Player getCurrentPlayer() {
-		return this.currentPlayer;
-	}
-	 
-	
 }
