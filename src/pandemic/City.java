@@ -4,7 +4,7 @@ import java.util.*;
 
 public class City {
 	private String name;
-	private Map<Disease, Double> infectionRate;
+	private Map<Disease, Integer> infectionRate;
 	private List <City>neighbors;
 	private List<Player>players;
 	private Sector sector;
@@ -85,8 +85,17 @@ public class City {
 		}
 	}
 
-	public ResearchStation addResearchStation(ResearchStation r){
+	public void addResearchStation(ResearchStation r){
 		this.researchStation=r;
 	}
+
+	public void removeResearchStation(){
+		this.researchStation=null;
+	}
+
+	public boolean isFoyerInfection(){
+		return this.foyerInfection;
+	}
+
 }
 

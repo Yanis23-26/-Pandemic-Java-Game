@@ -1,11 +1,13 @@
 package pandemic;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class World { // this class contains all the sectors 
-	private List<sectors> sectors; // the list of sectors in the map
-	    public World(){
-        this.sectors=new Arraylist<>();
+	private List<Sector> sectors; // the list of sectors in the map
+
+	public World(){
+        this.sectors = new ArrayList<>();
     }
 	/** 
 	fonction getSectors return the list of sectors
@@ -13,7 +15,7 @@ public class World { // this class contains all the sectors
 	
 	*/
 	
-	public List<sector> getSectors(){
+	public List<Sector> getSectors(){
         return this.sectors;
     }
 	/** 
