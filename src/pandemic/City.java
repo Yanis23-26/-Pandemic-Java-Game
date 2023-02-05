@@ -67,9 +67,11 @@ public class City {
 		if(previousdiseaseInfc>2){
 		this.infectionRate.put(disease,previousdiseaseInfc+1);
 		this.foyerInfection=true;
+		this.infectNeighbors(disease);
 		}
 		else if(previousdiseaseInfc==3){
 			this.foyerInfection=true;
+			this.infectNeighbors(disease);
 		}
 		else{
 			this.infectionRate.put(disease,previousdiseaseInfc+1);
@@ -95,6 +97,12 @@ public class City {
 
 	public boolean isFoyerInfection(){
 		return this.foyerInfection;
+	}
+
+	public void infectNeighbors(Disease disease){
+		for (City city : this.neighbors){
+			city.addInfection(disease);
+		}
 	}
 
 }
