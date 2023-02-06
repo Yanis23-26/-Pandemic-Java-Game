@@ -17,8 +17,17 @@ public class World { // this class contains all the sectors
 	private List<Sector> sectors; // the list of sectors in the map
 
 	public World() {
+		
         this.sectors = new ArrayList<>();
-        // creation de 4 sector
+        Disease disease0 = new Disease("maladie0",0);
+        Disease disease1 = new Disease("maladie1",1);
+        Disease disease2 = new Disease("maladie2",2);
+        Disease disease3 = new Disease("maladie3",3);
+        Sector sector0 = new Sector("AFRICA",disease0);
+        Sector sector1 = new Sector("EUROPE",disease1);
+        Sector sector2 = new Sector("AISIA",disease2);
+        Sector sector3 = new Sector("AMERICA",disease3);
+       
 
 		Map<String,City> citiesMap = new HashMap<>();
 		Map<String,JSONArray> neighborsMap = new HashMap<>();
@@ -61,6 +70,7 @@ public class World { // this class contains all the sectors
 		    System.out.println(citiesMap);
 		    System.out.println(neighborsMap);
 		    // ajouter pour vchaque ville ces neighbor 
+		    
 		    
 		    // ajouter les ville de les secteur
 	}
