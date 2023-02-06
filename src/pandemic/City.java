@@ -7,15 +7,15 @@ public class City {
 	private Map<Disease, Integer> infectionRate;  // infectionRate of each disease
 	private List <City>neighbors;  // the neighbors cities of the city
 	//private List<Player>players;  // the current players on this city
-	private Sector sector;  // the sector which the city belongs to 
+	private int nbSector;  // the sector which the city belongs to 
 	private ResearchStation researchStation;  //the researchStation of the city
 	private boolean foyerInfection;  // is the city  a foyerInfection or not
 	
-	public City(String name, Sector sector) {  // we create a city with a name and a sector
-		this.name= name;
+	public City(String name, int nbSector) {  // we create a city with a name and a sector
+		this.name= name;	
 		this.neighbors=new ArrayList<>();
 		this.infectionRate= new HashMap<>();
-		this.sector=sector;
+		this.nbSector=nbSector;
 		//this.players=new ArrayList<>();
 		this.researchStation=null;
 		this.foyerInfection=false;
@@ -71,8 +71,8 @@ public class City {
 	/**
 	 * @return the sector of this city
 	 */
-	public Sector getSector(){
-		return this.sector;
+	public int getSector(){
+		return this.nbSector;
 	}
 
 	/**
@@ -95,18 +95,14 @@ public class City {
 	}
 
 	/** add one cube of the disease given in param
-	 * if the number of cubes of this disease is already 3 or 2 it will infect all the neighbors
+	 * if the number of cubes of this disease is already 3 it will infect all the neighbors
+	 * it will add a cube other ways
 	 * and the city will be a foyerInfection
 	 * @param disease
 	 */
 	public void addInfection(Disease disease){
 		int previousdiseaseInfc = this.getinfectionRate(disease);
-		if(previousdiseaseInfc>2){
-		this.infectionRate.put(disease,previousdiseaseInfc+1);
-		this.foyerInfection=true;
-		this.infectNeighbors(disease);
-		}
-		else if(previousdiseaseInfc==3){
+		if(previousdiseaseInfc==3){
 			this.foyerInfection=true;
 			this.infectNeighbors(disease);
 		}
