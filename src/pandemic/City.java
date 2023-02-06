@@ -168,6 +168,10 @@ public class City {
 			city.addInfection(disease);
 		}
 	}
+	
+	public String toString() {
+		return this.name;
+	}
 
 }
 
