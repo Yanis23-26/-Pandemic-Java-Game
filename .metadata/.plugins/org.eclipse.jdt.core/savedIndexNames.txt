@@ -1,0 +1,7 @@
+INDEX VERSION 1.131+/home/whymanil/Bureau/projet/l2s4-projet-2023/.metadata/.plugins/org.eclipse.jdt.core
+698461538.index
+2578322825.index
+1865797976.index
+1402089441.index
+3579120581.index
+2105004855.index
