@@ -81,6 +81,10 @@ public class City {
 	public ResearchStation getResearchStation(){
 		return this.researchStation;
 	}
+	
+	public void addNeighbor(City city){
+		this.neighbors.add(city);
+	}
 
 	/**
 	 * @return True if there is at least one cube of any disease , false other ways
@@ -167,6 +171,10 @@ public class City {
 		for (City city : this.neighbors){
 			city.addInfection(disease);
 		}
+	}
+	
+	public String toString() {
+		return this.name;
 	}
 
 }

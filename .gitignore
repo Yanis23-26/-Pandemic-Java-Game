@@ -3,3 +3,7 @@ classes/
 docs/
 
 /bin/
+.project
+.classpath
+.vscode
+
