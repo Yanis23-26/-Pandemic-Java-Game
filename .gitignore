@@ -6,6 +6,6 @@ docs/
 .project
 .classpath
 .vscode
-.metadata/
+/.metadata/
 
 
