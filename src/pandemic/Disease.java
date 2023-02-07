@@ -4,7 +4,7 @@ public class Disease {
 	private String name;//name of disease
 	private int id;//id of Disease
 
-
+ 
 	/**
 	 * Disease constructor
 	 * @param name String,the name of disease
