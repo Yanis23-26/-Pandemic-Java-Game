@@ -27,8 +27,10 @@ public class World { // this class contains all the sectors
         Sector sector1 = new Sector("EUROPE",disease1);
         Sector sector2 = new Sector("AISIA",disease2);
         Sector sector3 = new Sector("AMERICA",disease3);
-       
-
+        this.addSector(sector0);
+        this.addSector(sector1);
+        this.addSector(sector2);
+        this.addSector(sector3);
 		Map<String,City> citiesMap = new HashMap<>();
 		Map<String,JSONArray> neighborsMap = new HashMap<>();
 
@@ -68,11 +70,19 @@ public class World { // this class contains all the sectors
 				}
 		    }
 		    System.out.println(citiesMap);
-		    System.out.println(neighborsMap);
+		    //System.out.println(neighborsMap);
 		    // ajouter pour vchaque ville ces neighbor 
-		    
-		    
-		    // ajouter les ville de les secteur
+		    int i=0;
+		    	for(JSONArray neighborsArray : neighborsMap.values()) {
+		    		i++;
+		    		for(Object neighbor : neighborsArray) {
+		    			citiesMap.get("ville-"+i).addNeighbor(citiesMap.get(neighbor));
+		    		}
+		    	}
+		    // ajouter les villes au secteur
+		    for(City city : citiesMap.values()) {
+		    	this.sectors.get(city.getSector()).addCity(city);
+		    }
 	}
 	public void setSectors(List<Sector> sectors) {
 		this.sectors = sectors;
@@ -96,8 +106,3 @@ public class World { // this class contains all the sectors
 	
 
 }
-
-
-
-
-
