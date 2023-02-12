@@ -26,6 +26,18 @@ public class Disease {
 	public int getId(){
 		return this.id;
 	}
+	
+	
+		
+    public boolean equals(Object o) {
+		if(! (o instanceof Disease )) {
+			return false;
+		}
+		 Disease d= (Disease) o;
+		return (this.getName().equals(d.getName()) && this.getId()==d.getId());
+		}
+
+	
 
 
 }

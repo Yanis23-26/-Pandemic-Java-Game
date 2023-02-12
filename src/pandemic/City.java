@@ -15,11 +15,14 @@ public class City {
 		this.name= name;	
 		this.neighbors=new ArrayList<>();
 		this.infectionRate= new HashMap<>();
+		
 		this.nbSector=nbSector;
 		//this.players=new ArrayList<>();
 		this.researchStation=null;
 		this.foyerInfection=false;
 	}
+	
+	
 
 	/**
 	 * return the name of the city
@@ -173,9 +176,14 @@ public class City {
 		}
 	}
 	
+	public void initDisease(Disease d) {
+		this.infectionRate.put(d, 0);
+	}
+	
 	public String toString() {
 		return this.name;
 	}
+	
 
 }
 
