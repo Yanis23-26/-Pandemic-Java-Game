@@ -2,7 +2,7 @@ package pandemic;
 
 import java.io.FileNotFoundException;
 
-public class Main {
+public class InitWorldAffichageTest {
 
 	public static void main(String[] args) throws FileNotFoundException {
 		

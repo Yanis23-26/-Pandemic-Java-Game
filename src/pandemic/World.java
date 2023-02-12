@@ -7,7 +7,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
@@ -17,8 +16,11 @@ public class World { // this class contains all the sectors
 	private List<Sector> sectors; // the list of sectors in the map
 
 	public World() {
-		
-        this.sectors = new ArrayList<>();
+        initWorld();
+	}
+	
+	private void initWorld() {
+		this.sectors = new ArrayList<>();
         Disease disease0 = new Disease("maladie0",0);
         Disease disease1 = new Disease("maladie1",1);
         Disease disease2 = new Disease("maladie2",2);
@@ -69,7 +71,7 @@ public class World { // this class contains all the sectors
 					
 				}
 		    }
-		    System.out.println(citiesMap);
+		    //System.out.println(citiesMap);
 		    //System.out.println(neighborsMap);
 		    // ajouter pour vchaque ville ces neighbor 
 		    int i=0;
@@ -84,9 +86,7 @@ public class World { // this class contains all the sectors
 		    	this.sectors.get(city.getSector()).addCity(city);
 		    }
 	}
-	public void setSectors(List<Sector> sectors) {
-		this.sectors = sectors;
-	}
+	
 	/** 
 	fonction getSectors return the list of sectors
 	@return  list of sectors

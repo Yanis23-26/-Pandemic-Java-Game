@@ -46,5 +46,9 @@ public class Sector {     // the class of the sectors, the world contains 4 sect
 		this.cities.add(city);
 	}
 	
+	public String toString() {
+		return this.name;
+	}
+	
 
 }
