@@ -41,5 +41,17 @@ public class ResearchStation {
 		this.city=city ;
 		
 	}
+	
+	public String toString() {
+		return this.getName();
+	}
+	
+	public boolean equals(Object o) {
+		if(! (o instanceof ResearchStation )) {
+			return false;
+		}
+		 ResearchStation r= (ResearchStation) o;
+		return (this.getName().equals(r.getName()) && this.getCity()==r.getCity());
+		}
 
 }

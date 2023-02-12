@@ -184,6 +184,14 @@ public class City {
 		return this.name;
 	}
 	
+	public boolean equals(Object o) {
+		if(! (o instanceof City )) {
+			return false;
+		}
+		 City c= (City) o;
+		return (this.getName().equals(c.getName()) && this.getSector()==c.getSector());
+		}
+	
 
 }
 

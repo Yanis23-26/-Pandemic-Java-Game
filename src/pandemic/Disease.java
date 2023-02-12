@@ -36,6 +36,10 @@ public class Disease {
 		 Disease d= (Disease) o;
 		return (this.getName().equals(d.getName()) && this.getId()==d.getId());
 		}
+    
+    public String toString() {
+    	return this.getName();
+    }
 
 	
 

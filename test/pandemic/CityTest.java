@@ -88,6 +88,31 @@ public class CityTest {
 		city.removeInfection(disease1);
 		assertEquals(0, city.getinfectionRate(disease1));
 	}
+	
+	 @Test
+	    public void testEquals() {
+	        City c1 = new City("Paris", 1);
+	        City c2 = new City("Paris", 1);
+	        assertTrue(c1.equals(c2));
+
+	        City c3 = new City("Londres", 2);
+	        assertFalse(c1.equals(c3));
+
+	        // Test with different name but same sector
+	        City c4 = new City("New York", 1);
+	        assertFalse(c1.equals(c4));
+
+	        // Test with different sector but same name
+	        City c5 = new City("Paris", 2);
+	        assertFalse(c1.equals(c5));
+
+	        // Test with null object
+	        assertFalse(c1.equals(null));
+
+	        // Test with object of different class
+	        Object o = new Object();
+	        assertFalse(c1.equals(o));
+	    }
 
 
 	
