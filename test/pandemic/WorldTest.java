@@ -11,7 +11,7 @@ public class WorldTest {
 	@Test
 	public void testAddSector() {
 		World world = new World();
-		Sector sector = new Sector("test", new Disease("test", 0));
+		Sector sector = new Sector("test", new Disease("test", 0),0);
 		world.addSector(sector);
 		List<Sector> sectors = world.getSectors();
 		assertEquals(sectors.size(), 5);

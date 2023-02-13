@@ -12,14 +12,17 @@ public class CityTest {
 	
 	@Test
 	public void testGetName() {
-		City city = new City("Lille", 1);
+		Disease disease1 = new Disease("maladie1",1);
+		Sector sector1= new Sector("EUROPE",disease1,1);
+		City city = new City("Lille",sector1);
 		assertEquals("Lille", city.getName());
 	}
 
 	@Test
 	public void testGetinfectionRate() {
-		City city = new City("Lille", 1);
 		Disease disease1 = new Disease("maladie1",1);
+		Sector sector1= new Sector("EUROPE",disease1,1);
+		City city = new City("Lille", sector1);
 		city.initDisease(disease1);
 		city.addInfection(disease1);
 		assertEquals(1, city.getinfectionRate(disease1));
@@ -27,9 +30,10 @@ public class CityTest {
 
 	@Test
 	public void testGetTotalinfectionRate() {
-		City city = new City("Paris", 1);
 		Disease disease1 = new Disease("maladie1",1);
-        Disease disease2 = new Disease("maladie2",2);
+		Sector sector1= new Sector("EUROPE",disease1,1);
+		Disease disease2 = new Disease("maladie2",2);
+		City city = new City("Paris", sector1);
         city.initDisease(disease1);
         city.initDisease(disease2);
 		city.addInfection(disease1);
@@ -39,8 +43,11 @@ public class CityTest {
 
 	@Test
 	public void testGetNeighborsCities() {
-		City city1 = new City("Budapest", 1);
-		City city2 = new City("London", 2);
+		Disease disease1 = new Disease("maladie1",1);
+		Sector sector1= new Sector("EUROPE",disease1,1);
+		Sector sector2= new Sector("AISIA",disease1,2);
+		City city1 = new City("Budapest", sector1);
+		City city2 = new City("London", sector2);
 		city1.addNeighbor(city2);
 		assertEquals(1, city1.getNeighborsCities().size());
 		assertEquals("London", city1.getNeighborsCities().get(0).getName());
@@ -48,13 +55,17 @@ public class CityTest {
 
 	@Test
 	public void testGetSector() {
-		City city = new City("New York", 1);
-		assertEquals(1, city.getSector());
+		Disease disease1 = new Disease("maladie1",1);
+		Sector sector1= new Sector("EUROPE",disease1,1);
+		City city = new City("New York", sector1);
+		assertEquals(sector1, city.getSector());
 	}
 
 	@Test
 	public void testGetResearchStation() {
-		City city = new City("Mexico", 1);
+		Disease disease1 = new Disease("maladie1",1);
+		Sector sector1= new Sector("EUROPE",disease1,1);
+		City city = new City("Mexico", sector1);
 		ResearchStation researchStation = new ResearchStation("Station1",city);
 		city.addResearchStation(researchStation);
 		assertEquals(city.getResearchStation(),researchStation);
@@ -62,7 +73,9 @@ public class CityTest {
 
 	@Test
 	public void testIsInfected() {
-		City city = new City("Madrid", 1);
+		Disease disease1 = new Disease("maladie1",1);
+		Sector sector1= new Sector("EUROPE",disease1,1);
+		City city = new City("Madrid", sector1);
 		Disease disease3 = new Disease("maladie3",3);
 		city.initDisease(disease3);
 		city.addInfection(disease3);
@@ -71,8 +84,9 @@ public class CityTest {
 
 	@Test
 	public void testAddInfection() {
-		City city = new City("Barcelone",2);
 		Disease disease2 =new Disease("maladie2",2);
+		Sector sector2= new Sector("EUROPE",disease2,2);
+		City city = new City("Barcelone",sector2);
 		city.initDisease(disease2);
 		assertEquals(0, city.getinfectionRate(disease2));
 		city.addInfection(disease2);
@@ -81,8 +95,9 @@ public class CityTest {
 
 	@Test
 	public void testRemoveInfection() {
-		City city = new City("Dubai", 1);
 		Disease disease1 = new Disease("maladie1",1);
+		Sector sector1= new Sector("EUROPE",disease1,1);
+		City city = new City("Dubai", sector1);
 		city.initDisease(disease1);
 		city.addInfection(disease1);
 		city.removeInfection(disease1);
@@ -91,19 +106,23 @@ public class CityTest {
 	
 	 @Test
 	    public void testEquals() {
-	        City c1 = new City("Paris", 1);
-	        City c2 = new City("Paris", 1);
+			Disease disease1 = new Disease("maladie1",1);
+			Sector sector1= new Sector("EUROPE",disease1,1);
+		    Disease disease2 =new Disease("maladie2",2);
+			Sector sector2= new Sector("EUROPE",disease2,2);
+	        City c1 = new City("Paris", sector1);
+	        City c2 = new City("Paris", sector1);
 	        assertTrue(c1.equals(c2));
 
-	        City c3 = new City("Londres", 2);
+	        City c3 = new City("Londres", sector2);
 	        assertFalse(c1.equals(c3));
 
 	        // Test with different name but same sector
-	        City c4 = new City("New York", 1);
+	        City c4 = new City("New York", sector2);
 	        assertFalse(c1.equals(c4));
 
 	        // Test with different sector but same name
-	        City c5 = new City("Paris", 2);
+	        City c5 = new City("Paris", sector2);
 	        assertFalse(c1.equals(c5));
 
 	        // Test with null object

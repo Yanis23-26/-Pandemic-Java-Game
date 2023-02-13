@@ -3,14 +3,16 @@ import java.util.*;
 
 public class Sector {     // the class of the sectors, the world contains 4 sectors
 	private String name;          // the name of the sector
-	private Disease disease;      //the initial disease of the sector
+	private Disease disease;    //the initial disease of the sector
+	private int id;
 	private List<City> cities;     // the list of the cities in that sector
 	
 	
 	// the constructor of the Sector Class
-	public Sector(String name,Disease disease) {
+	public Sector(String name,Disease disease, int id) {
 		this.disease = disease;
 		this.name = name;
+		this.id=id;
 		this.cities=new ArrayList<>();
 	}
 
@@ -49,6 +51,12 @@ public class Sector {     // the class of the sectors, the world contains 4 sect
 	public String toString() {
 		return this.name;
 	}
+	
+	public int getId() {
+		return this.id;
+	}
+	
+	
 	
 
 }

@@ -25,10 +25,10 @@ public class World { // this class contains all the sectors
         Disease disease1 = new Disease("maladie1",1);
         Disease disease2 = new Disease("maladie2",2);
         Disease disease3 = new Disease("maladie3",3);
-        Sector sector0 = new Sector("AFRICA",disease0);
-        Sector sector1 = new Sector("EUROPE",disease1);
-        Sector sector2 = new Sector("AISIA",disease2);
-        Sector sector3 = new Sector("AMERICA",disease3);
+        Sector sector0 = new Sector("AFRICA",disease0,0);
+        Sector sector1 = new Sector("EUROPE",disease1,1);
+        Sector sector2 = new Sector("AISIA",disease2,2);
+        Sector sector3 = new Sector("AMERICA",disease3,3);
         this.addSector(sector0);
         this.addSector(sector1);
         this.addSector(sector2);
@@ -55,7 +55,7 @@ public class World { // this class contains all the sectors
 		    		Iterator<String> datakeys = entry.keys();
 		    		while (datakeys.hasNext()) {
 						String cityString = datakeys.next();
-						City city = new City(cityString, entry.getInt(cityString));
+						City city = new City(cityString, this.sectors.get(entry.getInt(cityString)));
 						citiesMap.put(cityString, city);
 			    	}
 		        }
@@ -83,7 +83,7 @@ public class World { // this class contains all the sectors
 		    	}
 		    // ajouter les villes au secteur
 		    for(City city : citiesMap.values()) {
-		    	this.sectors.get(city.getSector()).addCity(city);
+		    	this.sectors.get(city.getSector().getId()).addCity(city);
 		    }
 	}
 	

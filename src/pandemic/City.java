@@ -7,16 +7,16 @@ public class City {
 	private Map<Disease, Integer> infectionRate;  // infectionRate of each disease
 	private List <City>neighbors;  // the neighbors cities of the city
 	//private List<Player>players;  // the current players on this city
-	private int nbSector;  // the sector which the city belongs to 
+	private Sector sector;  // the sector which the city belongs to 
 	private ResearchStation researchStation;  //the researchStation of the city
 	private boolean foyerInfection;  // is the city  a foyerInfection or not
 	
-	public City(String name, int nbSector) {  // we create a city with a name and a sector
+	public City(String name, Sector sector) {  // we create a city with a name and a sector
 		this.name= name;	
 		this.neighbors=new ArrayList<>();
 		this.infectionRate= new HashMap<>();
 		
-		this.nbSector=nbSector;
+		this.sector=sector;
 		//this.players=new ArrayList<>();
 		this.researchStation=null;
 		this.foyerInfection=false;
@@ -74,8 +74,8 @@ public class City {
 	/**
 	 * @return the sector of this city
 	 */
-	public int getSector(){
-		return this.nbSector;
+	public Sector getSector(){
+		return this.sector;
 	}
 
 	/**
