@@ -3,12 +3,11 @@ package pandemic;
 public class Disease {
 	private String name;//name of disease
 	private int id;//id of Disease
-
- 
 	/**
 	 * Disease constructor
 	 * @param name String,the name of disease
 	 * @param id int, id of disease
+	 * @param sector 
 	 */
 	public Disease(String name, int id){
 		this.name=name;
@@ -26,6 +25,10 @@ public class Disease {
 	public int getId(){
 		return this.id;
 	}
+	
+
+	
+	
 	
 	
 		

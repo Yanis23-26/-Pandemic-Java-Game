@@ -20,6 +20,54 @@ public class World { // this class contains all the sectors
 	}
 	
 	private void initWorld() {
+		setWorldMap();
+        
+		Map<String,City> citiesMap = new HashMap<>();
+		Map<String,JSONArray> neighborsMap = new HashMap<>();
+
+		JSONObject jsonData = readJsonFile();
+
+		Iterator<String> entries = jsonData.keys();
+		    while (entries.hasNext()) {
+		    	String entryKey = entries.next();
+				if(entryKey.equals("cities")){
+					
+		    		createCities(citiesMap, jsonData, entryKey);
+		        }
+				else if(entryKey.equals("neighbors")){
+					
+					createNeighbors(neighborsMap, jsonData, entryKey);
+					
+				}
+		    }
+		    // add nighbors to cities
+		    setCitiesWhithNeighbors(citiesMap, neighborsMap);
+		    // add cities to Sector
+		    setSectorsWithCities(citiesMap);
+	}
+
+	private void createNeighbors(Map<String, JSONArray> neighborsMap, JSONObject jsonData, String entryKey) {
+		JSONObject entry = jsonData.getJSONObject(entryKey);
+		Iterator<String> datakeys = entry.keys();
+		while (datakeys.hasNext()) {
+			String cityString = datakeys.next();
+			JSONArray neighbors ;
+			neighbors = entry.getJSONArray(cityString);
+			neighborsMap.put(cityString, neighbors);
+		}
+	}
+
+	private void createCities(Map<String, City> citiesMap, JSONObject jsonData, String entryKey) {
+		JSONObject entry = jsonData.getJSONObject(entryKey);
+		Iterator<String> datakeys = entry.keys();
+		while (datakeys.hasNext()) {
+			String cityString = datakeys.next();
+			City city = new City(cityString, this.sectors.get(entry.getInt(cityString)));
+			citiesMap.put(cityString, city);
+		}
+	}
+
+	private void setWorldMap() {
 		this.sectors = new ArrayList<>();
         Disease disease0 = new Disease("maladie0",0);
         Disease disease1 = new Disease("maladie1",1);
@@ -33,9 +81,9 @@ public class World { // this class contains all the sectors
         this.addSector(sector1);
         this.addSector(sector2);
         this.addSector(sector3);
-		Map<String,City> citiesMap = new HashMap<>();
-		Map<String,JSONArray> neighborsMap = new HashMap<>();
+	}
 
+	private JSONObject readJsonFile() {
 		String filename = "./src/pandemic/carte2.json";
 		FileReader reader = null;
 		try {
@@ -46,45 +94,23 @@ public class World { // this class contains all the sectors
 			System.exit(0);
 		}
 	    JSONObject jsonData = new JSONObject(new JSONTokener(reader));
-		Iterator<String> entries = jsonData.keys();
-		
-		    while (entries.hasNext()) {
-		    	String entryKey = entries.next();
-				if(entryKey.equals("cities")){
-		    		JSONObject entry = jsonData.getJSONObject(entryKey);
-		    		Iterator<String> datakeys = entry.keys();
-		    		while (datakeys.hasNext()) {
-						String cityString = datakeys.next();
-						City city = new City(cityString, this.sectors.get(entry.getInt(cityString)));
-						citiesMap.put(cityString, city);
-			    	}
-		        }
-				else if(entryKey.equals("neighbors")){
-					JSONObject entry = jsonData.getJSONObject(entryKey);
-		    		Iterator<String> datakeys = entry.keys();
-		    		while (datakeys.hasNext()) {
-						String cityString = datakeys.next();
-						JSONArray neighbors ;
-						neighbors = entry.getJSONArray(cityString);
-						neighborsMap.put(cityString, neighbors);
-			    	}
-					
-				}
-		    }
-		    //System.out.println(citiesMap);
-		    //System.out.println(neighborsMap);
-		    // ajouter pour vchaque ville ces neighbor 
-		    int i=0;
-		    	for(JSONArray neighborsArray : neighborsMap.values()) {
-		    		i++;
-		    		for(Object neighbor : neighborsArray) {
-		    			citiesMap.get("ville-"+i).addNeighbor(citiesMap.get(neighbor));
-		    		}
-		    	}
-		    // ajouter les villes au secteur
-		    for(City city : citiesMap.values()) {
-		    	this.sectors.get(city.getSector().getId()).addCity(city);
-		    }
+		return jsonData;
+	}
+
+	private void setCitiesWhithNeighbors(Map<String, City> citiesMap, Map<String, JSONArray> neighborsMap) {
+		int i=0;
+		for(JSONArray neighborsArray : neighborsMap.values()) {
+			i++;
+			for(Object neighbor : neighborsArray) {
+				citiesMap.get("ville-"+i).addNeighbor(citiesMap.get(neighbor));
+			}
+		}
+	}
+
+	private void setSectorsWithCities(Map<String, City> citiesMap) {
+		for(City city : citiesMap.values()) {
+			this.sectors.get(city.getSector().getId()).addCity(city);
+		}
 	}
 	
 	/** 
@@ -103,6 +129,26 @@ public class World { // this class contains all the sectors
 	public void addSector(Sector sector){
         this.sectors.add(sector);
     }
+	
+	public String worldDisplay() { 
+		System.out.println("");
+		for (Sector s : this.getSectors()) {
+			System.out.println(s);
+			System.out.println(s.getCities());
+		}
+		System.out.println("");
+		for(Sector s : this.getSectors()) {
+		System.out.println(s);
+		System.out.println("");
+			for(City c : s.getCities()) {
+				System.out.println(c);
+				System.out.println("LES VILLES VOISINES");
+				System.out.println(c.getNeighborsCities());
+				System.out.println("");
+			}
+		}
+		return null;
+	}
 	
 
 }
