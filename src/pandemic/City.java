@@ -192,6 +192,6 @@ public class City {
 		return (this.getName().equals(c.getName()) && this.getSector()==c.getSector());
 		}
 	
-
+   
 }
 

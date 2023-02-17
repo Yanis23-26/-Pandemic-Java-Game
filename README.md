@@ -55,6 +55,7 @@ Après la révision avec la prof en séance de TP a propos de l'UML  et  après 
 de cette semaine on a entamé les test de chaque classe et on les a amélioré tout dépends de des méthodes ajoutés et on a fait une révision sur certaine classes et on les a amélioré après avoir fait une dernière révision avec la prof . 
 
 ## Semaine 5
+dans cette semaine on a fait quelque modification et on a ajouté quelque test pour chaque classe et quelque modifications pour les classes 
 
 ## Semaine 6
 

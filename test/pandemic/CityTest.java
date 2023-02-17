@@ -134,6 +134,45 @@ public class CityTest {
 	    }
 
 
+	 public void addInfectionTest() {
+	        // Create a new city
+		    Disease disease1 = new Disease("maladie1",1);
+		    Sector sector1= new Sector("EUROPE",disease1,1);
+		    City city = new City("Paris", sector1);
+	        city.initDisease(disease1);
+
+	        // Add one cube of disease to the city
+	        city.addInfection(disease1);
+	        
+	        // Check that the infection rate of the disease is now 1
+	        assertEquals(1, city.getinfectionRate(disease1));
+
+	        // Add two more cubes of disease to the city
+	        city.addInfection(disease1);
+	        city.addInfection(disease1);
+	        
+	        // Check that the infection rate of the disease is now 3
+	        assertEquals(3, city.getinfectionRate(disease1));
+	        
+	        // Try to add one more cube of disease to the city
+	        city.addInfection(disease1);
+	        
+	        // Check that the city is now a foyerInfection
+	        assertTrue(city.isFoyerInfection());
+	        
+	        // Check that all the neighbors of the city have been infected
+	        for (City neighbor : city.getNeighborsCities()) {
+	            assertEquals(1, neighbor.getinfectionRate(disease1));
+	        }
+	    }
+	 
+
 	
 
+	
+	 
+	 
+	 
+	 
+	 
 }
