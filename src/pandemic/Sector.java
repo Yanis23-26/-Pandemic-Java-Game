@@ -47,14 +47,17 @@ public class Sector {     // the class of the sectors, the world contains 4 sect
 	public void addCity(City city) {
 		this.cities.add(city);
 	}
-	
-	public String toString() {
-		return this.name;
-	}
-	
+	/**
+	* @return id of Sector 
+	*/
 	public int getId() {
 		return this.id;
 	}
+	
+	public String toString() {
+		return "this"+this.getSectorDisease()+"has"+this.getCities()+this.getId();
+	}
+
 	
 	
 	
