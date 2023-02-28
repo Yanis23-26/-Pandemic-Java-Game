@@ -94,7 +94,7 @@ public class CityTest {
 	}
 
 	@Test
-	public void testRemoveInfection() {
+	public void removeInfectionTest() {
 		Disease disease1 = new Disease("maladie1",1);
 		Sector sector1= new Sector("EUROPE",disease1,1);
 		City city = new City("Dubai", sector1);
