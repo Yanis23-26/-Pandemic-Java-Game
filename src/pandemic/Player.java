@@ -2,19 +2,30 @@ package pandemic;
 
 
 public class Player{
-    private String name;
-    private int id;
+    private String name; // name for player
+    private int id; // id for player
 
     public Player(String name,int id){
         this.name=name;
         this.id=id;
     }
+    /**
+    * @return id for player
+     */
+
     public int getId(){
         return this.id;
     }
+    /**
+    * @return name for player 
+     */
     public String getName(){
         return this.name;
     }
+    /**
+    * @param object de type player
+    * @return true or false  
+     */
     public boolean equals(Object o) {
 	   if(! (o instanceof Player )) {
 			return false;
