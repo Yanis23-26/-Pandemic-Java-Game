@@ -120,7 +120,7 @@ public class City {
 	 */
 	public void removeInfection(Disease disease){
 		int previousdiseaseInfc = this.getinfectionRate(disease);
-		if(previousdiseaseInfc>2){
+		if(previousdiseaseInfc==2){
 			this.infectionRate.put(disease, previousdiseaseInfc-1);
 			this.foyerInfection=false;
 		}
