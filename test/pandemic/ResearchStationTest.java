@@ -32,7 +32,7 @@ public class ResearchStationTest {
 	    City city1 = new City("Lille",sector1);               // we create a first city "Lille"
 	    City city2 = new City("Paris",sector1);               // we create a second city "Paris"
 	    ResearchStation researchStation = new ResearchStation("RS1", city1); // we create "RS1" on "Lille" 
-	    researchStation.ChangeCity(city2);                    // we change the city of RS1, from "Lille" to "Paris"
+	    researchStation.changeCity(city2);                    // we change the city of RS1, from "Lille" to "Paris"
 	    assertEquals(city2, researchStation.getCity());       // after the change, the city of RS should be "Paris", not "Lille" 
 	  }
 	  

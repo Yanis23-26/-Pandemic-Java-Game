@@ -130,7 +130,7 @@ public class World { // this class contains all the sectors
         this.sectors.add(sector);
     }
 	
-	public String worldDisplay() { 
+	public void worldDisplay() { 
 		System.out.println("");
 		for (Sector s : this.getSectors()) {
 			System.out.println(s);
@@ -147,7 +147,7 @@ public class World { // this class contains all the sectors
 				System.out.println("");
 			}
 		}
-		return null;
+		//return null;
 	}
 	
 

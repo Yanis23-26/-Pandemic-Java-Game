@@ -37,7 +37,7 @@ public class ResearchStation {
 	 * changes the city location of the research station
 	 * @param city City, the new city of research station
 	 */
-	public void ChangeCity(City city) {
+	public void changeCity(City city) {
 		this.city=city ;
 		
 	}
