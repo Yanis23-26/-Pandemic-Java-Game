@@ -66,9 +66,8 @@ public class CityTest {
 		Disease disease1 = new Disease("maladie1",1);
 		Sector sector1= new Sector("EUROPE",disease1,1);
 		City city = new City("Mexico", sector1);
-		ResearchStation researchStation = new ResearchStation("Station1",city);
-		city.addResearchStation(researchStation);
-		assertEquals(city.getResearchStation(),researchStation);
+		city.addResearchStation();
+		assertTrue(city.hasResearchStation());
 	}
 
 	@Test

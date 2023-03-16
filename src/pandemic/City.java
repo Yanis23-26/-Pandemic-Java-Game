@@ -8,7 +8,7 @@ public class City {
 	private List <City>neighbors;  // the neighbors cities of the city
 	//private List<Player>players;  // the current players on this city
 	private Sector sector;  // the sector which the city belongs to 
-	private ResearchStation researchStation;  //the researchStation of the city
+	private boolean researchStation;  //the researchStation of the city
 	private boolean foyerInfection;  // is the city  a foyerInfection or not
 	
 	public City(String name, Sector sector) {  // we create a city with a name and a sector
@@ -18,7 +18,7 @@ public class City {
 		
 		this.sector=sector;
 		//this.players=new ArrayList<>();
-		this.researchStation=null;
+		this.researchStation=false;
 		this.foyerInfection=false;
 	}
 	
@@ -78,12 +78,7 @@ public class City {
 		return this.sector;
 	}
 
-	/**
-	 * @return the researchStation of this city or null if there is no researchStation
-	 */
-	public ResearchStation getResearchStation(){
-		return this.researchStation;
-	}
+
 	
 	public void addNeighbor(City city){
 		this.neighbors.add(city);
@@ -138,26 +133,21 @@ public class City {
 	 * @return True if the city has a researchStation false if not 
 	 */
 	public boolean hasResearchStation(){
-		if(this.researchStation==null){
-			return false;
-		}
-		else{
-			return true;
-		}
+		return this.researchStation;
 	}
 
 	/** add new researchStation to the city
 	 * @param r
 	 */
-	public void addResearchStation(ResearchStation r){
-		this.researchStation=r;
+	public void addResearchStation(){
+		this.researchStation=true;
 	}
 
 	/**
 	 * remove the researchStation of this city
 	 */
 	public void removeResearchStation(){
-		this.researchStation=null;
+		this.researchStation=false;
 	}
 
 	/**
