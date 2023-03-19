@@ -37,6 +37,7 @@ public class CityTest {
         city.initDisease(disease1);
         city.initDisease(disease2);
 		city.addInfection(disease1);
+		city.resetAlreadyInfectedDuringRound();
 		city.addInfection(disease2);
 		assertEquals(2, city.getTotalinfectionRate());
 	}
@@ -69,7 +70,8 @@ public class CityTest {
 		city.addResearchStation();
 		assertTrue(city.hasResearchStation());
 	}
-
+	
+	
 	@Test
 	public void testIsInfected() {
 		Disease disease1 = new Disease("maladie1",1);
@@ -81,16 +83,8 @@ public class CityTest {
 		assertTrue(city.isInfected());
 	}
 
-	@Test
-	public void testAddInfection() {
-		Disease disease2 =new Disease("maladie2",2);
-		Sector sector2= new Sector("EUROPE",disease2,2);
-		City city = new City("Barcelone",sector2);
-		city.initDisease(disease2);
-		assertEquals(0, city.getinfectionRate(disease2));
-		city.addInfection(disease2);
-		assertEquals(1, city.getinfectionRate(disease2));
-	}
+	
+
 
 	@Test
 	public void removeInfectionTest() {
@@ -132,7 +126,7 @@ public class CityTest {
 	        assertFalse(c1.equals(o));
 	    }
 
-
+	 @Test
 	 public void addInfectionTest() {
 	        // Create a new city
 		    Disease disease1 = new Disease("maladie1",1);
@@ -142,13 +136,16 @@ public class CityTest {
 
 	        // Add one cube of disease to the city
 	        city.addInfection(disease1);
+	        city.resetAlreadyInfectedDuringRound();
 	        
 	        // Check that the infection rate of the disease is now 1
 	        assertEquals(1, city.getinfectionRate(disease1));
 
 	        // Add two more cubes of disease to the city
 	        city.addInfection(disease1);
+	        city.resetAlreadyInfectedDuringRound();
 	        city.addInfection(disease1);
+	        city.resetAlreadyInfectedDuringRound();
 	        
 	        // Check that the infection rate of the disease is now 3
 	        assertEquals(3, city.getinfectionRate(disease1));
@@ -164,6 +161,86 @@ public class CityTest {
 	            assertEquals(1, neighbor.getinfectionRate(disease1));
 	        }
 	    }
+	 
+
+		
+		// test propagation
+		@Test
+		public void testAddInfectionOnPropagation() {
+			Disease disease1 =new Disease("maladie1",1);
+			Sector sector1= new Sector("EUROPE",disease1,1);
+			City city1 = new City("Madrid",sector1);
+			city1.initDisease(disease1);
+			Sector sector2= new Sector("EUROPE",disease1,2);
+			City city2 = new City("Barcelone",sector2);
+			city2.initDisease(disease1);
+			city1.addNeighbor(city2);
+			city2.addNeighbor(city1);
+			city1.addInfection(disease1);
+			city1.resetAlreadyInfectedDuringRound();
+			city1.addInfection(disease1);
+			city1.resetAlreadyInfectedDuringRound();
+			city1.addInfection(disease1);
+			city1.resetAlreadyInfectedDuringRound();
+			city1.addInfection(disease1);
+			city1.resetAlreadyInfectedDuringRound();
+			assertEquals(3, city1.getinfectionRate(disease1));
+			assertEquals(1,city2.getinfectionRate(disease1));
+		}
+		
+		// test propagation in the case where two nighbors cities are  both foyerInfection
+		@Test
+		public void testPropagationOnNeighborsWhoAreFoyerInfection() {
+			// creation de l'environement villes et maladies et villes voisines
+			Disease disease1 =new Disease("maladie1",1);
+			Sector sector1= new Sector("EUROPE",disease1,1);
+			City city1 = new City("Madrid",sector1);
+			city1.initDisease(disease1);
+			Sector sector2= new Sector("EUROPE",disease1,2);
+			City city2 = new City("Barcelone",sector2);
+			city2.initDisease(disease1);
+			City city3 = new City("lisbon",sector1);
+			city3.initDisease(disease1);
+			
+			// ajout des villes voisines
+			city1.addNeighbor(city2);
+			city2.addNeighbor(city1);
+			city2.addNeighbor(city3);
+			
+			//lancer d'infection jusqua ce que un foyerInfection se declanche en city1 et city2
+			city1.addInfection(disease1);
+			city1.resetAlreadyInfectedDuringRound();
+			city1.addInfection(disease1);
+			city1.resetAlreadyInfectedDuringRound();
+			city1.addInfection(disease1);
+			city1.resetAlreadyInfectedDuringRound();
+			city1.addInfection(disease1);
+			city1.resetAlreadyInfectedDuringRound();
+			assertEquals(1,city2.getinfectionRate(disease1));
+			city2.resetAlreadyInfectedDuringRound();
+			city1.addInfection(disease1);
+			city1.resetAlreadyInfectedDuringRound();
+			city2.resetAlreadyInfectedDuringRound();
+			city1.addInfection(disease1);
+			city1.resetAlreadyInfectedDuringRound();
+			city2.resetAlreadyInfectedDuringRound();
+			
+			
+			assertEquals(3, city1.getinfectionRate(disease1));
+			assertEquals(3, city2.getinfectionRate(disease1));
+			
+			
+			city1.addInfection(disease1);
+			city1.resetAlreadyInfectedDuringRound();
+			city2.resetAlreadyInfectedDuringRound();
+			
+			
+			assertEquals(3, city1.getinfectionRate(disease1));
+			assertEquals(3, city2.getinfectionRate(disease1));
+			assertEquals(1, city3.getinfectionRate(disease1));
+			
+			
+		}
 	 
 
 	

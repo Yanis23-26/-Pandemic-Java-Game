@@ -6,10 +6,11 @@ public class City {
 	private String name;     // the name of the city
 	private Map<Disease, Integer> infectionRate;  // infectionRate of each disease
 	private List <City>neighbors;  // the neighbors cities of the city
-	//private List<Player>players;  // the current players on this city
+	private List<Player> players;  // the current players on this city
 	private Sector sector;  // the sector which the city belongs to 
 	private boolean researchStation;  //the researchStation of the city
 	private boolean foyerInfection;  // is the city  a foyerInfection or not
+	private boolean AlreadyInfectedDuringRound;
 	
 	public City(String name, Sector sector) {  // we create a city with a name and a sector
 		this.name= name;	
@@ -20,6 +21,7 @@ public class City {
 		//this.players=new ArrayList<>();
 		this.researchStation=false;
 		this.foyerInfection=false;
+		this.AlreadyInfectedDuringRound=false;
 	}
 	
 	
@@ -95,6 +97,22 @@ public class City {
 		}
 		return false;
 	}
+	
+	/**
+	 * @return True if the city has been infected during the round , false other ways
+	 */
+	public boolean isAlreadyInfectedDuringRound(){
+		return this.AlreadyInfectedDuringRound;
+	}
+	
+	/**
+	 * @return reset the attribute alreadyInfectedDuringRound after each round 
+	 */
+	public void resetAlreadyInfectedDuringRound(){
+		this.AlreadyInfectedDuringRound=false;
+	}
+	
+	
 
 	/** add one cube of the disease given in param
 	 * if the number of cubes of this disease is already 3 it will infect all the neighbors
@@ -104,14 +122,21 @@ public class City {
 	 */
 	public void addInfection(Disease disease){
 		int previousdiseaseInfc = this.getinfectionRate(disease);
-		if(previousdiseaseInfc==3){
-			this.foyerInfection=true;
-			this.infectNeighbors(disease);
+		if(!this.isAlreadyInfectedDuringRound()) {
+			this.AlreadyInfectedDuringRound=true;
+			if(previousdiseaseInfc==3) {
+				this.infectNeighbors(disease);
+				this.foyerInfection=true;
+			}
+			else {
+				this.infectionRate.put(disease,previousdiseaseInfc+1);
+			}
 		}
-		else{
-			this.infectionRate.put(disease,previousdiseaseInfc+1);
+		else {
+			//
 		}
-	}
+		}
+		
 
 	/**
 	 * remove one cube of the disease given in param
@@ -120,7 +145,7 @@ public class City {
 	 */
 	public void removeInfection(Disease disease){
 		int previousdiseaseInfc = this.getinfectionRate(disease);
-		if(previousdiseaseInfc==2){
+		if(previousdiseaseInfc==3){
 			this.infectionRate.put(disease, previousdiseaseInfc-1);
 			this.foyerInfection=false;
 		}
