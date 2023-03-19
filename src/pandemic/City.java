@@ -18,7 +18,7 @@ public class City {
 		this.infectionRate= new HashMap<>();
 		
 		this.sector=sector;
-		//this.players=new ArrayList<>();
+		this.players=new ArrayList<>();
 		this.researchStation=false;
 		this.foyerInfection=false;
 		this.AlreadyInfectedDuringRound=false;
@@ -85,6 +85,33 @@ public class City {
 	public void addNeighbor(City city){
 		this.neighbors.add(city);
 	}
+	
+	/**
+	 *  add a player on the city
+	 * @param player to add
+	 */
+	public void addPlayer(Player player) {
+		if(!(this.players.contains(player))){
+			this.players.add(player);
+		}	
+	}
+
+	/**
+	 * remove a player on the city
+	 * @param player to remove
+	 */
+	public void removePlayer(Player player){
+		this.players.remove(player);
+	}
+
+	/**
+	 * return the list of the player on the city
+	 * @return the list of the player on the city
+	 */
+	public List<Player> getPlayers(){
+		return this.players;
+	}
+
 
 	/**
 	 * @return True if there is at least one cube of any disease , false other ways
