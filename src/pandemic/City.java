@@ -142,17 +142,29 @@ public class City {
 	 * remove one cube of the disease given in param
 	 * if the number of cubes was 3 the city will no longer be a foyerInfection
 	 * @param disease
+	 * @throws CityException 
 	 */
-	public void removeInfection(Disease disease){
+	public void removeInfection(Disease disease) throws CityException{
 		int previousdiseaseInfc = this.getinfectionRate(disease);
-		if(previousdiseaseInfc==3){
-			this.infectionRate.put(disease, previousdiseaseInfc-1);
-			this.foyerInfection=false;
-		}
-		else{
-			this.infectionRate.put(disease, previousdiseaseInfc-1);
+		if(disease.hasAntiDote()) {
+			if(this.getinfectionRate(disease)!=0){
+				this.infectionRate.replace(disease, 0);
+		    } 
+			else {
+				throw new CityException("This city is not already infected by this disease!");
+			}
+		} 
+		else {
+			if(this.getinfectionRate(disease)!=0) {
+				this.infectionRate.replace(disease,previousdiseaseInfc-1);
+				this.foyerInfection=false;
+			}
+			else {
+				throw new CityException("This city is not already infected by this virus!");
+			}
 		}
 	}
+
 
 	/**
 	 * @return True if the city has a researchStation false if not 

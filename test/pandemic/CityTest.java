@@ -85,18 +85,73 @@ public class CityTest {
 
 	
 
-
-	@Test
-	public void removeInfectionTest() {
-		Disease disease1 = new Disease("maladie1",1);
+	// remove an infection, from a city , of a disease which has an antidote
+    @Test
+    public void removeAnExistingInfectionWhenVirusHasAntidote() throws CityException{
+    	Disease disease1 = new Disease("maladie1",1);
 		Sector sector1= new Sector("EUROPE",disease1,1);
 		City city = new City("Dubai", sector1);
 		city.initDisease(disease1);
 		city.addInfection(disease1);
-		city.removeInfection(disease1);
-		assertEquals(0, city.getinfectionRate(disease1));
-	}
-	
+		city.resetAlreadyInfectedDuringRound();
+		city.addInfection(disease1);
+    	assertTrue(city.getinfectionRate(disease1)==2);
+    	disease1.findAnAntidote();
+    	city.removeInfection(disease1);
+    	assertTrue(city.getinfectionRate(disease1)==0);
+    }
+    
+ // remove an infection, from a city , of a disease which has not an antidote
+    @Test
+    public void removeAnExistingInfectionWhenVirusHasNotAntidote() throws CityException{
+    	Disease disease1 = new Disease("maladie1",1);
+		Sector sector1= new Sector("EUROPE",disease1,1);
+		City city = new City("Dubai", sector1);
+		city.initDisease(disease1);
+		city.addInfection(disease1);
+		city.resetAlreadyInfectedDuringRound();
+		city.addInfection(disease1);
+    	assertTrue(city.getinfectionRate(disease1)==2);
+    	city.removeInfection(disease1);
+    	assertTrue(city.getinfectionRate(disease1)==1);
+    }
+    
+    // remove an infection, from a city , of a disease which has an antidote but the city doesnt know the disease
+    @Test(expected = CityException.class)
+    public void removeANotExistingInfectionWhenVirusHasAntidote() throws CityException{
+    	Disease disease1 = new Disease("maladie1",1);
+    	Disease disease2 = new Disease("maladie2",2);
+		Sector sector1= new Sector("EUROPE",disease1,1);
+		City city = new City("Dubai", sector1);
+		City city2 = new City("Nice", sector1);
+		city.initDisease(disease1);
+		city.initDisease(disease2);
+		city2.initDisease(disease2);
+		city.addInfection(disease1);
+		city.resetAlreadyInfectedDuringRound();
+		city.addInfection(disease1);
+		disease2.findAnAntidote();
+    	city.removeInfection(disease2);
+    }
+    
+    // remove an infection, from a city , of a disease which has not an antidote but the city doesnt know the disease
+    @Test(expected = CityException.class)
+    public void removeANotExistingInfectionWhenVirusHasNotAntidote() throws CityException{
+    	Disease disease1 = new Disease("maladie1",1);
+    	Disease disease2 = new Disease("maladie2",2);
+		Sector sector1= new Sector("EUROPE",disease1,1);
+		City city = new City("Dubai", sector1);
+		City city2 = new City("Nice", sector1);
+		city.initDisease(disease1);
+		city.initDisease(disease2);
+		city2.initDisease(disease2);
+		city.addInfection(disease1);
+		city.resetAlreadyInfectedDuringRound();
+		city.addInfection(disease1);
+    	city.removeInfection(disease2);
+    }
+
+
 	 @Test
 	    public void testEquals() {
 			Disease disease1 = new Disease("maladie1",1);
