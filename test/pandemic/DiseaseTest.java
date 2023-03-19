@@ -49,6 +49,18 @@ public class DiseaseTest {
 	      Object o = new Object();
 	      assertFalse(d1.equals(o));
 	  }
+	  
+	  @Test
+	  /**
+	   * Test the getId method of the Disease class
+	   */
+
+	  public void testFindAntiDote() {
+	    Disease disease = new Disease("Influenza", 1);
+	    assertFalse(disease.hasAntiDote());
+	    disease.findAnAntidote();
+	    assertTrue(disease.hasAntiDote());
+	  }
 
 
 }

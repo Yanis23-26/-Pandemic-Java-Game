@@ -3,6 +3,7 @@ package pandemic;
 public class Disease {
 	private String name;//name of disease
 	private int id;//id of Disease
+	private boolean antiDote; 
 	/**
 	 * Disease constructor
 	 * @param name String,the name of disease
@@ -12,6 +13,7 @@ public class Disease {
 	public Disease(String name, int id){
 		this.name=name;
 		this.id=id;
+		this.antiDote=false;
 	}
 	/**
 	 * @return the name of disease
@@ -25,6 +27,22 @@ public class Disease {
 	public int getId(){
 		return this.id;
 	}
+	
+	/**
+	 * we just found a antidote for this disease
+	 */
+	public void findAnAntidote(){
+		this.antiDote=true;
+	}
+
+	/**
+	 * we just found a antidote for this disease
+	 */
+	public boolean hasAntiDote(){
+		return this.antiDote;
+	}
+	
+	
 	
 
 	
