@@ -55,7 +55,7 @@ public class Sector {     // the class of the sectors, the world contains 4 sect
 	}
 	
 	public String toString() {
-		return "this"+this.getSectorDisease()+"has"+this.getCities()+this.getId();
+		return this.name;
 	}
 
 	

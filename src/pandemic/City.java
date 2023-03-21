@@ -150,8 +150,8 @@ public class City {
 	public void addInfection(Disease disease){
 		int previousdiseaseInfc = this.getinfectionRate(disease);
 		if(!this.isAlreadyInfectedDuringRound()) {
-			this.AlreadyInfectedDuringRound=true;
 			if(previousdiseaseInfc==3) {
+				this.AlreadyInfectedDuringRound=true;
 				this.infectNeighbors(disease);
 				this.foyerInfection=true;
 			}

@@ -1,7 +1,7 @@
 package pandemic;
 
 
-public class Player{
+public abstract class Player{
     private String name; // name for player
     private City city ; // id for player
 
@@ -13,7 +13,7 @@ public class Player{
     * @return city of player
      */
 
-    public int getCity(){
+    public City getCity(){
         return this.city;
     }
     /**
@@ -39,17 +39,11 @@ public class Player{
     }
     
     
-    public abstract void build() {
-    	
-    }
+    public abstract void build();
     
-    public abstract void findCure() {
-    	
-    }
+    public abstract void findCure() ;
     
-    public abstract void reatDisease() {
-    	
-    }
+    public abstract void reatDisease();
     
     
     
