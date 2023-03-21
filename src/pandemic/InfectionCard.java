@@ -2,26 +2,27 @@ package pandemic;
 import java.util.*;
 
 public class InfectionCard implements Card{
-    private String cityName;
-    private String diseaseName;
+    private City city;
+    private Disease disease;
     
 
-    public InfectionCard(String cityName;String diseaseName){
-        this.cityName=cityName;
-        this.diseaseName=diseaseName;
+    public InfectionCard(City city;Disease disease){
+        this.city=city;
+        this.disease=disease;
     }
     /**
-    *@return name of city 
+    *@return the city 
      */
 
-    public String getCityName(){
-        return this.cityName;
+    public City getCity(){
+        return this.city;
     } 
+    /**
+    * this function describe the comportement of card
+     */
 
     public void Comportement(){
+        this.city.addInfection(disease);
        
-        
-
-
     }  
 } 
