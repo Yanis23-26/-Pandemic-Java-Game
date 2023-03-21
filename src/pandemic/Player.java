@@ -3,21 +3,21 @@ package pandemic;
 
 public class Player{
     private String name; // name for player
-    private int id; // id for player
+    private City city ; // id for player
 
-    public Player(String name,int id){
+    public Player(String name,City city ){
         this.name=name;
-        this.id=id;
+        this.city=city;
     }
     /**
-    * @return id for player
+    * @return city of player
      */
 
-    public int getId(){
-        return this.id;
+    public int getCity(){
+        return this.city;
     }
     /**
-    * @return name for player 
+    * @return name of player 
      */
     public String getName(){
         return this.name;
@@ -31,13 +31,30 @@ public class Player{
 			return false;
 		}
 		 Player p= (Player) o;
-		return (this.getName().equals(p.getName()) && this.getId()==p.getId());
+		return (this.getName().equals(p.getName()) && this.getCity()==p.getCity());
 	}
 
     public String toString(){
-        return "name of player is "+this.getName()+" "+this.getId();
+        return "name of player is "+this.getName()+"and his city is"+this.getCity();
     }
-
+    
+    
+    public abstract void build() {
+    	
+    }
+    
+    public abstract void findCure() {
+    	
+    }
+    
+    public abstract void reatDisease() {
+    	
+    }
+    
+    
+    
+    
+    
 
 
 
