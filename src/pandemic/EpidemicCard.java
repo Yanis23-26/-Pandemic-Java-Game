@@ -1,10 +1,10 @@
 package pandemic;
 
-public class EpedimicCard implements Card{
+public class EpidemicCard implements Card{
     private  String cityName;
     private String diseaseName;
     
-    public EpedimicCard(String cityName;String diseaseName){
+    public EpidemicCard(String cityName;String diseaseName){
         this.cityName=cityName;
         this.diseaseName=diseaseName;
     }
