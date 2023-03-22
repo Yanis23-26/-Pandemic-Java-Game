@@ -1,6 +1,6 @@
 package pandemic;
 
-public class Doctor extends Player {
+public class Globplotter extends Player {
 
 	@Override
 	public void action() {

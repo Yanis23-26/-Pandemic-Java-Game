@@ -1,14 +1,21 @@
 package pandemic;
 
 
+
 public abstract class Player{
     private String name; // name for player
     private City city ; // id for player
+  
 
-    public Player(String name,City city ){
+    public Player(String name,City city  ){
         this.name=name;
         this.city=city;
+        
     }
+    
+    
+    public abstract void  action();
+  
     /**
     * @return city of player
      */
@@ -22,6 +29,7 @@ public abstract class Player{
     public String getName(){
         return this.name;
     }
+   
     /**
     * @param object de type player
     * @return true or false  
@@ -39,13 +47,7 @@ public abstract class Player{
     }
     
     
-    public abstract void build();
-    
-    public abstract void findCure() ;
-    
-    public abstract void reatDisease();
-    
-    
+   
     
     
     

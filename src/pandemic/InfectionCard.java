@@ -1,6 +1,5 @@
 package pandemic;
 
-
 public class InfectionCard implements Card{
     private City city;
     private Disease disease;
