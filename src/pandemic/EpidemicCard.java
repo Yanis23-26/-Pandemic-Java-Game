@@ -1,22 +1,31 @@
 package pandemic;
 
 public class EpidemicCard implements Card{
-    private  String cityName;
-    private String diseaseName;
+    private  City city;
+    private Disease disease;
     
-    public EpidemicCard(String cityName;String diseaseName){
-        this.cityName=cityName;
-        this.diseaseName=diseaseName;
+    public EpidemicCard(City cityName;Disease disease){
+        this.city=city;
+        this.disease=disease;
     }
     /**
-    *@return name of city 
+    *@return the city 
      */ 
 
-    public String getCityName(){
-        return this.cityName;
+    public City getCity(){
+        return this.city;
     }
+    /**
+    @return the disease
+
+    */
+    public Disease getDisease(){
+        return this.disease;
+    } 
 
     public void Comportement(){
+        this.city.addInfection(disease);
+        this.city.infectNeighbors(disease);
 
     }  
 

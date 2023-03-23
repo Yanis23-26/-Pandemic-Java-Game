@@ -3,20 +3,23 @@ package pandemic;
 public class PlayerCard implements Card{
 
     private String name;
-    private String cityName;
+    private City city;
 
-    public PlayerCard(String name;String cityName){
+    public PlayerCard(String name;City city){
         this.name=name;
-        this.cityName=cityName;
+        this.city=city;
     }
     /**
     *@return name of city 
      */ 
-    public String getCityName(){
-        return this.cityName;
+    public City getCity(){
+        return this.city;
     }
 
-    public void Comportement(){
+    public Disease getDisease();
+  
 
-    }    
+    public void Comportement();
+
+      
 } 

@@ -10,9 +10,12 @@ public interface Card{
     /**
     * type of card
     */
+    
     public void Comportement();
     
-    
+    /**
+    *@return the disease 
+     */
     public Disease getDisease();
 
 
