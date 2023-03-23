@@ -6,7 +6,6 @@ import org.junit.Test;
 
 public class InfectionCardTest {
 
-	    // the class that test the class "Sector"
 		
 		@Test
 	    public void getCityTest() {
