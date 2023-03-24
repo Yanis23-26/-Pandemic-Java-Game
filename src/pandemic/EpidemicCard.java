@@ -1,5 +1,6 @@
 package pandemic;
 
+// cette classe represente la carte de l'epidemie
 public class EpidemicCard implements Card{
     private  City city;
     private Disease disease;
@@ -24,8 +25,8 @@ public class EpidemicCard implements Card{
     } 
 
     public void Comportement(){
-        this.city.addInfection(disease);
-        this.city.infectNeighbors(disease);
+        this.city.addInfection(disease); // une ville infecté par une maladie.
+        this.city.infectNeighbors(disease); // une ville foyer d'infection qui infecte les villes voisines.
 
     }  
 

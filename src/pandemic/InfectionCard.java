@@ -25,7 +25,7 @@ public class InfectionCard implements Card{
      */
 
     public void Comportement(){
-        this.city.addInfection(disease);
+        this.city.addInfection(disease); //une ville infecté par une maladie avec la carte infection.
        
     }  
 } 
