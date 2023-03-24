@@ -11,7 +11,7 @@ public interface Card{
     * type of card
     */
     
-    public void Comportement();
+    public void comportement();
     
     /**
     *@return the disease 

@@ -5,7 +5,7 @@ public class PlayerCard implements Card{
     private String name;
     private City city;
 
-    public PlayerCard(String name;City city){
+    public PlayerCard(String name,City city){
         this.name=name;
         this.city=city;
     }
@@ -19,7 +19,7 @@ public class PlayerCard implements Card{
     public Disease getDisease();
   
 
-    public void Comportement();
+    public void comportement();
 
       
 } 

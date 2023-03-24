@@ -9,23 +9,34 @@ public class InfectionCard implements Card{
         this.city=city;
         this.disease=disease;
     }
+
+
     /**
-    *@return the city 
-     */
+    * Cette méthode retourne la ville associée à la carte d'infection.
+    * @return la ville associée à la carte
+    */
 
     public City getCity(){
         return this.city;
     }
     
+
+    /**
+    * Cette méthode retourne la maladie associée à la carte.
+    * @return la maladie associée à la carte d'infection
+    */
     public Disease getDisease() {
     	return this.disease;
     }
+    
+
     /**
-    * this function describe the comportement of card
+     * décrit le comportement de la carte d'infection
      */
 
-    public void Comportement(){
-        this.city.addInfection(disease); //une ville infecté par une maladie avec la carte infection.
+    public void comportement(){
+        this.city.addInfection(disease); 
+        //cette carte infecte une ville avec une maladie.
        
     }  
 } 
