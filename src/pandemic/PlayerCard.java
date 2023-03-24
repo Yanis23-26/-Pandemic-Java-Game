@@ -2,24 +2,41 @@ package pandemic;
 
 public class PlayerCard implements Card{
 
-    private String name;
     private City city;
+    private Disease disease;
 
-    public PlayerCard(String name,City city){
-        this.name=name;
-        this.city=city;
+
+    // le constructeur
+    public PlayerCard(City city, Disease disease){
+        this.city = city;
+        this.disease = disease ;
     }
+
+
     /**
-    *@return name of city 
+     * retourne la ville associée à la carte joueur.
+     * @return le nom de la ville associé à cette carte joueur. 
      */ 
     public City getCity(){
         return this.city;
     }
 
-    public Disease getDisease();
-  
 
-    public void comportement();
 
-      
+    /**
+     * Retourne le nom de la carte joueur.
+     * @return le nom de la carte joueur
+     */
+    public Disease getDisease() {
+        return this.disease;
+    
+
+
+    public void comportement() {
+        // la carte joueur n'a pas de comportement particulier
+    }
+
+
+
+
 } 
