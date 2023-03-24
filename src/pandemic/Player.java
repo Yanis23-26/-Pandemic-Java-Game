@@ -9,8 +9,8 @@ public abstract class Player{
     protected String name; // name for player
     protected City city ; // id for player
     protected List<Card> cartes; // les cartes du joueurs 
-    protected List<Action> actions;
-    protected Action actionWithRelation;
+    protected List<Action> actions;// list des actions 
+    protected Action actionWithRelation;//action avec laquelle est en relation 
 
     public Player(String name,City city  ){
         this.name=name;
@@ -46,11 +46,17 @@ public abstract class Player{
     public String getName(){
         return this.name;
     }
-    
+    /**
+	 *  add a Card on the list of carte 
+	 * @param card to add
+	 */
     public void addCard(Card c) {
     	this.cartes.add(c);
     }
-   
+    /**
+	 * change the city to the  player on the city
+	 * @param city to change 
+	 */
     public void setCity(City c) {
     	this.city = c;
     }
