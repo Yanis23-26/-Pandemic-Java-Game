@@ -36,7 +36,10 @@ public abstract class Player{
     /**
     * @return city of player
      */
-
+    public List<Card> getCard() {
+    	return this.cartes;
+    }
+    
     public City getCity(){
         return this.city;
     }
@@ -75,6 +78,7 @@ public abstract class Player{
     public String toString(){
         return "name of player is "+this.getName()+"and his city is"+this.getCity();
     }
+    
     
     
    
