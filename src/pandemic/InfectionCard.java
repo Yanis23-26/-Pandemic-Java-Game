@@ -1,42 +1,24 @@
 package pandemic;
 
-public class InfectionCard implements Card{
-    private City city;
-    private Disease disease;
+public class InfectionCard extends Card{
     
+ 
+    	/**
+    	 * Make an infection card with a city and a virus
+    	 * @param c the city associated with the card
+    	 * @param disease the virus associated with the card
+    	 */
+    	public InfectionCard(City c,Disease d ){
+    		super(c,d);
+    	}
+    	
+    	/**
+    	 * Allows you to manage what happens when the card is drawn :
+    	 * it's give a virus's cube on the city associated with the card 
+    	 */
+    	public void comportement(Player p) {
+    		this.city.addInfection(this.disease);
+    	}
+    	
 
-    public InfectionCard(City city,Disease disease){
-        this.city=city;
-        this.disease=disease;
-    }
-
-
-    /**
-    * Cette méthode retourne la ville associée à la carte d'infection.
-    * @return la ville associée à la carte
-    */
-
-    public City getCity(){
-        return this.city;
-    }
-    
-
-    /**
-    * Cette méthode retourne la maladie associée à la carte.
-    * @return la maladie associée à la carte d'infection
-    */
-    public Disease getDisease() {
-    	return this.disease;
-    }
-    
-
-    /**
-     * décrit le comportement de la carte d'infection
-     */
-
-    public void comportement(){
-        this.city.addInfection(disease); 
-        //cette carte infecte une ville avec une maladie.
-       
-    }  
 } 

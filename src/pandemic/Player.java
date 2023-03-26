@@ -8,7 +8,7 @@ import pandemic.action.*;
 public abstract class Player{
     protected String name; // name for player
     protected City city ; // id for player
-    protected List<Card> cartes; // les cartes du joueurs 
+    protected List<PlayerCard> cartes; // les cartes du joueurs 
     protected List<Action> actions;// list des actions 
     protected Action actionWithRelation;//action avec laquelle est en relation 
 
@@ -36,7 +36,7 @@ public abstract class Player{
     /**
     * @return city of player
      */
-    public List<Card> getCard() {
+    public List<PlayerCard> getCard() {
     	return this.cartes;
     }
     
@@ -53,7 +53,7 @@ public abstract class Player{
 	 *  add a Card on the list of carte 
 	 * @param card to add
 	 */
-    public void addCard(Card c) {
+    public void addCard(PlayerCard c) {
     	this.cartes.add(c);
     }
     /**

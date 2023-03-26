@@ -1,40 +1,31 @@
 package pandemic;
 
-public class PlayerCard implements Card{
+public class PlayerCard extends Card{
 
-    private City city;
-    private Disease disease;
-
-
-    // le constructeur
-    public PlayerCard(City city, Disease disease){
-        this.city = city;
-        this.disease = disease ;
-    }
-
-
-    /**
-     * retourne la ville associée à la carte joueur.
-     * @return le nom de la ville associé à cette carte joueur. 
-     */ 
-    public City getCity(){
-        return this.city;
-    }
-
-
-
-    /**
-     * Retourne le nom de la carte joueur.
-     * @return le nom de la carte joueur
-     */
-    public Disease getDisease(){
-        return this.disease;
-    }
+    	/**
+    	 * Make a player card with a city and a virus
+    	 * @param c the city associated with the card
+    	 * @param d the disease associated with the card
+    	 */
+    	public PlayerCard(City c,Disease d) {
+    		super(c,d);
+    	}
+    	
+    	
+    	/**
+    	 * Allows you to manage what happens when the card is drawn :
+    	 * it's give the card to the player
+    	 * @param p the player who drawn the card
+    	 */
+    	public void comportement(Player p) {
+    		p.addCard(this);
+    	}
 
 
-    public void comportement() {
-        // la carte joueur n'a pas de comportement particulier
-    }
+		
+
+		
+
 
 
 

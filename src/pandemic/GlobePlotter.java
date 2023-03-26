@@ -16,5 +16,6 @@ public class GlobePlotter extends Player {
 	}
 
 	
+	
 
 }
