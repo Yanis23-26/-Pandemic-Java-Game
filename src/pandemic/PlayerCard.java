@@ -27,9 +27,9 @@ public class PlayerCard implements Card{
      * Retourne le nom de la carte joueur.
      * @return le nom de la carte joueur
      */
-    public Disease getDisease() {
+    public Disease getDisease(){
         return this.disease;
-    
+    }
 
 
     public void comportement() {
