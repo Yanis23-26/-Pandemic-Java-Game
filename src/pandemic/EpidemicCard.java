@@ -1,7 +1,15 @@
 package pandemic;
 
 // cette classe represente la carte de l'epidemie
-public class EpidemicCard implements CardComportement{
+public class EpidemicCard implements Card{
+	
+	
+	
+	public void EpidimicCard(City c,Disease d) {
+		
+		super(c,d);
+		
+	}
   
 	/**
 	 * Allows you to manage what happens when the card is drawn
