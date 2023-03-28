@@ -51,7 +51,7 @@ public abstract class Card {
 			return false;
 		}
 		Card other = (Card) o;
-		return this.city.getName().equals(other.getCity().getName()) && this.disease==other.getDisease();
+		return this.city==other.getCity() && this.disease==other.getDisease();
 	}
 }
 
