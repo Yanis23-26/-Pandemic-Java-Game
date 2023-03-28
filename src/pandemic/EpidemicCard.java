@@ -18,6 +18,8 @@ public class EpidemicCard implements Card{
 			// on tire une carte infection 
 			// on augmente le taux global d'infection 
 			// on melange les cartes d'infections
+			this.city.addInfection(disease);
+			this.city.infectNeighbors(disease);
 			
 			
 	}
