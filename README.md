@@ -45,33 +45,36 @@
 # Journal de bord
 
 ## Semaine 1
-# En premier lieu,on a commencé a lire l'énoncé du sujet puis on a entamé a l'analyser puis on a définie les classes, puis on a commencé a faire l'UML classe par classe d'après l'énoncé du sujet, 
+ En premier lieu, On a commencé a lire l'énoncé du sujet. Puis on a entamé a l'analyser. Ensuite on a définie les classes et on a commencé a faire l'UML du projet classe par classe d'en suivant l'énoncé du sujet. 
 
 ## Semaine 2
-on a commencer a faire quelque classe , certaines on les définie pour ce mettre en place pour bien mettre en place le projet et certaines on les a entamé d'une manière ou chaque un de nous il impose certain méthodes 
-en modifiant l'UML
+On a commencé a faire quelques classes. Certaines d'entre elles,on les définie pour se mettre en place afin de bien structurer le projet. D'autres, on les à entamé d'une manière ou chaqu'un des membre du notre groupe propose et réalise sous l'accord des autres memebres certaines méthodes.
+On modifie l'UML en cours de l'avancement.
 ## Semaine 3
-Après la révision avec la prof en séance de TP a propos de l'UML et après avoir ca confirmation on a changé certaines classes et leurs méthodes et on ajouté nos propre méthodes pour personnaliser le projet et on a inclue le fichier Json
+Après la révision avec la prof chargée de notre TP a propos de l'UML, et après avoir eu sa confirmation, on a changé certaines classes et leurs méthodes, on à également ajouté nos propres méthodes pour personnaliser le projet en incluant le fichier Json.
 
 ## Semaine 4
-de cette semaine on a entamé les test de chaque classe et on les a amélioré tout dépends de des méthodes ajoutés et on a fait une révision sur certaine classes et on les a amélioré après avoir fait une dernière révision avec la prof . 
+Dans cette semaine, on a entamé les tests de chaque classe et on les a amélioré suivant les méthodes ajoutés puis on a fait une révision de certaines classes en améliorant grace au coup de main de notre enseignante.
 
 ## Semaine 5
-dans cette semaine on a fait quelque modification et on a ajouté quelque test pour chaque classe et quelque modifications pour les classes 
+Lors de cette semaine, on a fait quelques modifications et on a ajouté des tests pour chaque classe.
 
 ## Semaine 6
-relecture de la partie livrable 2 dans le sujet sur tous qui conserne les joueur et les different cartes, et debut de modalisation de l'uml
+Relecture de la partie du livrable 2 dans le sujet sur tout ce qui conserne les joueurs et les differentes cartes, et début de la modalisation de l'UML.
 
 ## Semaine 7
-répartition des taches et debut de code apres finision de l'uml 
+Répartition des taches et debut du code après finition de l'UML.
 
 ## Semaine 8
-changement de la modalisation de l'uml apres avoir eu une nouvelle modalisation 
+Changement de la modélisation de l'UML après avoir eu une nouvelle modélisation. 
 ## Semaine 9
-debut et changement de code et correction des erreurs du livrable 1 eu en seance 
+Début, changement du code et correction des erreurs du livrable 1 en seance 
 ## Semaine 10
-pause(examens )
+Pause (examens)
 ## Semaine 11
-creation des de la class player en etant que class abstract et mise en place des action dans un package a part,pour eviter les probleme si yaura d'autre des extentions dans le jeux(nouvelle action )
+Creation de la class Player (class abstract) et mise en place des actions dans un package a part, pour eviter toute confusion, en cas d'ajout d'extentions dans le jeux (nouvelle action)
+Creation des classes Cards par Yanis et Anes en suivant l'UML vue par l'enseignante (Card comme Interface).
 ## Semaine 12
-changement radical du travail des cartes et creation de game. 
+Suite à une confusion et une mauvaise interprétation de notre part suite que la prof valide notre UML ( card comme interface ) les membres Yanis et Anes qui ont comme tache de réaliser les classes Card, PlayerCard, EpidémicCard, InfectionCard, se fient au consignes de l'UML faux et se trompent dans la réalisation de leurs Classes.
+~~~~
+Erreurs lors de la réalisation du main final et réalisation de l'erreur de l'UML (partie Cards). Ainsi obligation de changer la classe Card qui était une Interface pour une classe Abstract. 
