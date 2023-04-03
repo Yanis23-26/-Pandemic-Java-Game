@@ -1,4 +1,6 @@
-package pandemic;
+package pandemic.Cards;
+import pandemic.Board.*;
+import pandemic.Roles.*;
 
 public abstract class Card {
 	

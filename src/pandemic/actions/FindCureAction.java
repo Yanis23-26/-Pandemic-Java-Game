@@ -1,6 +1,6 @@
-package pandemic.action;
+package pandemic.actions;
 
-import pandemic.Player;
+import pandemic.Roles.*;
 
 public class FindCureAction implements Action {
 

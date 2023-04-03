@@ -1,9 +1,11 @@
-package pandemic;
-
+package pandemic.Roles;
+import pandemic.Board.*;
+import pandemic.actions.*;
+import pandemic.Cards.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import pandemic.action.*;
+
 
 public abstract class Player{
     protected String name; // name for player

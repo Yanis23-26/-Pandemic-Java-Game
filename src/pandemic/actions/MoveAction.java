@@ -1,10 +1,11 @@
-package pandemic.action;
+package pandemic.actions;
+import pandemic.Roles.*;
+import pandemic.Board.*;
 
 import java.util.List;
 import java.util.Scanner;
 
-import pandemic.City;
-import pandemic.Player;
+
 
 public class MoveAction implements Action {
 

@@ -1,4 +1,4 @@
-package pandemic;
+package pandemic.Board;
 import java.util.*;
 
 public class Sector {     // the class of the sectors, the world contains 4 sectors

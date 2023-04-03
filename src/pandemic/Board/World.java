@@ -1,4 +1,4 @@
-package pandemic;
+package pandemic.Board;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;

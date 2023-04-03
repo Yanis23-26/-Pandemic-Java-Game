@@ -1,4 +1,4 @@
-package pandemic;
+package pandemic.Board;
 
 public class Disease {
 	private String name;//name of disease

@@ -1,4 +1,5 @@
-package pandemic;
+package pandemic.Cards;
+import pandemic.Board.*;
 
 // cette classe represente la carte de l'epidemie
 public class EpidemicCard implements Card{

@@ -1,4 +1,5 @@
-package pandemic;
+package pandemic.Board;
+import pandemic.Roles.*;
 
 import java.util.*;
 

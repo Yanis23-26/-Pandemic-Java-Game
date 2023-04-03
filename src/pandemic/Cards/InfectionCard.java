@@ -1,4 +1,7 @@
-package pandemic;
+package pandemic.Cards;
+import pandemic.Board.*;
+
+import pandemic.Roles.*;
 
 public class InfectionCard extends Card{
     

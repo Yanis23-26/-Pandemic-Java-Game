@@ -1,7 +1,7 @@
-package pandemic;
+package pandemic.Roles;
 
-import pandemic.action.Action;
-import pandemic.action.MoveAction;
+import pandemic.actions.*;
+import pandemic.Board.*;
 
 public class GlobePlotter extends Player {
 

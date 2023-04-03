@@ -1,8 +1,7 @@
-package pandemic;
+package pandemic.Roles;
 
-import pandemic.action.Action;
-import pandemic.action.TreateDiseaseAction;
-
+import pandemic.actions.*;
+import pandemic.Board.*;
 public class Doctor extends Player {
 
 	public Doctor(String name, City city) {

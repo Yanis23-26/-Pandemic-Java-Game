@@ -1,5 +1,9 @@
 package pandemic;
 import java.io.FileNotFoundException;
+import pandemic.Board.*;
+import pandemic.actions.*;
+import pandemic.Cards.*;
+import pandemic.Roles.*;
 import java.util.*;
 import java.util.Collections;
 

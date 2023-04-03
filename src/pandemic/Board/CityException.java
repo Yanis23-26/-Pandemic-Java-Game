@@ -1,5 +1,5 @@
 
-package pandemic;
+package pandemic.Board;
 
 /**
 
@@ -10,6 +10,7 @@ package pandemic;
  */
 
 public class CityException extends Exception {
+
 
 	/**
 

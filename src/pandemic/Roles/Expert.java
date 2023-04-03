@@ -1,7 +1,7 @@
-package pandemic;
+package pandemic.Roles;
 
-import pandemic.action.Action;
-import pandemic.action.BuildAction;
+import pandemic.actions.*;
+import pandemic.Board.*;
 
 public class Expert extends Player {
 

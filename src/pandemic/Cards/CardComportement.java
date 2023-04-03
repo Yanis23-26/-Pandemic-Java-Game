@@ -1,4 +1,4 @@
-package pandemic;
+package pandemic.Cards;
 
 public interface CardComportement{
   
