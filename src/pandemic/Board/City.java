@@ -163,6 +163,7 @@ public class City {
 		else {
 			//
 		}
+		this.resetAlreadyInfectedDuringRound();
 		}
 		
 

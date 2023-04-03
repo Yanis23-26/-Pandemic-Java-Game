@@ -1,5 +1,5 @@
 package pandemic.Board;
-
+import pandemic.Roles.*;
 import static org.junit.Assert.*;
 
 import org.junit.Before;
@@ -93,7 +93,6 @@ public class CityTest {
 		City city = new City("Dubai", sector1);
 		city.initDisease(disease1);
 		city.addInfection(disease1);
-		city.resetAlreadyInfectedDuringRound();
 		city.addInfection(disease1);
     	assertTrue(city.getinfectionRate(disease1)==2);
     	disease1.findAnAntidote();
@@ -109,7 +108,6 @@ public class CityTest {
 		City city = new City("Dubai", sector1);
 		city.initDisease(disease1);
 		city.addInfection(disease1);
-		city.resetAlreadyInfectedDuringRound();
 		city.addInfection(disease1);
     	assertTrue(city.getinfectionRate(disease1)==2);
     	city.removeInfection(disease1);
@@ -128,7 +126,6 @@ public class CityTest {
 		city.initDisease(disease2);
 		city2.initDisease(disease2);
 		city.addInfection(disease1);
-		city.resetAlreadyInfectedDuringRound();
 		city.addInfection(disease1);
 		disease2.findAnAntidote();
     	city.removeInfection(disease2);
@@ -146,7 +143,6 @@ public class CityTest {
 		city.initDisease(disease2);
 		city2.initDisease(disease2);
 		city.addInfection(disease1);
-		city.resetAlreadyInfectedDuringRound();
 		city.addInfection(disease1);
     	city.removeInfection(disease2);
     }
@@ -232,13 +228,9 @@ public class CityTest {
 			city1.addNeighbor(city2);
 			city2.addNeighbor(city1);
 			city1.addInfection(disease1);
-			city1.resetAlreadyInfectedDuringRound();
 			city1.addInfection(disease1);
-			city1.resetAlreadyInfectedDuringRound();
 			city1.addInfection(disease1);
-			city1.resetAlreadyInfectedDuringRound();
 			city1.addInfection(disease1);
-			city1.resetAlreadyInfectedDuringRound();
 			assertEquals(3, city1.getinfectionRate(disease1));
 			assertEquals(1,city2.getinfectionRate(disease1));
 		}
@@ -264,21 +256,12 @@ public class CityTest {
 			
 			//lancer d'infection jusqua ce que un foyerInfection se declanche en city1 et city2
 			city1.addInfection(disease1);
-			city1.resetAlreadyInfectedDuringRound();
 			city1.addInfection(disease1);
-			city1.resetAlreadyInfectedDuringRound();
 			city1.addInfection(disease1);
-			city1.resetAlreadyInfectedDuringRound();
 			city1.addInfection(disease1);
-			city1.resetAlreadyInfectedDuringRound();
 			assertEquals(1,city2.getinfectionRate(disease1));
-			city2.resetAlreadyInfectedDuringRound();
 			city1.addInfection(disease1);
-			city1.resetAlreadyInfectedDuringRound();
-			city2.resetAlreadyInfectedDuringRound();
 			city1.addInfection(disease1);
-			city1.resetAlreadyInfectedDuringRound();
-			city2.resetAlreadyInfectedDuringRound();
 			
 			
 			assertEquals(3, city1.getinfectionRate(disease1));
@@ -286,8 +269,8 @@ public class CityTest {
 			
 			
 			city1.addInfection(disease1);
-			city1.resetAlreadyInfectedDuringRound();
-			city2.resetAlreadyInfectedDuringRound();
+
+
 			
 			
 			assertEquals(3, city1.getinfectionRate(disease1));
@@ -296,40 +279,41 @@ public class CityTest {
 			
 			
 		}
-	
+
  // apre avoir coder les players on pourra faire ce test	
-/*		
+	
 		// add a new player to the list of city's players
 		   @Test
 		   public void addaNewPlayer(){
 			Disease disease1 =new Disease("maladie1",1);
 			Sector sector1= new Sector("EUROPE",disease1,1);
 			City city1 = new City("Madrid",sector1);
-			Player p = new Player("manil",city1);
+			Player p = new Doctor("manil",city1);
 		    assertFalse(city1.getPlayers().contains(p));
 		    city1.addPlayer(p);
 		    assertTrue(city1.getPlayers().contains(p));
 		      
 		   }
 
+		   
+
 		   // remove a player from the list of players
-		   @Test 
-		   public void removeAPlayer(){
+		    @Test
+		    public void removeAPlayer(){
 			Disease disease1 =new Disease("maladie1",1);
 			Sector sector1= new Sector("EUROPE",disease1,1);
 			City city1 = new City("Madrid",sector1);
-			Player p = new Player("manil",city1);
+			Player p = new Expert("manil",city1);
 		    city1.addPlayer(p);
 		    city1.removePlayer(p);
 		    assertFalse(city1.getPlayers().contains(p));
 		   }
 
 	 
-*/
+
 	
 
 	
-	 
 	 
 	 
 	 
