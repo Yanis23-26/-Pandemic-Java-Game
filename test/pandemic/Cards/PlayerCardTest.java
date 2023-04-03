@@ -1,5 +1,5 @@
-package pandemic;
-
+package pandemic.Cards;
+import pandemic.Board.*;
 import static org.junit.Assert.assertEquals;
 
 public class PlayerCardTest {

@@ -1,4 +1,4 @@
-package pandemic;
+package pandemic.Board;
 
 public @interface Test {
 

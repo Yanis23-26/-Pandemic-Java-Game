@@ -1,4 +1,4 @@
-package pandemic;
+package pandemic.Board;
 
 import static org.junit.Assert.*;
 
