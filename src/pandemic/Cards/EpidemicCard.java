@@ -21,17 +21,7 @@ public class EpidemicCard implements Card{
 		cards.push(card);	 
 	}
 
-    /**
-	*@param nb c'est le nombre de cartes qu'il faut ajouter
-	*@param card c'est une carte de type infectioncard 
-	*/
-
-	public void PileCard(int nb,InfectionCard card){
-		for(int i=0;i<nb+1,i++){
-			cards.push(card);
-		}  
-		
-	}  
+ 
 
 	/**
 	cette  fonction permet de tirer une carte de la pile 
@@ -40,6 +30,8 @@ public class EpidemicCard implements Card{
 	public void DrawnCard(){
 		cards.pop();
 	} 
+
+ 
 
 	
 

@@ -7,25 +7,21 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class EpidemicCardTest {
+    private Stack<InfectionCard> cards;
+   @Test
+   public void  addCardTest(){
+    cards=new Stack<>();
+    Disease ebola=new Disease("Ebola",3);		
+	Sector europe= new Sector("EUROPE",ebola,3);
+    City Lyon=new City("Lyon",europe);
+    InfectionCard card1=new InfectionCard(Lyon,ebola);
+    cards.addCard(card1);
 
-		/*
-         * pour tester la méthode getCity on doit :
-         * - comparer deux villes identiques avec la méthode assertEquals(), celle définit seule , et celle définit dans la carte epidemic
-         * - on définit la ville (lille). pour cela, il faut d'abord définir un secteur afin respecter les éléments du constructeur de City
-         * - idem : pour définir un secteur il nous faut au préalable une maladie.
-         * - on compare cette ville (lille) avec celle de la carte (ici card1) qui doit etre lille
-         * - la creation de card1 nécessite egalement une ville (lille) et une maladie(covid)
-         * - pour que le test soit juste, il faut que la fonction renvoie "True"
-         */
-        @Test  
-	    public void getCityTest() {
-            Disease covid =new Disease("covid19",2);		
-		    Sector europe = new Sector("EUROPE",covid,2);
-            City lille =new City("LILLE",europe);
-            EpidemicCard card1 =new EpidemicCard(lille ,covid);
-            assertEquals(lille,card1.getCity());
-  
-	    }
+    assertTrue(cards.contains(card1));
+    
+   } 
+
+
 
 
         /*
