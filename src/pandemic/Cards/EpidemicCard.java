@@ -3,7 +3,7 @@ import pandemic.Board.*;
 
 // cette classe represente la carte de l'epidemie
 public class EpidemicCard implements Card{
-	private Stack<InfectionCard> cards; //une pile qui prends des objets de type card
+	private Stack<InfectionCard> cards; //une pile qui prends des objets de type InfectionCard
 
 
 	public EpidemicCard(){
@@ -35,11 +35,10 @@ public class EpidemicCard implements Card{
 
 	/**
 	cette  fonction permet de tirer une carte de la pile 
+	*/
 
-	 */
-
-	public void DrawCard(InfectionCard card){
-		cards.pop(card);
+	public void DrawnCard(){
+		cards.pop();
 	} 
 
 	
@@ -52,8 +51,11 @@ public class EpidemicCard implements Card{
 			// on tire une carte infection 
 			// on augmente le taux global d'infection 
 			// on melange les cartes d'infections
-			this.city.addInfection(disease);
-			this.city.infectNeighbors(disease);
+
+			InfectionCard card=this.cards.DrawnCard(); //on tire une carte de la pile cards 
+			card.comportement(); // on augmente le taux d'infection en utilisant le comportement de la calss InfectionCard
+			card.getCity().infectNeighbors(card.getDisease()); //on infecte les villes voisines
+			this.cards.shuffle(); // on mélange la pile des cartes
 			
 			
 	}
