@@ -2,7 +2,7 @@ package pandemic.Cards;
 import pandemic.Board.*;
 import pandemic.Roles.*;
 
-public class PlayerCard extends IntermediateCard{
+public class PlayerCard extends IntermediateCard implements PileCardPlayer{
 
     /**
      * Constructeur pour créer une carte joueur avec une ville et une maladie.

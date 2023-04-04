@@ -2,7 +2,7 @@ package pandemic.Cards;
 
 
 
-public class EpidemicCard implements Card {
+public class EpidemicCard implements Card, PileCardPlayer{
 	
 	// "Sur la carte epidémie, il n ya pas d'information particulière" sujet du projet
 	
