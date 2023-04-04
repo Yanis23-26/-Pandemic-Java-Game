@@ -1,29 +1,37 @@
 package pandemic.Cards;
 import pandemic.Board.*;
 
-// cette classe represente la carte de l'epidemie
-public class EpidemicCard implements Card{
+
+
+public class EpidemicCard implements Card {
 	
+	// "Sur la carte epidémie, il n ya pas d'information particulière" sujet du projet
 	
+
 	
-	public void EpidimicCard(City c,Disease d) {
-		
-		super(c,d);
-		
+	public EpidemicCard() {
+		super();
 	}
-  
+	
+	
+	
 	/**
-	 * Allows you to manage what happens when the card is drawn
+	 * Permet de gérer ce qui se passe lorsqu'un joueur tire une carte epidémie
 	 */
 	public void comportement() {
-			// on tire une carte infection 
-			// on augmente le taux global d'infection 
-			// on melange les cartes d'infections
-			this.city.addInfection(disease);
-			this.city.infectNeighbors(disease);
-			
-			
+		/* Comportement triple : 
+ 		1- Augmente le taux globale d'infection 
+ 		2- Declenche une phase d'infection quelque soit la valeur du taux
+ 		3- Mélange des cartes de la defausse
+		*/
+		
+		
+		
 	}
+}
+   /*
+   this.city.addInfection(disease);
+   this.city.infectNeighbors(disease);
+   InfectionDeck.getInstance().shuffle();
+   */
 
-
-} 
