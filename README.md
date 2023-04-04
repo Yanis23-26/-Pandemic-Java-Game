@@ -68,13 +68,12 @@ Répartition des taches et debut du code après finition de l'UML.
 ## Semaine 8
 Changement de la modélisation de l'UML après avoir eu une nouvelle modélisation. 
 ## Semaine 9
-Début, changement du code et correction des erreurs du livrable 1 en seance 
+Début, changement du code et correction des erreurs du livrable 1 en seance .
 ## Semaine 10
-Pause (examens)
+Pause (examens).
 ## Semaine 11
 Creation de la class Player (class abstract) et mise en place des actions dans un package a part, pour eviter toute confusion, en cas d'ajout d'extentions dans le jeux (nouvelle action)
 Creation des classes Cards par Yanis et Anes en suivant l'UML vue par l'enseignante (Card comme Interface).
 ## Semaine 12
 Suite à une confusion et une mauvaise interprétation de notre part suite que la prof valide notre UML ( card comme interface ) les membres Yanis et Anes qui ont comme tache de réaliser les classes Card, PlayerCard, EpidémicCard, InfectionCard, se fient au consignes de l'UML faux et se trompent dans la réalisation de leurs Classes.
-~~~~
 Erreurs lors de la réalisation du main final et réalisation de l'erreur de l'UML (partie Cards). Ainsi obligation de changer la classe Card qui était une Interface pour une classe Abstract. 
