@@ -7,7 +7,10 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class EpidemicCardTest {
-    private Stack<InfectionCard> cards;
+   private Stack<InfectionCard> cards;
+   /**
+   ce test est effectué pour tester la méthode addCard()
+   */
    @Test
    public void  addCardTest(){
     cards=new Stack<>();
@@ -20,53 +23,65 @@ public class EpidemicCardTest {
     assertTrue(cards.contains(card1));
     
    } 
+   /**
+   ce test est effectué pour vérifier le comportement de la méthode DrawnCard()
+   */
+   @Test 
+   public void DrawnCardTest(){
+    cards=new Stack<>();
+    Disease ebola=new Disease("Ebola",3);		
+	Sector europe= new Sector("EUROPE",ebola,3);
+    City Lyon=new City("Lyon",europe);
+    InfectionCard card1=new InfectionCard(Lyon,ebola);
+    cards.addCard(card1);
 
+    cards.DrawnCard();
 
+    assertFalse(cards.contains(card1));
 
+   } 
+    /**
+    ce test est effectué pour vérifier le fonctionement de la méthode comportement
+    */
+   @Test
+   public void ComportementTest(){
+       cards=new Stack<>();
+       //card1
+       Disease ebola=new Disease("Ebola",1);		
+	   Sector europe= new Sector("EUROPE",ebola,1);
+       City Lyon=new City("Lyon",europe);
+       InfectionCard card1=new InfectionCard(Lyon,ebola);
 
-        /*
-         * pour tester la méthode getDisease on doit :
-         * - comparer deux maladies identiques avec la méthode assertEquals()
-         * - on définit la Première maladie "ebola"
-         * - on crée une carte d'epidemie card2 en respectant les elements de son constructeur
-         * - pour que le test soit correct, il faut la methode assertEquals() renvoie True
-         */
-	    @Test
-	    public void getDiseaseTest() {
-            Disease ebola=new Disease("Ebola",3);		
-		    Sector europe= new Sector("EUROPE",ebola,3);
-            City lille=new City("LILLE",europe);
-            EpidemicCard card2= new EpidemicCard(lille,ebola);
-            assertEquals(ebola, card2.getDisease());
-	    }
+       //card2
+       Disease covid=new Disease("covid19",1);		
+	   Sector europe= new Sector("EUROPE",covid,1);
+       City nice=new City("nice",europe);
+       InfectionCard card2=new InfectionCard(nice,covid);
+
+       //card3
+       Disease covid=new Disease("covid19",1);		
+	   Sector europe= new Sector("EUROPE",covid,1);
+       City lille=new City("lille",europe);
+       InfectionCard card3=new InfectionCard(lille,covid);
+
+       //card4
+       Disease ebola=new Disease("Ebola",1);		
+	   Sector europe= new Sector("EUROPE",ebola,1);
+       City paris=new City("paris",europe);
+       InfectionCard card4=new InfectionCard(paris,ebola);
+       EpidemicCard card5=new EpidemicCard();
+
+       cards.addCard(card1);
+       cards.addCard(card2);
+       cards.addCard(card3);
+       cards.addCard(card4);
+
+       card5.comportement();
+       assertFalse(cards.contains(card4));
+       assertEquals(ebola.getId(),2);
+       assertFalse(cards.get(0),card3);
+
+   }   
 	    
-
-
-        /*
-         * pour tester la méthode comportement() on doit :
-         * - On crée une infection à une ville donné. ici covid19 de id = 2
-         * - On crée deux ville Lille et Lens qui appartiennet au secteur EUROPE
-         * - "LILLE" est définie comme étant voisine de "LENS
-         * - On crée une carte épidémie la ville "LILLE" et la maladie "covid19"
-         * - On appelle la méthode comportement sur cette carte.
-         * - Cette méthode devrait normalement provoquer une augmentation du taux d'infection dans les villes voisines "LENS"
-         * - Le tuax d'infection de "LILLE" et "LENS" devrait passer à  3
-         * - pour que le test soit correct, les 2 méthodes assertEquals doivent renvoyer "True"
-         */
-	    @Test
-        public void ComportementTest(){
-            Disease disease2=new Disease("covid19",2);		
-		    Sector sector2= new Sector("EUROPE",disease2,2);
-            City city1=new City("LILLE",sector2);
-            City city2=new City("LENS",sector2);
-            city1.addNeighbor(city2);
-            EpidemicCard card1=new EpidemicCard(city1,disease2);
-            card1.comportement();
-            assertEquals(3,city1.getinfectionRate(disease2));
-            assertEquals(3,city2.getinfectionRate(disease2));
-
-
-        } 
-
 
 }
