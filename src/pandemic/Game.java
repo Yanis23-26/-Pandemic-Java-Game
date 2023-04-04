@@ -209,6 +209,46 @@ public class Game {
 
 		}
 		}
+		
+		
+		//display Cards 
+		public void displayCards() {
+			// Carte Player
+			System.out.println("+  48 PLAYER CARD  +"); 
+			System.out.println("+------------------+");
+			System.out.println("|      Player      |");
+			System.out.println("|                  |");
+			System.out.println("|     City Name    |");
+			System.out.println("|    Disease Name  |");
+			System.out.println("|                  |");
+			System.out.println("|                  |");
+			System.out.println("|                  |");
+			System.out.println("+------------------+");
+
+			// Carte Infection
+			System.out.println("+ 48 INFECTION CARD +"); 
+			System.out.println("+------------------+");
+			System.out.println("|    Infection     |");
+			System.out.println("|                  |");
+			System.out.println("|     City Name    |");
+			System.out.println("|    Disease Name  |");
+			System.out.println("|                  |");
+			System.out.println("|                  |");
+			System.out.println("|                  |");
+			System.out.println("+------------------+");
+
+			// Carte Epidemic
+			System.out.println("+ 4 EPIDEMIC CARD  +");
+			System.out.println("+------------------+");
+			System.out.println("|     Epidemic     |");
+			System.out.println("|                  |");
+			System.out.println("|                  |");
+			System.out.println("|                  |");
+			System.out.println("|                  |");
+			System.out.println("|                  |");
+			System.out.println("|                  |");
+			System.out.println("+------------------+");
+		}
 	
 	
 	
