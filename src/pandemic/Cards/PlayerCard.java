@@ -2,34 +2,23 @@ package pandemic.Cards;
 import pandemic.Board.*;
 import pandemic.Roles.*;
 
-public class PlayerCard extends Card{
+public class PlayerCard extends IntermediateCard{
 
-    	/**
-    	 * Make a player card with a city and a virus
-    	 * @param c the city associated with the card
-    	 * @param d the disease associated with the card
-    	 */
-    	public PlayerCard(City c,Disease d) {
-    		super(c,d);
-    	}
-    	
-    	
-    	/**
-    	 * Allows you to manage what happens when the card is drawn :
-    	 * it's give the card to the player
-    	 * @param p the player who drawn the card
-    	 */
-    	public void comportement(Player p) {
-    		p.addCard(this);
-    	}
-
-
-		
-
-		
-
-
-
-
-
-} 
+    /**
+     * Constructeur pour créer une carte joueur avec une ville et une maladie.
+     * @param city la ville associée à la carte.
+     * @param disease la maladie associée à la carte.
+     */
+    public PlayerCard(City city, Disease disease) {
+        super(city, disease);
+    }
+    
+    /**
+     * Permet de gérer ce qui se passe lorsque la carte player est piochée :
+     * la carte est donnée au joueur qui la pioche.
+     * @param p le joueur qui pioche la carte.
+     */
+    public void comportement(Player p) {
+        p.addCard(this);
+    }
+}

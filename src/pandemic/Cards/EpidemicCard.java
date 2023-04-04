@@ -1,5 +1,4 @@
 package pandemic.Cards;
-import pandemic.Board.*;
 
 
 
