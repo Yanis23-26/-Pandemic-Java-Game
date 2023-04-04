@@ -18,7 +18,7 @@ public class PlayerCard extends IntermediateCard{
      * la carte est donnée au joueur qui la pioche.
      * @param p le joueur qui pioche la carte.
      */
-    public void comportement(Player p) {
-        p.addCard(this);
+    public void comportement(Player player) {
+        player.addCard(this);
     }
 }
