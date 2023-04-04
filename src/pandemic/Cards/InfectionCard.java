@@ -3,25 +3,20 @@ import pandemic.Board.*;
 
 import pandemic.Roles.*;
 
-public class InfectionCard extends Card{
+public class InfectionCard extends IntermediateCard{
     
  
-    	/**
-    	 * Make an infection card with a city and a virus
-    	 * @param c the city associated with the card
-    	 * @param disease the virus associated with the card
-    	 */
-    	public InfectionCard(City c,Disease d ){
-    		super(c,d);
+    	
+    	public InfectionCard(City city,Disease disease ){
+    		super(city,disease);
     	}
     	
-    	/**
-    	 * Allows you to manage what happens when the card is drawn :
-    	 * it's give a virus's cube on the city associated with the card 
-    	 */
-    	public void comportement(Player p) {
+    	
+    	public void comportement() {
     		this.city.addInfection(this.disease);
+    		
     	}
-    	
+
+	
 
 } 
