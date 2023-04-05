@@ -7,37 +7,37 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class EpidemicCardTest {
-   private Stack<InfectionCard> cards;
+   
    /**
    ce test est effectué pour tester la méthode addCard()
    */
    @Test
    public void  addCardTest(){
-    cards=new Stack<>();
+    EpidemicCard epidemicCard=new EpidemicCard();
     Disease ebola=new Disease("Ebola",3);		
 	Sector europe= new Sector("EUROPE",ebola,3);
     City Lyon=new City("Lyon",europe);
     InfectionCard card1=new InfectionCard(Lyon,ebola);
-    cards.addCard(card1);
+    epidemicCard.addCard(card1);
 
-    assertTrue(cards.contains(card1));
+    assertTrue(epidemicCard.cards.contains(card1));
     
    } 
    /**
    ce test est effectué pour vérifier le comportement de la méthode DrawnCard()
    */
    @Test 
-   public void DrawnCardTest(){
-    cards=new Stack<>();
+   public void drawnCardTest(){
+    EpidemicCard epidemicCard=new EpidemicCard();
     Disease ebola=new Disease("Ebola",3);		
 	Sector europe= new Sector("EUROPE",ebola,3);
     City Lyon=new City("Lyon",europe);
     InfectionCard card1=new InfectionCard(Lyon,ebola);
-    cards.addCard(card1);
+    epidemicCard.addCard(card1);
 
-    cards.DrawnCard();
+    epidemicCard.drawCard();
 
-    assertFalse(cards.contains(card1));
+    assertFalse(epidemicCard.cards.contains(card1));
 
    } 
     /**
@@ -45,7 +45,7 @@ public class EpidemicCardTest {
     */
    @Test
    public void ComportementTest(){
-       cards=new Stack<>();
+       EpidemicCard epidemicCard=new EpidemicCard();
        //card1
        Disease ebola=new Disease("Ebola",1);		
 	   Sector europe= new Sector("EUROPE",ebola,1);
@@ -69,17 +69,17 @@ public class EpidemicCardTest {
 	   Sector europe= new Sector("EUROPE",ebola,1);
        City paris=new City("paris",europe);
        InfectionCard card4=new InfectionCard(paris,ebola);
-       EpidemicCard card5=new EpidemicCard();
+       
 
-       cards.addCard(card1);
-       cards.addCard(card2);
-       cards.addCard(card3);
-       cards.addCard(card4);
+       epidemicCard.addCard(card1);
+       epidemicCard.addCard(card2);
+       epidemicCard.addCard(card3);
+       epidemicCard.addCard(card4);
 
-       card5.comportement();
-       assertFalse(cards.contains(card4));
+       epidemicCard.comportement();
+       assertFalse(epidemicCard.cards.contains(card4));
        assertEquals(ebola.getId(),2);
-       assertFalse(cards.get(0),card3);
+       assertEquals(epidemicCard.cards.get(0),card3);
 
    }   
 	    

@@ -27,7 +27,7 @@ public class EpidemicCard implements Card{
 	cette  fonction permet de tirer une carte de la pile 
 	*/
 
-	public void darwCard(){
+	public void drawCard(){
 		cards.pop();
 	} 
 
