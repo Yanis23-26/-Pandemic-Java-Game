@@ -1,5 +1,6 @@
 package pandemic.Cards;
 import pandemic.Board.*;
+import java.util.Stack;
 
 // cette classe represente la carte de l'epidemie
 public class EpidemicCard implements Card{
@@ -27,8 +28,8 @@ public class EpidemicCard implements Card{
 	cette  fonction permet de tirer une carte de la pile 
 	*/
 
-	public void drawCard(){
-		cards.pop();
+	public InfectionCard drawCard(){
+		return cards.pop();
 	} 
 
  
@@ -44,7 +45,7 @@ public class EpidemicCard implements Card{
 			// on augmente le taux global d'infection 
 			// on melange les cartes d'infections
 
-			InfectionCard card=this.cards.drawCard();//on tire une carte de la pile cards
+			InfectionCard card=drawCard();//on tire une carte de la pile cards
 			card.comportement();
 			City city=card.getCity();  
 			 // on augmente le taux d'infection en utilisant le comportement de la calss InfectionCard

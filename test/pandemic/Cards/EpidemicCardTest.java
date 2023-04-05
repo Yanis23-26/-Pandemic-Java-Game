@@ -47,28 +47,28 @@ public class EpidemicCardTest {
    public void ComportementTest(){
        EpidemicCard epidemicCard=new EpidemicCard();
        //card1
-       Disease ebola=new Disease("Ebola",1);		
-	   Sector europe= new Sector("EUROPE",ebola,1);
-       City Lyon=new City("Lyon",europe);
-       InfectionCard card1=new InfectionCard(Lyon,ebola);
+       Disease ebola1=new Disease("Ebola",1);		
+	   Sector europe1= new Sector("EUROPE",ebola1,1);
+       City Lyon=new City("Lyon",europe1);
+       InfectionCard card1=new InfectionCard(Lyon,ebola1);
 
        //card2
-       Disease covid=new Disease("covid19",1);		
-	   Sector europe= new Sector("EUROPE",covid,1);
-       City nice=new City("nice",europe);
-       InfectionCard card2=new InfectionCard(nice,covid);
+       Disease covid2=new Disease("covid19",1);		
+	   Sector europe2= new Sector("EUROPE",covid2,1);
+       City nice=new City("nice",europe2);
+       InfectionCard card2=new InfectionCard(nice,covid2);
 
        //card3
-       Disease covid=new Disease("covid19",1);		
-	   Sector europe= new Sector("EUROPE",covid,1);
-       City lille=new City("lille",europe);
-       InfectionCard card3=new InfectionCard(lille,covid);
+       Disease covid3=new Disease("covid19",1);		
+	   Sector europe3= new Sector("EUROPE",covid3,1);
+       City lille=new City("lille",europe3);
+       InfectionCard card3=new InfectionCard(lille,covid3);
 
        //card4
-       Disease ebola=new Disease("Ebola",1);		
-	   Sector europe= new Sector("EUROPE",ebola,1);
-       City paris=new City("paris",europe);
-       InfectionCard card4=new InfectionCard(paris,ebola);
+       Disease ebola4=new Disease("Ebola",1);		
+	   Sector europe4= new Sector("EUROPE",ebola4,1);
+       City paris=new City("paris",europe4);
+       InfectionCard card4=new InfectionCard(paris,ebola4);
        
 
        epidemicCard.addCard(card1);
