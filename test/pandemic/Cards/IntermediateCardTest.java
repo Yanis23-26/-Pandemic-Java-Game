@@ -40,12 +40,12 @@ public class IntermediateCardTest{
    public void equalsTest(){
     Disease ebola = new Disease("Ebola",2);
     Sector europe= new Sector("EUROPE",ebola,2);
-    city Lille=new city("Lille",europe);
+    City Lille=new City("Lille",europe);
 
 
     Disease covid = new Disease("covid19",2);
     Sector europe= new Sector("EUROPE",covid,2);
-    city paris=new city("paris",europe);
+    City paris=new City("paris",europe);
 
     IntermediateCard card1=new IntermediateCard(Lille,ebola);
     IntermediateCard card2=new IntermediateCard(Lille,ebola);
