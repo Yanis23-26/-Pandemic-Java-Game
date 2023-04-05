@@ -14,8 +14,7 @@
 
 #### UML LIVRET1:
 ![UMLV1](UML/UMLLIVRET1.png "UML livrable 1")
-
-
+![UMLV2](UML/UMLLIVRET2.png "UML livrable 2")
 # 
 
 ## Livrable 1
