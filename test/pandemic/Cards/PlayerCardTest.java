@@ -39,5 +39,20 @@ public class PlayerCardTest {
             PlayerCard card2= new PlayerCard(lille,ebola);
             assertEquals(ebola, card2.getDisease());
 	    }
+       /**
+       ce test est effectué pour vérifier le comportement de la méthode comportement()
+       */
+       @Test 
+       public void ComportementTest(){
+            Disease ebola=new Disease("Ebola",2);		
+		    Sector europe= new Sector("EUROPE",ebola,2);
+            City lille=new City("LILLE",europe);
+            Player anes=new Player("ANES",lille);
+            PlayerCard card2= new PlayerCard(lille,ebola);
+            card2.comportement(anes);
+
+            assertEquals(anes.getCard(),card2);
+
+       }   
 	    
 }
