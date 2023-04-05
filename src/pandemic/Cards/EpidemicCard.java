@@ -27,7 +27,7 @@ public class EpidemicCard implements Card{
 	cette  fonction permet de tirer une carte de la pile 
 	*/
 
-	public void DrawnCard(){
+	public void darwCard(){
 		cards.pop();
 	} 
 
@@ -44,10 +44,12 @@ public class EpidemicCard implements Card{
 			// on augmente le taux global d'infection 
 			// on melange les cartes d'infections
 
-			InfectionCard card=this.cards.DrawnCard(); //on tire une carte de la pile cards 
-			card.comportement(); // on augmente le taux d'infection en utilisant le comportement de la calss InfectionCard
-			card.getCity().infectNeighbors(card.getDisease()); //on infecte les villes voisines
-			this.cards.shuffle(); // on mélange la pile des cartes
+			InfectionCard card=this.cards.drawCard();//on tire une carte de la pile cards
+			card.comportement();
+			City city=card.getCity();  
+			 // on augmente le taux d'infection en utilisant le comportement de la calss InfectionCard
+			city.infectNeighbors(card.getDisease()); //on infecte les villes voisines
+			Collections.shuffle(cards); // on mélange la pile des cartes
 			
 			
 	}
