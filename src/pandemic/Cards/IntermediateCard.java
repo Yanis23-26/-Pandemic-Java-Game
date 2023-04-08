@@ -1,12 +1,13 @@
 package pandemic.Cards;
 import pandemic.Board.City;
 import pandemic.Board.Disease;
+import pandemic.Roles.*;
 
 
 /*
  * j'ai crée cette classe pour joindre les informations communes entre EpidemicCard et InfectionCard et éviter les répétions
  */
-public class IntermediateCard implements Card{
+public abstract class IntermediateCard implements Card{
 
 	
 	// la ville associée à la carte
@@ -44,9 +45,7 @@ public class IntermediateCard implements Card{
 	 * Permet de gérer ce qui se passe lorsqu'une carte intermédiaire est piochée.
 	 * Cette méthode est vide car les cartes intermédiaires n'ont pas d'effet particulier lorsqu'elles sont piochées.
 	 */
-	public void comportement() {
-		// Ne fait rien car cette carte n'a pas d'effet particulier lorsqu'elle est piochée.
-	}
+	public abstract void comportement(Player p);
 
 	/**
 	 * Méthode pour vérifier l'égalité entre deux cartes (d'infection et d'epidémie).

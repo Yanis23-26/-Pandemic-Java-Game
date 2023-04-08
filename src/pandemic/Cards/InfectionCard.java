@@ -1,5 +1,6 @@
 package pandemic.Cards;
 import pandemic.Board.*;
+import pandemic.Roles.*;
 
 public class InfectionCard extends IntermediateCard{
     
@@ -15,8 +16,8 @@ public class InfectionCard extends IntermediateCard{
     /**
      * Ajoute une infection à la ville associée à la carte.
      */
-    public void comportement() {
-        this.getCity().addInfection(this.getDisease());
+    public void comportement(Player p) {
+        p.getCity().addInfection(this.getDisease());
     }
 }
 
