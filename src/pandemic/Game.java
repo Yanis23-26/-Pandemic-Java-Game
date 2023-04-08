@@ -24,6 +24,7 @@ public class Game {
 	private Stack <EpidemicCard> drawEpidemic;
 	/* List of Players */
 	private ArrayList<Player> players;
+	private int totalInfectionRate;
 
 	
 	
@@ -36,6 +37,7 @@ public class Game {
 		this.drawInfection = new Stack<InfectionCard>();
 		this.drawEpidemic = new Stack<EpidemicCard>();
 		this.players = new ArrayList<Player>();
+		this.totalInfectionRate=2;
 		initializeDraw();
 		
 	}
@@ -47,6 +49,23 @@ public class Game {
 	public World getWorld() {
 		return this.world;
 	}
+	
+	/*
+	 * Get totalInfectionRate
+	 * @return totalInfectionRate
+	 */
+	public int getTotalInfectionRate() {
+		return this.totalInfectionRate;
+	}
+	
+	
+	/*
+	 * increase the total infectionRate
+	 */
+	public void IncreasedInfectionRate() {
+		this.totalInfectionRate+=1;
+	}
+
 	
 	/*
 	 * Get infection's draw
