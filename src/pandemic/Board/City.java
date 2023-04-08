@@ -240,15 +240,7 @@ public class City {
 		return this.name;
 	}
 	
-	
-	/**
-	 * Définit le taux d'infection initial de la ville.
-	 * @param disease La maladie pour laquelle on veut définir le taux d'infection initial.
-	 * @param initialRate Le taux d'infection initial.
-	 */
-	public void setInitialInfectionRate(Disease disease, int initialRate) {
-	    infectionRate.put(disease, initialRate);
-	}
+
 	
 	
 	public boolean equals(Object o) {

@@ -56,11 +56,10 @@ public class InfectionCardTest {
             Disease grippe=new Disease("Grippe",2);		
 		    Sector europe= new Sector("EUROPE",grippe,2);
             City paris =new City("PARIS",europe);
-            //comme le sujet l'indique, le taux initial est à 2
-            paris.setInitialInfectionRate(grippe, 2);
+            paris.initDisease(grippe);
             InfectionCard card3=new InfectionCard(paris,grippe);
             card3.comportement();
-            assertEquals(3,paris.getinfectionRate(grippe));
+            assertEquals(1,paris.getinfectionRate(grippe));
 
 
         } 
