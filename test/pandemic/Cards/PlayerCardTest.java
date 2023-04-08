@@ -1,10 +1,21 @@
 package pandemic.Cards;
+import pandemic.Game;
 import pandemic.Board.*;
 import static org.junit.Assert.assertEquals;
+import pandemic.Roles.*;
+import java.io.FileNotFoundException;
+
+import org.junit.Before;
 
 public class PlayerCardTest {
 
+	   private Game game;
 
+
+	   @Before        
+	   public void init() throws FileNotFoundException {
+	      this.game= new Game();
+	   }
         /*
          * pour tester la méthode getCity on doit :
          * - comparer deux villes identiques avec la méthode assertEquals(), celle définit seule , et celle définit dans la carte player
@@ -47,7 +58,7 @@ public class PlayerCardTest {
             Disease ebola=new Disease("Ebola",2);		
 		    Sector europe= new Sector("EUROPE",ebola,2);
             City lille=new City("LILLE",europe);
-            Player anes=new Player("ANES",lille);
+            Player anes=new Doctor("ANES",lille,game);
             PlayerCard card2= new PlayerCard(lille,ebola);
             card2.comportement(anes);
 

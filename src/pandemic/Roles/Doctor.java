@@ -1,11 +1,11 @@
 package pandemic.Roles;
-
+import pandemic.Game;
 import pandemic.actions.*;
 import pandemic.Board.*;
 public class Doctor extends Player {
 
-	public Doctor(String name, City city) {
-		super(name, city);
+	public Doctor(String name, City city, Game game) {
+		super(name, city, game);
 		
 	}
 

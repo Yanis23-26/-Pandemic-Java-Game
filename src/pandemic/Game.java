@@ -207,16 +207,16 @@ public class Game {
 		    if (availableRoles.contains(role)) {
 		        switch (role) {
 		            case "doctor":
-		            	this.players.add(new Doctor(name,city));
+		            	this.players.add(new Doctor(name,city,this));
 		                break;
 		            case "expert":
-		            	this.players.add(new Expert(name,city));
+		            	this.players.add(new Expert(name,city,this));
 		                break;
 		            case "globetrotter":
-		            	this.players.add(new GlobePlotter(name,city));
+		            	this.players.add(new GlobePlotter(name,city,this));
 		                break;
 		            case "scientist":
-		            	this.players.add(new Scientist(name,city));
+		            	this.players.add(new Scientist(name,city,this));
 		                break;
 		        }
 		        availableRoles.remove(role);

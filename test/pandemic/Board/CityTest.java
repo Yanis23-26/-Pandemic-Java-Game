@@ -1,13 +1,23 @@
 package pandemic.Board;
+import pandemic.Game;
 import pandemic.Roles.*;
 import static org.junit.Assert.*;
+
+import java.io.FileNotFoundException;
 
 import org.junit.Before;
 import org.junit.Test;
 
 public class CityTest {
 	
-	
+	   private Game game;
+
+
+	   @Before        
+	   public void init() throws FileNotFoundException {
+	      this.game= new Game();
+	   }
+
 
 	
 	@Test
@@ -281,14 +291,14 @@ public class CityTest {
 		}
 
  // apre avoir coder les players on pourra faire ce test	
-	
+		
 		// add a new player to the list of city's players
 		   @Test
 		   public void addaNewPlayer(){
 			Disease disease1 =new Disease("maladie1",1);
 			Sector sector1= new Sector("EUROPE",disease1,1);
 			City city1 = new City("Madrid",sector1);
-			Player p = new Doctor("manil",city1);
+			Player p = new Doctor("manil",city1,game);
 		    assertFalse(city1.getPlayers().contains(p));
 		    city1.addPlayer(p);
 		    assertTrue(city1.getPlayers().contains(p));
@@ -303,7 +313,7 @@ public class CityTest {
 			Disease disease1 =new Disease("maladie1",1);
 			Sector sector1= new Sector("EUROPE",disease1,1);
 			City city1 = new City("Madrid",sector1);
-			Player p = new Expert("manil",city1);
+			Player p = new Expert("manil",city1,game);
 		    city1.addPlayer(p);
 		    city1.removePlayer(p);
 		    assertFalse(city1.getPlayers().contains(p));

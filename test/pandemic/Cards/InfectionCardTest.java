@@ -1,11 +1,23 @@
 package pandemic.Cards;
+import pandemic.Game;
 import pandemic.Board.*;
 import pandemic.Roles.*;
 import static org.junit.Assert.*;
 
-import org.junit.Test;
+import java.io.FileNotFoundException;
 
+import org.junit.Before;
+import org.junit.Test;
+import pandemic.Roles.*;
 public class InfectionCardTest {
+	
+	   private Game game;
+
+
+	   @Before        
+	   public void init() throws FileNotFoundException {
+	      this.game= new Game();
+	   }
 
 		/*
          * pour tester la méthode getCity on doit :
@@ -56,9 +68,10 @@ public class InfectionCardTest {
             Disease grippe=new Disease("Grippe",2);		
 		    Sector europe= new Sector("EUROPE",grippe,2);
             City paris =new City("PARIS",europe);
+            Player p1 = new Doctor("p1",paris,game);
             paris.initDisease(grippe);
             InfectionCard card3=new InfectionCard(paris,grippe);
-            card3.comportement();
+            card3.comportement(p1);
             assertEquals(1,paris.getinfectionRate(grippe));
 
 

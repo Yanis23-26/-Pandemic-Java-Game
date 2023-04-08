@@ -4,7 +4,7 @@ import pandemic.actions.*;
 import pandemic.Cards.*;
 import java.util.ArrayList;
 import java.util.List;
-
+import pandemic.Game;
 
 
 public abstract class Player{
@@ -12,15 +12,17 @@ public abstract class Player{
     protected City city ; // id for player
     protected List<PlayerCard> cartes; // les cartes du joueurs 
     protected List<Action> actions;// list des actions 
-    protected Action actionWithRelation;//action avec laquelle est en relation 
+    protected Action actionWithRelation;//action avec laquelle est en relation
+    protected Game game;
 
-    public Player(String name,City city  ){
+    public Player(String name,City city, Game game  ){
         this.name=name;
         this.city=city;
         this.cartes = new ArrayList<>();
         this.actions = new ArrayList<>();
         this.initAllActions();
         this.actionWithRelation=this.initRoll();
+        this.game=game;
     }
     
     public void initAllActions() {
@@ -51,6 +53,13 @@ public abstract class Player{
     public String getName(){
         return this.name;
     }
+    
+    /**
+     * @return name of player 
+      */
+     public Game getGame(){
+         return this.game;
+     }
     /**
 	 *  add a Card on the list of carte 
 	 * @param card to add
