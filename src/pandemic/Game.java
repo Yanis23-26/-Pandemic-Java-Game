@@ -202,7 +202,7 @@ public class Game {
 		City city = world.getSectors().get((int)(Math.random() * 5)).getCities().get((int)(Math.random() * 12));	
 		int numPlayers = 0;
 		boolean validInput = false;
-		Scanner scanner = null;
+		Scanner scanner = new Scanner(System.in);
 		while (!validInput) {
 		System.out.print("How many players will be playing? (2-4) ");
 		try {
@@ -260,6 +260,10 @@ public class Game {
 		
 		//display Cards 
 		public void displayCards() {
+			
+			System.out.println(); 
+			System.out.println("Voici toutes les cartes presentes dans le jeu : ");
+			System.out.println(); 
 			// Carte Player
 			System.out.println("+  48 PLAYER CARD  +"); 
 			System.out.println("+------------------+");
@@ -305,5 +309,8 @@ public class Game {
 
 
 	public void play() {
+		this.displayIntro();
+		this.displayPlayersInfo();
+		this.displayCards();
 	}
 }
