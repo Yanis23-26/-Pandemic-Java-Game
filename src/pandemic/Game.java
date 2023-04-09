@@ -17,28 +17,34 @@ public class Game {
 	/* Game's map */
 	private World world;
 	/* Player's draw */
-	private Stack<PlayerCard> drawPlayer; 
+	private Stack<PileCardPlayer> drawPlayer;
+	/** The player discard*/
+	private Stack<PileCardPlayer> discardPlayer;
 	/* Infection's draw */
 	private Stack<InfectionCard> drawInfection;
-	/* epidemic Cards */
-	private Stack <EpidemicCard> drawEpidemic;
+	/** The Infection discard*/
+	private Stack<InfectionCard> discardInfection;
 	/* List of Players */
 	private ArrayList<Player> players;
+	/* totalInfectionRate*/
 	private int totalInfectionRate;
-
+	/* nb of Station*/
+	private int actualNbOfStations ;
 	
 	
 
 	
 	
-	public Game() throws FileNotFoundException {
-		this.world = new World();
-		this.drawPlayer = new Stack<PlayerCard>();
+	public Game(String path) throws FileNotFoundException {
+		this.world = new World(path);
+		this.drawPlayer = new Stack<PileCardPlayer>();
 		this.drawInfection = new Stack<InfectionCard>();
-		this.drawEpidemic = new Stack<EpidemicCard>();
 		this.players = new ArrayList<Player>();
 		this.totalInfectionRate=2;
-		initializeDraw();
+		this.actualNbOfStations=0;
+		this.initializeDraw();
+		this.discardPlayer=new Stack<PileCardPlayer>();
+		this.discardInfection = new Stack<InfectionCard>();
 		
 	}
 	
@@ -56,6 +62,14 @@ public class Game {
 	 */
 	public int getTotalInfectionRate() {
 		return this.totalInfectionRate;
+	}
+	
+	/*
+	 * Get actual nb of resarshStation
+	 * @return  nb of resarshStation
+	 */
+	public int getactualNbOfStations() {
+		return this.actualNbOfStations;
 	}
 	
 	
@@ -76,11 +90,27 @@ public class Game {
 	}
 	
 	/*
+	 * Get infection's discard
+	 * @return infection's discard
+	 */
+	public Stack<InfectionCard> getDiscardInfection(){
+		return this.discardInfection;
+	}
+	
+	/*
 	 * Get player's draw
 	 * @return player's draw
 	 */
-	public Stack<PlayerCard> getDrawplayer(){
+	public Stack<PileCardPlayer> getDrawplayer(){
 		return this.drawPlayer;
+	}
+	
+	/*
+	 * Get player's discard
+	 * @return player's discard
+	 */
+	public Stack<PileCardPlayer> getDiscardplayer(){
+		return this.discardPlayer;
 	}
 	
 	
@@ -92,15 +122,16 @@ public class Game {
 		//creation des cartes
 		
 				for(Sector sector : world.getSectors()) {
-					drawEpidemic.push( new EpidemicCard());
+					this.drawPlayer.push( new EpidemicCard());
 					for(City city : sector.getCities()) {
 						PlayerCard pCard = new PlayerCard(city,sector.getSectorDisease());
 						InfectionCard iCard = new InfectionCard(city,sector.getSectorDisease());
-						drawPlayer.push(pCard);
-						drawInfection.push(iCard);
-					
+						this.drawPlayer.push(pCard);
+						this.drawInfection.push(iCard);
 					}
 				}
+				this.shufflePlayerCards(this.drawPlayer);
+				this.shuffleInfectionCards(this.drawInfection);
 	}
 
 	
@@ -111,7 +142,7 @@ public class Game {
 	 */
 	public void DrawAPlayerCard(Player p) {
 		
-		PlayerCard card = this.drawPlayer.pop();
+		PileCardPlayer card = this.drawPlayer.pop();
 		card.comportement(p);
 	}
 	
@@ -126,20 +157,17 @@ public class Game {
 		card.comportement(p);
 	}
 	
-	public void DrawAEpidemicCard() {
-		
-		EpidemicCard card =this.drawEpidemic.pop();
-		card.comportement();
-	}
 	
 	// FONCTIONS POUR MELENGER LES DECKS
 	
-	public  void shufflePlayerCards(Stack<PlayerCard> playerCards) {
-	    Collections.shuffle(playerCards);
+	public  void shufflePlayerCards(Stack<PileCardPlayer> playerCards) {
+		
+		Collections.shuffle(playerCards);
 	}
 	
 	public  void shuffleInfectionCards(Stack<InfectionCard> iCards) {
-	    Collections.shuffle(iCards);
+		
+		Collections.shuffle(iCards);
 	}
 	
 	

@@ -2,20 +2,19 @@ package pandemic.Board;
 import pandemic.Game;
 import pandemic.Roles.*;
 import static org.junit.Assert.*;
-
 import java.io.FileNotFoundException;
-
 import org.junit.Before;
 import org.junit.Test;
+
 
 public class CityTest {
 	
 	   private Game game;
-
-
+	   private String path;
 	   @Before        
 	   public void init() throws FileNotFoundException {
-	      this.game= new Game();
+		  this.path="./src/pandemic/carte2.json";
+	      this.game= new Game(path);
 	   }
 
 

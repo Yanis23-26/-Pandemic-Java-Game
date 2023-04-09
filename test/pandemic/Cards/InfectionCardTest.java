@@ -12,11 +12,11 @@ import pandemic.Roles.*;
 public class InfectionCardTest {
 	
 	   private Game game;
-
-
+	   private String path;
 	   @Before        
 	   public void init() throws FileNotFoundException {
-	      this.game= new Game();
+		  this.path="./src/pandemic/carte2.json";
+	      this.game= new Game(path);
 	   }
 
 		/*

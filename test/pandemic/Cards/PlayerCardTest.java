@@ -6,15 +6,16 @@ import pandemic.Roles.*;
 import java.io.FileNotFoundException;
 
 import org.junit.Before;
+import org.junit.Test;
 
 public class PlayerCardTest {
 
 	   private Game game;
-
-
+	   private String path;
 	   @Before        
 	   public void init() throws FileNotFoundException {
-	      this.game= new Game();
+		  this.path="./src/pandemic/carte2.json";
+	      this.game= new Game(path);
 	   }
         /*
          * pour tester la méthode getCity on doit :

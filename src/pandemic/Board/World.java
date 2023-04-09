@@ -16,17 +16,17 @@ import org.json.JSONTokener;
 public class World { // this class contains all the sectors 
 	private List<Sector> sectors; // the list of sectors in the map
 
-	public World() {
-        initWorld();
+	public World(String path) {
+        initWorld(path);
 	}
 	
-	private void initWorld() {
+	private void initWorld(String path) {
 		setWorldMap();
         
 		Map<String,City> citiesMap = new HashMap<>();
 		Map<String,JSONArray> neighborsMap = new HashMap<>();
 
-		JSONObject jsonData = readJsonFile();
+		JSONObject jsonData = readJsonFile(path);
 
 		Iterator<String> entries = jsonData.keys();
 		    while (entries.hasNext()) {
@@ -84,8 +84,8 @@ public class World { // this class contains all the sectors
         this.addSector(sector3);
 	}
 
-	private JSONObject readJsonFile() {
-		String filename = "./src/pandemic/carte2.json";
+	private JSONObject readJsonFile(String path) {
+		String filename = path;//"./src/pandemic/carte2.json";
 		FileReader reader = null;
 		try {
 			reader = new FileReader(filename);

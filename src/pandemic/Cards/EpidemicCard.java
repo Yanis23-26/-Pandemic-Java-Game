@@ -1,10 +1,9 @@
 package pandemic.Cards;
-import pandemic.Board.*;
 import pandemic.Roles.*;
-import java.util.Stack;
+import pandemic.Game;
 
 // cette classe represente la carte de l'epidemie
-public class EpidemicCard implements Card{
+public class EpidemicCard implements Card, PileCardPlayer{
 
 	public void comportement(Player p) {
 			// on tire une carte infection 
@@ -12,8 +11,8 @@ public class EpidemicCard implements Card{
 			// on melange les cartes d'infections
 			Game game=p.getGame();
 			game.DrawAInfectionCard(p);
-			game.p.IncreasedInfectionRate();
-			game.p.shuffleInfectionCard(game.getDrawInfection());
+			game.IncreasedInfectionRate();
+			game.shuffleInfectionCards(game.getDrawInfection());
 
 
 
