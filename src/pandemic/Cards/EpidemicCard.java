@@ -10,7 +10,7 @@ public class EpidemicCard implements Card{
 			// on tire une carte infection 
 			// on augmente le taux global d'infection 
 			// on melange les cartes d'infections
-			Game game=new Game();
+			Game game=p.getGame();
 			game.DrawAInfectionCard(p);
 			game.p.IncreasedInfectionRate();
 			game.p.shuffleInfectionCard(game.getDrawInfection());
