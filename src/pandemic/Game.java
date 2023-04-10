@@ -169,6 +169,27 @@ public class Game {
 		
 		Collections.shuffle(iCards);
 	}
+
+	/**
+	une fonction pour la vérification d'un mélange de cartes
+	@param drawInfection la pile des cartes
+	@return true ou false  
+	*/
+
+	
+    public static boolean checkInfectionCardsShuffled(Stack<InfectionCard> drawInfection) {
+        boolean bienMélanger = true;
+        for (int i = 0; i < drawInfection.size() - 1; i++) {
+            InfectionCard carteCourante = drawInfection.get(i);
+            InfectionCard carteSuivante = drawInfection.get(i + 1);
+            if (drawInfection.indexOf(carteCourante) < drawInfection.indexOf(carteSuivante)) {
+                // on vérifie si la cartecourante est toujours placé avant la cartesuivante
+                bienMélanger = false;
+                break;
+            }
+        }
+        return bienMélanger;
+    }
 	
 	
 	
