@@ -1,7 +1,7 @@
 package pandemic.Cards;
 import pandemic.Game;
 import pandemic.Board.*;
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 import pandemic.Roles.*;
 import java.io.FileNotFoundException;
 
@@ -62,8 +62,7 @@ public class PlayerCardTest {
             Player anes=new Doctor("ANES",lille,game);
             PlayerCard card2= new PlayerCard(lille,ebola);
             card2.comportement(anes);
-
-            assertEquals(anes.getCard(),card2);
+            assertTrue(anes.getCard().contains(card2));         
 
        }   
 	    

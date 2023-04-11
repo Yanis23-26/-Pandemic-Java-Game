@@ -23,7 +23,7 @@ public class PandemicMain {
 	public static void main(String[] args) {
 		
 		try {
-			Game game = new Game(argumentsVerification(args));
+			Game game = new Game("./src/pandemic/carte2.json");
 			
 			game.play();
 			

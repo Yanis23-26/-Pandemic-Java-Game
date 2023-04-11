@@ -43,6 +43,11 @@ public class City {
 	public int getinfectionRate(Disease disease){
 		return this.infectionRate.get(disease);
 	}
+	
+	public Map<Disease, Integer> getDiseases(){
+		return this.infectionRate;
+	}
+
 
 	/**
 	 * return the infectionRate of all the diseases
