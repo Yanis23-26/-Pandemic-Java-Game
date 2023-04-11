@@ -45,6 +45,7 @@ public class Game {
 		this.initializeDraw();
 		this.discardPlayer=new Stack<PileCardPlayer>();
 		this.discardInfection = new Stack<InfectionCard>();
+		this.initializeDisease();
 		
 	}
 	
@@ -144,6 +145,22 @@ public class Game {
 		
 		PileCardPlayer card = this.drawPlayer.pop();
 		card.comportement(p);
+	}
+	
+	public ArrayList<Player> getPlayers(){
+		return this.players;
+	}
+	
+	
+	public void initializeDisease() {
+		for(Sector sector : world.getSectors()) {
+			for(City city : sector.getCities()) {
+				city.initDisease(this.getWorld().getSectors().get(0).getSectorDisease());
+				city.initDisease(this.getWorld().getSectors().get(1).getSectorDisease());
+				city.initDisease(this.getWorld().getSectors().get(2).getSectorDisease());
+				city.initDisease(this.getWorld().getSectors().get(3).getSectorDisease());
+			}
+		}
 	}
 	
 	
