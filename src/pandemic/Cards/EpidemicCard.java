@@ -1,5 +1,6 @@
 package pandemic.Cards;
 import pandemic.Roles.*;
+
 import pandemic.Game;
 
 // cette classe represente la carte de l'epidemie

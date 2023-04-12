@@ -11,9 +11,9 @@ public abstract class IntermediateCard implements Card{
 
 	
 	// la ville associée à la carte
-	private City city;
+	protected City city;
 	// la maladie associée à la carte
-	private Disease disease;
+	protected Disease disease;
 
 	/**
 	 * Constructeur d'une carte intermédiaire

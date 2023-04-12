@@ -9,6 +9,8 @@ public interface Card {
 	 * La méthode comportement() permet de gérer ce qui se passe quand la carte est piochée.
 	 */
 	public void comportement(Player p);
+
+	
 }
 
 

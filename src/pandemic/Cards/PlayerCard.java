@@ -21,4 +21,7 @@ public class PlayerCard extends IntermediateCard implements PileCardPlayer{
     public void comportement(Player player) {
         player.addCard(this);
     }
+    public City getCity() {
+    	return this.city;
+    }
 }
