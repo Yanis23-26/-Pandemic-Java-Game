@@ -297,7 +297,7 @@ public class FindCureTest {
 
 	    // Ajouter des cartes de joueur pour deux joueurs différents
 	    Player anes = new Scientist("Alice", paris, game);
-	    Player rayane = new GlobePlotter("Bob", madrid, game);
+	    Player rayane = new GlobeTlotter("Bob", madrid, game);
 
 	    anes.addPlayerCard(new PlayerCard(paris, covid));
 	    anes.addPlayerCard(new PlayerCard(madrid, covid));

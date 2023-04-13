@@ -19,7 +19,7 @@ public class PlayerCard extends IntermediateCard implements PileCardPlayer{
      * @param p le joueur qui pioche la carte.
      */
     public void comportement(Player player) {
-        player.addCard(this);
+        player.addPlayerCard(this);
     }
     public City getCity() {
     	return this.city;

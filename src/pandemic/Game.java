@@ -279,7 +279,7 @@ public class Game {
 		            	this.players.add(new Expert(name,city,this));
 		                break;
 		            case "globetrotter":
-		            	this.players.add(new GlobePlotter(name,city,this));
+		            	this.players.add(new GlobeTlotter(name,city,this));
 		                break;
 		            case "scientist":
 		            	this.players.add(new Scientist(name,city,this));

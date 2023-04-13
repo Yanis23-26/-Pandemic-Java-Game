@@ -62,7 +62,7 @@ public class PlayerCardTest {
             Player anes=new Doctor("ANES",lille,game);
             PlayerCard card2= new PlayerCard(lille,ebola);
             card2.comportement(anes);
-            assertTrue(anes.getCard().contains(card2));         
+            assertTrue(anes.getCards().contains(card2));         
 
        }   
 	    

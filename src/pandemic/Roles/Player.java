@@ -104,12 +104,6 @@ public abstract class Player{
 		
 	}
 
-	// guerrir une maladie si le joueur dispose de 5 cartes de la meme maladie.
-	// Je completerai plutard après discussion avec mes camarades.
-	public void cureDisease(Disease disease) {
-			// TODO Auto-generated method stub
-			
-	}
 
 
 	

@@ -1,4 +1,5 @@
 package pandemic.actions;
+import pandemic.*;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -13,13 +14,13 @@ import pandemic.Board.Disease;
 import pandemic.Board.Sector;
 import pandemic.Cards.PlayerCard;
 import pandemic.Roles.Doctor;
-import pandemic.Roles.GlobePlotter;
+import pandemic.Roles.GlobeTlotter;
 import pandemic.Roles.Player;
 import pandemic.actions.BuildAction;
 
 public class BuildActionTest {
 	   private static Game game;
-	   private static GlobePlotter rayane1;
+	   private static GlobeTlotter rayane1;
 	   private String path;
 	   @Before        
 	   public void init() throws FileNotFoundException {
@@ -33,7 +34,7 @@ public class BuildActionTest {
 		Sector sector1 = new Sector("Europe", disease,1);
         City city = new City("Paris", sector1);
         PlayerCard playerCard = new PlayerCard(city, null);
-        Player rayane =new GlobePlotter("rayane",city,game);
+        Player rayane =new GlobeTlotter("rayane",city,game);
         rayane.addPlayerCard(playerCard);
         
         

@@ -3,9 +3,9 @@ import pandemic.Game;
 import pandemic.actions.*;
 import pandemic.Board.*;
 
-public class GlobePlotter extends Player {
+public class GlobeTlotter extends Player {
 
-	public GlobePlotter(String name, City city,Game game) {
+	public GlobeTlotter(String name, City city,Game game) {
 		super(name, city,game);
 	}
 
