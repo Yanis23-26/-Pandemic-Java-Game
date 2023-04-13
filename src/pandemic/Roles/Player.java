@@ -92,6 +92,7 @@ public abstract class Player{
 
     
     
+    
     /* pour récuperer les cartes joueur afin de verifier si le joueur dispose de 5 cates joueur 
      d'une meme maladie dans sa main */
     // Je completerai plutard après discussion avec mes camarades.
@@ -108,7 +109,29 @@ public abstract class Player{
 		
 	}
 
+	// guerrir une maladie si le joueur dispose de 5 cartes de la meme maladie.
+	// Je completerai plutard après discussion avec mes camarades.
+	public void cureDisease(Disease disease) {
+			// TODO Auto-generated method stub
+			
+	}
+
 	
+	// ajouter une carte InfectionCard à la main du player
+	// je completerai le code plutard après discussion avec mes collègues.
+	public void addInfectionCard(InfectionCard iCard) {
+		// TODO Auto-generated method stub
+			
+	}
+
+	// ajouter une carte PlayerCard à la main du player
+	// je completerai le code plutard après discussion avec mes collègues.
+	public void addPlayerCard(PlayerCard playerCard) {
+		// TODO Auto-generated method stub
+		
+	}
+		
+		
     
     
    
