@@ -18,7 +18,7 @@ public class BuildAction implements Action {
 	@Override
 	public boolean isPossible(Player p) {
 		// on récupère toutes les cartes joueur du joueur
-		List<PlayerCard> all =p.getCard(); 
+		List<PlayerCard> all =p.getCards(); 
 		// on récupère la ville où se trouve le joueur
 		City city = p.getCity();
 		// on vérifie si le joueur possède une carte joueur associée à la ville où il se trouve
