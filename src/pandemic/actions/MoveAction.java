@@ -72,3 +72,4 @@ public class MoveAction implements Action {
 		return true;
 
 }
+}
