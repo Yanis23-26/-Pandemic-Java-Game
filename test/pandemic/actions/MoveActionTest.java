@@ -30,17 +30,36 @@ public class MoveActionTest {
 
 
 		 List <City> neighbors = city.getNeighborsCities();// récuperer les viles voisines de cette ville
-
-		 String input = "2"; // L'utilisateur choisit la deuxième ville voisine
-         InputStream in = new ByteArrayInputStream(input.getBytes());
-         System.setIn(in);
+        
 
 		 MoveAction moveAction = new MoveAction();
-         moveAction.actOn(anes); // Exécuter l'action de déplacement
+		 
+         moveAction.getChoice().actOn(anes); // Exécuter l'action de déplacement
+
 
 		 assertEquals(neighbors.get(1), anes.getCity()); // Vérifier que le joueur a été déplacé à la ville choisie
 
     }
+
+   @Test
+   public void isPossibleTest() {
+    	 City city = game.getWorld().getSectors().get(0).getCities().get(0);
+         Player anes=new Doctor("ANES",city,game);
+         game.getPlayers().add(anes);
+
+        List <City> neighbors = city.getNeighborsCities();// récuperer les viles voisines de cette ville
+        
+
+		 MoveAction moveAction = new MoveAction();
+		 
+         moveAction.getChoice().actOn(anes); // Exécuter l'action de déplacement
+
+
+		 assertEquals(neighbors.get(1), anes.getCity()); // Vérifier que le joueur a été déplacé à la ville choisie
+
+         assertEquals(true,moveAction.isPossible(anes));// on vérifie si le déplacement est bien effectué
+    
+   } 
 
 
 

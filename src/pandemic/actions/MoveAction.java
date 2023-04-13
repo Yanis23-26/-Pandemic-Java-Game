@@ -52,17 +52,23 @@ public class MoveAction implements Action {
 			idx++;
 		}
 	}
-    
+     
 	
 	
 	/**
+	 *@param p  
 	 *  return true si laction est possible 
 	 *  false sinon 
 	 */
 	@Override
 	public boolean isPossible(Player p) {
-		
+		City currentCity = p.getCity();
+		List<City> neighbors = currentCity.getNeighborsCities();
+		City destination = neighbors.get(choice-1);;
+		if (!neighbors.contains(destination)) {
+			System.out.println("Le déplacement a échoué !");
+			return false;
+		}
 		return true;
-	}
 
 }
