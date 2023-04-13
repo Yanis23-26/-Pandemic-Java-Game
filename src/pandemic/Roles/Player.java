@@ -97,9 +97,17 @@ public abstract class Player{
      d'une meme maladie dans sa main */
     // Je completerai plutard après discussion avec mes camarades.
     public List<PlayerCard> getPlayerCards() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
+    	List<PlayerCard> playerCards = new ArrayList<>();
+    	for (PlayerCard card : this.cartes) {
+    		if (card instanceof PlayerCard) {
+    			playerCards.add(card);
+    		}
+    	}
+    	return playerCards;
+    }
+
+
 
 	
 	// cette fonction permet au joueur de deffausser les cartes d'une maladie guerrie.
@@ -116,21 +124,14 @@ public abstract class Player{
 			
 	}
 
-	
-	// ajouter une carte InfectionCard à la main du player
-	// je completerai le code plutard après discussion avec mes collègues.
-	public void addInfectionCard(InfectionCard iCard) {
-		// TODO Auto-generated method stub
-			
-	}
 
 	// ajouter une carte PlayerCard à la main du player
 	// je completerai le code plutard après discussion avec mes collègues.
 	public void addPlayerCard(PlayerCard playerCard) {
-		// TODO Auto-generated method stub
-		
+		this.cartes.add(playerCard);
 	}
 		
+	
 		
     
     

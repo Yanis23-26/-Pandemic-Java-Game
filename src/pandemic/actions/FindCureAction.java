@@ -24,22 +24,22 @@ public class FindCureAction implements Action {
         List<PlayerCard> playerCards = player.getPlayerCards();
         
         // Compte le nombre de cartes joueur pour chaque maladie
-        Map<Disease, Integer> CardCounts = new HashMap<>();
+        Map<Disease, Integer> cardCounts = new HashMap<>();
         for (PlayerCard card : playerCards) {
             if (card instanceof PlayerCard) {
                 Disease disease = card.getDisease(); 
-                if (!CardCounts.containsKey(disease)) {
-                    CardCounts.put(disease, 0);
+                if (!cardCounts.containsKey(disease)) {
+                    cardCounts.put(disease, 0);
                     // si la maladie jamais rencontré avant, initialise la valeur de la maladie à 0.
                 }
-                int count = CardCounts.get(disease);
-                CardCounts.put(disease, count + 1);
+                int count = cardCounts.get(disease);
+                cardCounts.put(disease, count + 1);
                 // incrémenter le nombre de cartes joueur pour cette maladie
             }
         }
         
         // Vérifie si le joueur possède au moins 5 cartes joueur pour une même maladie
-        for (int count : CardCounts.values()) {
+        for (int count : cardCounts.values()) {
             if (count >= 5) {
                 return true;
             }
