@@ -2,7 +2,7 @@ package pandemic.actions;
 
 import java.util.*;
 
-import pandemic.Board.Disease;
+import pandemic.Board.*;
 import pandemic.Cards.*;
 import pandemic.Roles.*;
 
@@ -51,6 +51,34 @@ public class FindCureAction implements Action {
 
     @Override
     public void actOn(Player player) {
-       // TODO Auto-generated method stub
+        // Si le joueur dispose de 5 cartes de la même maladie,le remede cette maladie est trouvé
+        if (isPossible(player)) {
+            List<PlayerCard> playerCards = player.getPlayerCards();
+            Map<Disease, Integer> CardCounts = new HashMap<>();
+            for (PlayerCard card : playerCards) {
+                if (card instanceof PlayerCard) {
+                    Disease disease = card.getDisease();
+                    if (!CardCounts.containsKey(disease)) {
+                        CardCounts.put(disease, 0);
+                    }
+                    int count = CardCounts.get(disease);
+                    CardCounts.put(disease, count + 1);
+                }
+            }
+            // Trouver la maladie pour laquelle le joueur a 5 cartes.
+            for (Map.Entry<Disease, Integer> entry : CardCounts.entrySet()) {
+                if (entry.getValue() >= 5) {
+                    Disease disease = entry.getKey();
+                    // Défausser les 5 cartes de cette maladie.
+                    for (int i = 0; i < 5; i++) {
+                        player.discardPlayerCard(disease);
+                    }
+                    // Ajouter le remède pour cette maladie.
+                    player.getGame().cureDisease(disease);
+                    break;
+                }
+            }
+        }
     }
+
 }

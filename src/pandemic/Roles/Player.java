@@ -90,10 +90,22 @@ public abstract class Player{
         return "name of player is "+this.getName()+"and his city is"+this.getCity();
     }
 
-    // pour récuperer les cartes joueur afin de verifier si le joueur dispose de 5 cates joueur dans sa main.
-	public List<PlayerCard> getPlayerCards() {
+    
+    
+    /* pour récuperer les cartes joueur afin de verifier si le joueur dispose de 5 cates joueur 
+     d'une meme maladie dans sa main */
+    // Je completerai plutard après discussion avec mes camarades.
+    public List<PlayerCard> getPlayerCards() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	
+	// cette fonction permet au joueur de deffausser les cartes d'une maladie guerrie.
+	// Je completerai plutard aprés discussion avec mes camarades.
+	public void discardPlayerCard(Disease disease) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	
