@@ -89,7 +89,14 @@ public abstract class Player{
     public String toString(){
         return "name of player is "+this.getName()+"and his city is"+this.getCity();
     }
-    
+
+    // pour récuperer les cartes joueur afin de verifier si le joueur dispose de 5 cates joueur dans sa main.
+	public List<PlayerCard> getPlayerCards() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
     
     
    
