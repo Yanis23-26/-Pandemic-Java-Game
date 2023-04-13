@@ -353,13 +353,7 @@ public class Game {
 	}
 
 	
-	// guerrir une maladie si le joueur dispose de 5 cartes de la meme maladie.
-	// Crée provisoirement.
-	public void cureDisease(Disease disease) {
-			// TODO Auto-generated method stub
-				
-		}
-
+	
 	
 	
 }

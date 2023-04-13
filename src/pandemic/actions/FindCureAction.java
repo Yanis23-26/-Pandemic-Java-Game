@@ -21,7 +21,7 @@ public class FindCureAction implements Action {
         //Condition 2: vérifier si le joueur dispose de 5 cartes joueur de la meme maladie.
         
         // Récupère toutes les cartes joueur de la main du joueur
-        List<PlayerCard> playerCards = player.getPlayerCards();
+        List<PlayerCard> playerCards = player.getCards();
         
         // Compte le nombre de cartes joueur pour chaque maladie
         Map<Disease, Integer> cardCounts = new HashMap<>();
@@ -53,7 +53,7 @@ public class FindCureAction implements Action {
     public void actOn(Player player) {
         // Si le joueur dispose de 5 cartes de la même maladie,le remede cette maladie est trouvé
         if (isPossible(player)) {
-            List<PlayerCard> playerCards = player.getPlayerCards();
+            List<PlayerCard> playerCards = player.getCards();
             Map<Disease, Integer> CardCounts = new HashMap<>();
             for (PlayerCard card : playerCards) {
                 if (card instanceof PlayerCard) {
@@ -74,8 +74,7 @@ public class FindCureAction implements Action {
                         player.discardPlayerCard(disease);
                     }
                     // Ajouter le remède pour cette maladie.
-                    player.getGame().cureDisease(disease);
-                    break;
+                    disease.findAnAntidote();
                 }
             }
         }

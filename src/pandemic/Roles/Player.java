@@ -40,7 +40,7 @@ public abstract class Player{
     /**
     * @return city of player
      */
-    public List<PlayerCard> getCard() {
+    public List<PlayerCard> getCards() {
     	return this.cartes;
     }
     
@@ -64,7 +64,7 @@ public abstract class Player{
 	 *  add a Card on the list of carte 
 	 * @param card to add
 	 */
-    public void addCard(PlayerCard c) {
+    public void addPlayerCard(PlayerCard c) {
     	this.cartes.add(c);
     }
     /**
@@ -93,20 +93,7 @@ public abstract class Player{
     
     
     
-    /* pour récuperer les cartes joueur afin de verifier si le joueur dispose de 5 cates joueur 
-     d'une meme maladie dans sa main */
-    // Je completerai plutard après discussion avec mes camarades.
-    public List<PlayerCard> getPlayerCards() {
-
-    	List<PlayerCard> playerCards = new ArrayList<>();
-    	for (PlayerCard card : this.cartes) {
-    		if (card instanceof PlayerCard) {
-    			playerCards.add(card);
-    		}
-    	}
-    	return playerCards;
-    }
-
+    
 
 
 	
@@ -125,11 +112,7 @@ public abstract class Player{
 	}
 
 
-	// ajouter une carte PlayerCard à la main du player
-	// je completerai le code plutard après discussion avec mes collègues.
-	public void addPlayerCard(PlayerCard playerCard) {
-		this.cartes.add(playerCard);
-	}
+	
 		
 	
 		

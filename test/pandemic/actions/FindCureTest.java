@@ -42,8 +42,8 @@ public class FindCureTest {
 		City lille = new City("LILLE",europe);
         City paris = new City("PARIS",europe);
         City berlin = new City("BERLIN",europe);
-        City madrid = new City("MADROD",europe);
-        City london = new City("LONDON",europe);
+        City alger = new City("MADROD",	afrique);
+        City cairo = new City("LONDON",afrique);
         
         //créer une station de recherhce à lille
         lille.addResearchStation();
@@ -54,8 +54,8 @@ public class FindCureTest {
         yanis.addPlayerCard(new PlayerCard(lille,covid));             
 		yanis.addPlayerCard(new PlayerCard(paris,covid));
 		yanis.addPlayerCard(new PlayerCard(berlin,covid));
-		yanis.addPlayerCard(new PlayerCard(madrid,covid));   
-		yanis.addPlayerCard(new PlayerCard(london,covid));   
+		yanis.addPlayerCard(new PlayerCard(alger,covid));   
+		yanis.addPlayerCard(new PlayerCard(cairo,covid));   
 		
 		/* je teste le bon fonctionnement de la méthode isPossible, qui devrait retourner vrai car on à respecter les deux conditions
 		5 cartes de la meme maladie dans la main  du player + une station de recherche dans la ville du player*/
@@ -172,8 +172,149 @@ public class FindCureTest {
 	}
 	
 	
+
+	/* Test n°5 pour vérifier si la méthode actOn guérit la maladie si le joueur possède 5 cartes de la même maladie */
+	@Test
+	public void testActOnWith5CardsOfSameDisease() {
+		// Maladie
+		Disease covid = new Disease("COVID-19", 1);
+
+		// Secteur
+		Sector europe = new Sector("EUROPE", covid, 1);
+
+		// Villes
+		City lille = new City("LILLE", europe);
+		City paris = new City("PARIS", europe);
+		City berlin = new City("BERLIN", europe);
+		City madrid = new City("MADRID", europe);
+		City london = new City("LONDON", europe);
+
+		// Créer une station de recherche à Lille
+		lille.addResearchStation();
+
+		// Créer un joueur avec 5 cartes de la même maladie
+		Player player = new Scientist("Alice", lille, game);
+		player.addPlayerCard(new PlayerCard(lille, covid));
+		player.addPlayerCard(new PlayerCard(paris, covid));
+		player.addPlayerCard(new PlayerCard(berlin, covid));
+		player.addPlayerCard(new PlayerCard(madrid, covid));
+		player.addPlayerCard(new PlayerCard(london, covid));
+
+		// Trouver un remède
+		FindCureAction action = new FindCureAction();
+		action.actOn(player);
+
+		// Vérifier si la maladie a été guérie
+		assertTrue(covid.hasAntiDote());
+	}
 	
 	
+    /*test n°6 : tester acton() avec seulement 4 cartes*/
+	@Test
+	public void testActOnWithNotEnoughCardsOfSameDisease() {
+	    // Maladie
+	    Disease covid = new Disease("COVID-19", 1);
+	    Disease flue = new Disease("INFLUENZA", 2);
+
+	    // Secteur
+	    Sector europe = new Sector("EUROPE", covid, 1);
+	    Sector asia = new Sector("ASIA", flue,2);
+
+	    // Villes
+	    City lille = new City("LILLE", europe);
+	    City paris = new City("PARIS", europe);
+	    City berlin = new City("BERLIN", europe);
+	    City tokyo = new City("MADRID", asia);
+	    City pekin = new City("LONDON", asia);
+
+	    // Créer une station de recherche à Lille
+	    lille.addResearchStation();
+
+	    // Créer un joueur avec moins de 5 cartes de la même maladie
+	    Player player = new Scientist("Alice", lille, game);
+	    player.addPlayerCard(new PlayerCard(lille, covid));
+	    player.addPlayerCard(new PlayerCard(paris, covid));
+	    player.addPlayerCard(new PlayerCard(berlin, covid));
+	    player.addPlayerCard(new PlayerCard(pekin, covid));
+
+	    // Trouver un remède
+	    FindCureAction action = new FindCureAction();
+	    action.actOn(player);
+
+	    // Vérifier si la maladie n'a pas été guérie
+	    assertFalse(covid.hasAntiDote());
+	}
+	
+	/*test n°7 : tester le fonctionnement de actOn si on à pas de station de recherche */
+	@Test
+	public void testActOnWithoutResearchStation() {
+	    // Maladie
+	    Disease covid = new Disease("COVID-19", 1);
+	    Disease flue = new Disease("INFLUENZA", 2);
+
+	    // Secteur
+	    Sector europe = new Sector("EUROPE", covid, 1);
+	    Sector asia = new Sector("ASIA", flue,2);
+
+	    // Villes
+	    City lille = new City("LILLE", europe);
+	    City paris = new City("PARIS", europe);
+	    City berlin = new City("BERLIN", europe);
+	    City tokyo = new City("MADRID", asia);
+	    City pekin = new City("LONDON", asia);
+
+	    // Créer un joueur avec 5 cartes de la même maladie
+	    Player player = new Scientist("Alice", lille, game);
+	    player.addPlayerCard(new PlayerCard(lille, covid));
+	    player.addPlayerCard(new PlayerCard(paris, covid));
+	    player.addPlayerCard(new PlayerCard(berlin, covid));
+	    player.addPlayerCard(new PlayerCard(tokyo, covid));
+	    player.addPlayerCard(new PlayerCard(pekin, covid));
+
+	    // Trouver un remède
+	    FindCureAction action = new FindCureAction();
+	    action.actOn(player);
+
+	    // Vérifier si la maladie n'a pas été guérie
+	    assertFalse(covid.hasAntiDote());
+	}
+	 
+	/* test n°8 : teste de la fonction actOn avec d'autres players */
+	@Test
+	public void testActOnWithOtherPlayerCards() {
+	    // Créer une maladie
+	    Disease covid = new Disease("COVID-19", 1);
+
+	    // Créer des secteurs
+	    Sector europe = new Sector("Europe", covid, 1);
+	    Sector asia = new Sector("Asia", covid, 2);
+
+	    // Créer des villes dans chaque secteur
+	    City paris = new City("Paris", europe);
+	    City madrid = new City("Madrid", europe);
+	    City shanghai = new City("Shanghai", asia);
+	    City tokyo = new City("Tokyo", asia);
+
+	    // Ajouter des cartes de joueur pour deux joueurs différents
+	    Player anes = new Scientist("Alice", paris, game);
+	    Player rayane = new GlobePlotter("Bob", madrid, game);
+
+	    anes.addPlayerCard(new PlayerCard(paris, covid));
+	    anes.addPlayerCard(new PlayerCard(madrid, covid));
+	    rayane.addPlayerCard(new PlayerCard(shanghai, covid));
+	    rayane.addPlayerCard(new PlayerCard(tokyo, covid));
+
+	    // Vérifier que la maladie n'a pas encore de remède
+	    assertFalse(covid.hasAntiDote());
+
+	    // Essayer de trouver un remède avec les cartes des deux joueurs
+	    FindCureAction action = new FindCureAction();
+	    action.actOn(anes);
+
+	    // Vérifier que la maladie n'a pas de remède après l'action
+	    assertFalse(covid.hasAntiDote());
+	}
+
 	
 	
 }
