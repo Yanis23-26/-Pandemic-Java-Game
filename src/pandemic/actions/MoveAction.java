@@ -64,7 +64,7 @@ public class MoveAction implements Action {
 	public boolean isPossible(Player p) {
 		City currentCity = p.getCity();
 		List<City> neighbors = currentCity.getNeighborsCities();
-		City destination = neighbors.get(choice-1);;
+		City destination = neighbors.get(this.getChoice()-1);;
 		if (!neighbors.contains(destination)) {
 			System.out.println("Le déplacement a échoué !");
 			return false;
