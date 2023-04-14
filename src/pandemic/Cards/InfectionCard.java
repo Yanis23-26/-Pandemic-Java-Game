@@ -19,7 +19,8 @@ public class InfectionCard extends IntermediateCard{
     public void comportement(Player p) {
         this.getCity().addInfection(this.getDisease());
         //Affichage
-		System.out.println("The player "+ p.getName() + " has drawn an infection card indicating the city of :"+ this.getCity() +",and disease : "+ this.getDisease());
+		System.out.println( " The city : "+ this.getCity() +",has been infected by the disease : "+ this.getDisease());
+        
     }
 }
 
