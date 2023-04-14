@@ -89,6 +89,26 @@ public abstract class Player{
     public String toString(){
         return "name of player is "+this.getName()+"and his city is"+this.getCity();
     }
+    
+    public List<Action> getActions(){
+        return this.actions;
+    }
+    
+    public Action  getMoveAction() {
+    	return this.getActions().get(0);
+    }
+    
+    public Action  getFindCureAction() {
+    	return this.getActions().get(1);
+    }
+    
+    public Action  getTreatDiseaseAction() {
+    	return this.getActions().get(2);
+    }
+    
+    public Action  getBuildAction() {
+    	return this.getActions().get(3);
+    }
 
     
     

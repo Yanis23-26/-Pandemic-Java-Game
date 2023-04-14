@@ -1,4 +1,5 @@
 package pandemic;
+import java.awt.desktop.SystemEventListener;
 import java.io.FileNotFoundException;
 import pandemic.Board.*;
 import pandemic.actions.*;
@@ -171,6 +172,7 @@ public class Game {
 	public void DrawAInfectionCardWhenEpidemic(Player p) {
 
 		InfectionCard card =this.drawInfection.pop();
+		System.out.println(p.getName()+"has drown a infection Card");
 		card.comportement(p);
 		this.discardInfectionCard(card); // on defausse la carte
 	}
@@ -178,6 +180,7 @@ public class Game {
 	public void DrawAInfectionCard(Player p) {
 		for(int i=0; i<this.getTotalInfectionRate(); i++) {
 			InfectionCard card =this.drawInfection.pop();
+			System.out.println(p.getName()+"has drown an Infection Card .");
 			card.comportement(p);
 			this.discardInfectionCard(card);  // on defausse la carte
 		}
@@ -257,6 +260,7 @@ public class Game {
     	Player p = this.getPlayers().get(0);
     	for(int i=0; i<3; i++) {
 			InfectionCard card =this.drawInfection.pop();
+			System.out.println(p.getName()+" has drown an Infection Card .");
 			card.comportement(p);
 			card.comportement(p);
 			card.comportement(p);
@@ -265,6 +269,7 @@ public class Game {
 		
 		for(int i=0; i<3; i++) {
 			InfectionCard card =this.drawInfection.pop();
+			System.out.println(p.getName()+" has drown an Infection Card .");
 			card.comportement(p);
 			card.comportement(p);
 			this.discardInfectionCard(card);  // on defausse la carte
@@ -272,10 +277,165 @@ public class Game {
 		
 		for(int i=0; i<3; i++) {
 			InfectionCard card =this.drawInfection.pop();
+			System.out.println(p.getName()+" has drown an Infection Card .");
 			card.comportement(p);
 			this.discardInfectionCard(card);  // on defausse la carte
 		}
     }
+    
+    
+    // Fonction pour demander à un doctor de choisir et exécuter une action
+    @SuppressWarnings("resource")
+	public  void choseAndExecuteActionDoctor(Player p) {
+    	for(int i=0; i<4; i++) {
+        // Créer un objet Scanner pour la saisie utilisateur
+        Scanner scanner = new Scanner(System.in);
+        // Afficher les actions possibles
+        System.out.println("Actions possibles : move, build, find, treat, pass");
+        // Demander au joueur de choisir une action
+        System.out.printf(p.getName()+"quelle action souhaitez-vous réaliser ?\n");
+        String action = scanner.nextLine();
+        // Exécuter l'action choisie
+        switch (action) {
+            case "move":
+                p.getMoveAction().actOn(p);
+            case "build":
+                p.getBuildAction().actOn(p);
+            case "find":
+                p.getFindCureAction().actOn(p);
+            case "treat":
+                p.role();
+            case "pass":
+                break;
+            default:
+                // Si l'action choisie n'est pas valide, afficher un message d'erreur
+                System.out.println("Action invalide !");
+        }
+    	}
+    }
+    
+    
+    // Fonction pour demander à un expert de choisir et exécuter une action
+    @SuppressWarnings("resource")
+	public  void choseAndExecuteActionExpert(Player p) {
+    	for(int i=0; i<4; i++) {
+        // Créer un objet Scanner pour la saisie utilisateur
+        Scanner scanner = new Scanner(System.in);
+        // Afficher les actions possibles
+        System.out.println("Actions possibles : move, build, find, treat, pass");
+        // Demander au joueur de choisir une action
+        System.out.printf(p.getName()+" quelle action souhaitez-vous réaliser ?\n");
+        String action = scanner.nextLine();
+        // Exécuter l'action choisie
+        switch (action) {
+            case "move":
+                p.getMoveAction().actOn(p);
+            case "build":
+                p.role();
+            case "find":
+                p.getFindCureAction().actOn(p);
+            case "treat":
+                p.getTreatDiseaseAction().actOn(p);
+            case "pass":
+                break;
+            default:
+                // Si l'action choisie n'est pas valide, afficher un message d'erreur
+                System.out.println("Action invalide !");
+        }
+    	}
+    }
+    
+    
+    // Fonction pour demander à un globetrotter de choisir et exécuter une action
+    @SuppressWarnings("resource")
+	public  void choseAndExecuteActionGlobetrotter(Player p) {
+    	for(int i=0; i<4; i++) {
+        // Créer un objet Scanner pour la saisie utilisateur
+        Scanner scanner = new Scanner(System.in);
+        // Afficher les actions possibles
+        System.out.println("Actions possibles : move, build, find, treat, pass");
+        // Demander au joueur de choisir une action
+        System.out.printf(p.getName()+" quelle action souhaitez-vous réaliser ?\n");
+        String action = scanner.nextLine();
+        // Exécuter l'action choisie
+        switch (action) {
+            case "move":
+                p.role();
+            case "build":
+                p.getBuildAction().actOn(p);
+            case "find":
+                p.getFindCureAction().actOn(p);
+            case "treat":
+                p.getTreatDiseaseAction().actOn(p);
+            case "pass":
+                break;
+            default:
+                // Si l'action choisie n'est pas valide, afficher un message d'erreur
+                System.out.println("Action invalide !");
+        }
+    	}
+    	
+    }
+    
+    
+    // Fonction pour demander à un scientist de choisir et exécuter une action
+    @SuppressWarnings("resource")
+	public  void choseAndExecuteActionScientist(Player p) {
+    	for(int i=0; i<4; i++) {
+        // Créer un objet Scanner pour la saisie utilisateur
+        Scanner scanner = new Scanner(System.in);
+        // Afficher les actions possibles
+        System.out.println("Actions possibles : move, build, find, treat, pass");
+        // Demander au joueur de choisir une action
+        System.out.printf(p.getName()+" quelle action souhaitez-vous réaliser ?\n");
+        String action = scanner.nextLine();
+        // Exécuter l'action choisie
+        switch (action) {
+            case "move":
+                p.getMoveAction().actOn(p);
+            case "build":
+                p.getBuildAction().actOn(p);
+            case "find":
+                p.role();
+            case "treat":
+                p.getTreatDiseaseAction().actOn(p);
+            case "pass":
+                break;
+            default:
+                // Si l'action choisie n'est pas valide, afficher un message d'erreur
+                System.out.println("Action invalide !");
+        }
+     }
+    }
+  
+    
+    
+    
+    public void doingTheActions() {
+    	while (true){
+    		
+    		for(Player p : this.getPlayers()) {
+    			if(p instanceof Doctor) {
+    				this.choseAndExecuteActionDoctor(p);
+    			}
+    			else if(p instanceof Expert) {
+    				this.choseAndExecuteActionExpert(p);
+    			}
+    			else if(p instanceof GlobeTrotter) {
+    				this.choseAndExecuteActionGlobetrotter(p);
+    			}
+    			else if(p instanceof Scientist) {
+    				this.choseAndExecuteActionScientist(p);
+    			}
+    			
+    		}
+    		
+    		
+    	}
+    }
+    
+   
+
 	
 	
 	
@@ -427,6 +587,7 @@ public class Game {
 		this.initializePlayersHandWithCard(this.getPlayers().size()); // distribution de cartes 
 		this.finalPreparePlayerCardPiles(); // preparation finale des piles de cartes joueurs
 		this.initialInfection(); // infection initiale
+		this.doingTheActions(); // faire les actions
 	}
 
 
