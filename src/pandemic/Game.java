@@ -171,7 +171,7 @@ public class Game {
 	public void DrawAInfectionCardWhenEpidemic(Player p) {
 
 		InfectionCard card =this.drawInfection.pop();
-		System.out.println(p.getName()+"has drown a infection Card \n");
+		System.out.println(p.getName()+" has drown a infection Card \n");
 		card.comportement(p);
 		this.discardInfectionCard(card); // on defausse la carte
 		System.out.println(" ");
@@ -635,6 +635,7 @@ public class Game {
 	public void play() {
 		this.displayIntro();
 		this.askAndDisplayPlayersInfo(); // demander les info des joueurs
+		System.out.println(" Les "+this.getPlayers().size()+" se trouve actuellement sur la ville "+this.getPlayers().get(0).getCity().getName()+"\n");
 		this.displayCards(); // affichage simple des cartes existantes dans le jeu
 		this.initializePlayersHandWithCard(this.getPlayers().size()); // distribution de cartes 
 		this.finalPreparePlayerCardPiles(); // preparation finale des piles de cartes joueurs
