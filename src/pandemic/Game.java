@@ -123,7 +123,6 @@ public class Game {
 		//creation des cartes
 
 		for(Sector sector : world.getSectors()) {
-			this.drawPlayer.push( new EpidemicCard());
 			for(City city : sector.getCities()) {
 				PlayerCard pCard = new PlayerCard(city,sector.getSectorDisease());
 				InfectionCard iCard = new InfectionCard(city,sector.getSectorDisease());
@@ -214,9 +213,42 @@ public class Game {
         	for(int i=0; i<nbCartesParJoueur; i++) {
         		this.DrawAPlayerCard(player);
             }
-        	System.out.println(player.getName()+" a "+player.getCards().size()+"cartes dans sa main");
+        	System.out.println(player.getName()+" has "+player.getCards().size()+" cards in his hand .");
         }
     }
+	
+	
+    public void finalPreparePlayerCardPiles() {
+        int nbCartesParTas = this.getDrawplayer().size() / 4;
+        Stack<PileCardPlayer> tasDeCartes = new Stack<PileCardPlayer>();
+        for (int i = 0; i < 4; i++) {
+            int nbCartesDansCeTas = nbCartesParTas;
+            Stack<PileCardPlayer> tas = new Stack<PileCardPlayer>();
+            for (int j = 0; j < nbCartesDansCeTas; j++) {
+                tas.push(this.getDrawplayer().pop());
+            }
+            
+            // Insérer une carte épidémie dans le tas
+            EpidemicCard eCard = new EpidemicCard();
+            tas.push(eCard);
+            for(PileCardPlayer card : tas) {
+            	tasDeCartes.push(card);
+            }
+        }
+        
+        // Remplir la pile de cartes en empilant les tas
+        for(PileCardPlayer card : tasDeCartes) {
+        	this.getDrawplayer().push(card);
+        }
+        this.shufflePlayerCards(this.getDrawplayer());
+    }
+	
+	
+	
+	
+	
+	
+	
 
 	//Les fonctions d affichages :
 	//display intro
@@ -233,7 +265,6 @@ public class Game {
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Press any key to continue...");
 		scanner.nextLine();
-
 	}
 
 
@@ -357,8 +388,10 @@ public class Game {
 
 	public void play() {
 		this.displayIntro();
-		this.askAndDisplayPlayersInfo();
-		this.displayCards();
+		this.askAndDisplayPlayersInfo(); // demander les info des joueurs
+		this.displayCards(); // affichage simple des cartes existantes dans le jeu
+		this.initializePlayersHandWithCard(this.getPlayers().size()); // distribution de cartes 
+		this.finalPreparePlayerCardPiles(); // preparation finale des piles de cartes joueurs
 	}
 
 
