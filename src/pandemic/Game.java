@@ -183,6 +183,7 @@ public class Game {
 		}
 	}
 	
+	
 	// FONCTIONS POUR DEFAUSSER LES CARTES 
 	
 	public void discardPlayerCard(PileCardPlayer card) {
@@ -248,6 +249,32 @@ public class Game {
         	this.getDrawplayer().push(card);
         }
         this.shufflePlayerCards(this.getDrawplayer());
+    }
+    
+    
+    
+    public void initialInfection() {
+    	Player p = this.getPlayers().get(0);
+    	for(int i=0; i<3; i++) {
+			InfectionCard card =this.drawInfection.pop();
+			card.comportement(p);
+			card.comportement(p);
+			card.comportement(p);
+			this.discardInfectionCard(card);  // on defausse la carte
+		}
+		
+		for(int i=0; i<3; i++) {
+			InfectionCard card =this.drawInfection.pop();
+			card.comportement(p);
+			card.comportement(p);
+			this.discardInfectionCard(card);  // on defausse la carte
+		}
+		
+		for(int i=0; i<3; i++) {
+			InfectionCard card =this.drawInfection.pop();
+			card.comportement(p);
+			this.discardInfectionCard(card);  // on defausse la carte
+		}
     }
 	
 	
@@ -399,6 +426,7 @@ public class Game {
 		this.displayCards(); // affichage simple des cartes existantes dans le jeu
 		this.initializePlayersHandWithCard(this.getPlayers().size()); // distribution de cartes 
 		this.finalPreparePlayerCardPiles(); // preparation finale des piles de cartes joueurs
+		this.initialInfection(); // infection initiale
 	}
 
 
