@@ -199,9 +199,26 @@ public class Game {
 
 		Collections.shuffle(iCards);
 	}
+	
+	public void initializePlayersHandWithCard(int nbOfPlayers) {
+        int nbCartesParJoueur = 0;
+        
+        if (nbOfPlayers == 2) {
+            nbCartesParJoueur = 4;
+        } else if (nbOfPlayers == 3) {
+            nbCartesParJoueur = 3;
+        } else if (nbOfPlayers == 4) {
+            nbCartesParJoueur = 2;
+        }
+        for(Player player : this.getPlayers()) {
+        	for(int i=0; i<nbCartesParJoueur; i++) {
+        		this.DrawAPlayerCard(player);
+            }
+        	System.out.println(player.getName()+" a "+player.getCards().size()+"cartes dans sa main");
+        }
+    }
 
 	//Les fonctions d affichages :
-
 	//display intro
 	public void displayIntro() {
 		System.out.println("##########################################");
