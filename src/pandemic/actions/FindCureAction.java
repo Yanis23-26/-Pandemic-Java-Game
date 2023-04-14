@@ -18,7 +18,9 @@ public class FindCureAction implements Action {
     	
         // Condition 1 : vérifier si le joueur est dans une ville qui a une station de recherche.
         if (!player.getCity().hasResearchStation()) {
-            return false;
+        	System.out.println(" OOPS !!! The City don't have a research station ");
+        	return false;
+            
         }
         
         //Condition 2: vérifier si le joueur dispose de 5 cartes joueur de la meme maladie.
@@ -46,8 +48,11 @@ public class FindCureAction implements Action {
             if (count >= 5) {
                 return true;
             }
+            else {
+            	System.out.println(" OOPS !!! The player don't have enough cards. ");
+            }
         }
-        
+        System.out.println(" Impossible to cure the disease, the conditions are not met !!! ");
         return false;
     }
 

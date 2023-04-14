@@ -58,9 +58,13 @@ public class TreateDiseaseAction implements Action {
 				if(tmp.get(dise)>=5) {
 					return true;
 				}
+				else {
+					System.out.println(" OOPS !!! conditions not met. ");
+				}
 			}
 			
 		}
+		System.out.println(" Impossible to treat the disease !!! the conditions are not met. ");
 		return false;
 	}
 
