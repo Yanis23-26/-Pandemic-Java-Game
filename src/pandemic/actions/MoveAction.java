@@ -8,6 +8,13 @@ import java.util.Scanner;
 
 
 public class MoveAction implements Action {
+	
+	
+	@Override
+	public String toString() {
+		return " Cette Action permet au joueur de se deplacer à une ville voisine. ";
+	}
+    
 
 	
 	
@@ -25,6 +32,8 @@ public class MoveAction implements Action {
 		City destination =neighbors.get(choice-1); 
 		p.setCity(destination);
 		destination.addPlayer(p);
+		
+		System.out.println("The player : " + p.getName() + " moved from " + p.getCity()+ " to" + destination );
 
 	}
     

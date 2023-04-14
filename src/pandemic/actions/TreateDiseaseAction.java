@@ -13,6 +13,12 @@ import pandemic.Roles.*;
 public class TreateDiseaseAction implements Action {
 
 	@Override
+	public String toString() {
+		return " Cette Action permet au joueur de traiter une maladie. ";
+	}
+    
+	
+	@Override
 	public void actOn(Player p) {
 		City cp = p.getCity();
 		if(cp.hasResearchStation()) {
@@ -29,6 +35,8 @@ public class TreateDiseaseAction implements Action {
 			for(Disease dise : tmp.keySet()) {
 				if(tmp.get(dise)>=5) {
 					dise.findAnAntidote();
+					
+					System.out.println("The player : " + p.getName() + " has treated the disease : " + dise + "!");
 				}
 			}
 			

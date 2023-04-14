@@ -9,9 +9,18 @@ import pandemic.Roles.*;
 
 public class BuildAction implements Action {
 
+	
+	@Override
+	public String toString() {
+		return " Cette Action permet au joueur de construire une station de recherche. ";
+	}
+    
+	
 	@Override
 	public void actOn(Player p) {
 		p.getCity().addResearchStation();
+		
+		System.out.println("The player : " + p.getName() + " has créated a research station in " + p.getCity()+ "!");
 
 	}
 

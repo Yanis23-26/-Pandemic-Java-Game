@@ -9,6 +9,13 @@ import pandemic.Roles.*;
 
 
 public class FindCureAction implements Action {
+	
+	
+	
+	@Override
+	public String toString() {
+		return " Cette Action permet au joueur de découvrir un remède. ";
+	}
     
     @Override
     public boolean isPossible(Player player) {
@@ -53,6 +60,8 @@ public class FindCureAction implements Action {
     public void actOn(Player player) {
         // Si le joueur dispose de 5 cartes de la même maladie,le remede cette maladie est trouvé
         if (isPossible(player)) {
+        	
+        	
             List<PlayerCard> playerCards = player.getCards();
             Map<Disease, Integer> CardCounts = new HashMap<>();
             for (PlayerCard card : playerCards) {
@@ -75,6 +84,7 @@ public class FindCureAction implements Action {
                     }
                     // Ajouter le remède pour cette maladie.
                     disease.findAnAntidote();
+                    System.out.println("The player : " + player.getName() + " has cured the disease : " + disease + "!");
                 }
             }
         }
