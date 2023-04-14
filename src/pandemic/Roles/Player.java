@@ -95,7 +95,7 @@ public abstract class Player{
     }
     
     public Action  getMoveAction() {
-    	return this.getActions().get(0);
+    	return  this.getActions().get(0);
     }
     
     public Action  getFindCureAction() {

@@ -16,6 +16,7 @@ public class TreateDiseaseAction implements Action {
 	
 	@Override
 	public void actOn(Player p) {
+		if(isPossible(p)) {
 		City cp = p.getCity();
 		if(cp.hasResearchStation()) {
 			int cpt = 0;
@@ -36,6 +37,10 @@ public class TreateDiseaseAction implements Action {
 				}
 			}
 			
+		}
+		}
+		else {
+			System.out.println(" Impossible to treat the disease !!! the conditions are not met. ");
 		}
 
 	}
@@ -58,13 +63,9 @@ public class TreateDiseaseAction implements Action {
 				if(tmp.get(dise)>=5) {
 					return true;
 				}
-				else {
-					System.out.println(" OOPS !!! conditions not met. ");
 				}
-			}
 			
 		}
-		System.out.println(" Impossible to treat the disease !!! the conditions are not met. ");
 		return false;
 	}
 

@@ -14,6 +14,27 @@ public class MoveAction implements Action {
 	
 	
 	
+	
+	
+	/**
+	 *@param p  
+	 *  return true si laction est possible 
+	 *  false sinon 
+	 */
+	@Override
+	public boolean isPossible(Player p) {
+		City currentCity = p.getCity();
+		List<City> neighbors = currentCity.getNeighborsCities();
+		City destination = neighbors.get(this.getChoice()-1);;
+		if (!neighbors.contains(destination)) {
+			System.out.println("The player could not move \n !");
+			return false;
+		}
+		return true;
+
+}
+	
+	
 	/**
 	 * deplacement du joueur apres choisir ca ville voisine 
 	 * @param player 
@@ -28,7 +49,7 @@ public class MoveAction implements Action {
 		p.setCity(destination);
 		destination.addPlayer(p);
 		//Affichage 
-		System.out.println("The player : " + p.getName() + " moved from " + p.getCity()+ " to" + destination );
+		System.out.println("The player : " + p.getName() + " moved from " + currentCity.getName()+ " to "  + destination.getName() +"\n");
 
 	}
     
@@ -59,21 +80,5 @@ public class MoveAction implements Action {
      
 	
 	
-	/**
-	 *@param p  
-	 *  return true si laction est possible 
-	 *  false sinon 
-	 */
-	@Override
-	public boolean isPossible(Player p) {
-		City currentCity = p.getCity();
-		List<City> neighbors = currentCity.getNeighborsCities();
-		City destination = neighbors.get(this.getChoice()-1);;
-		if (!neighbors.contains(destination)) {
-			System.out.println("Le déplacement a échoué !");
-			return false;
-		}
-		return true;
 
-}
 }
