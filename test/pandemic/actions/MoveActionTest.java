@@ -1,71 +1,84 @@
 package pandemic.actions;
 
-import pandemic.*;
-import pandemic.Board.*;
-import pandemic.Roles.*;
-import java.io.ByteArrayInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
-import java.util.List;
-import org.junit.Before;
-import org.junit.Test;
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+import java.util.List;
 
+import org.junit.Before;
+import org.junit.Test;
+
+import pandemic.Board.City;
+import pandemic.Board.GameBoard;
+import pandemic.Roles.Player;
 
 public class MoveActionTest {
-	private static Game game;
-    private String path;
-	@Before
-    public void init() throws FileNotFoundException {
-        this.path="./src/pandemic/carte2.json";
-        this.game= new Game(path);
 
-    }
-	@Test
-    public void actOn() {
-		 City city = game.getWorld().getSectors().get(0).getCities().get(0);
-         Player anes=new Doctor("ANES",city,game);
-         game.getPlayers().add(anes);
+    private GameBoard board;
+    private Player player;
 
-
-		 List <City> neighbors = city.getNeighborsCities();// récuperer les viles voisines de cette ville
-        
-         String input = "2"; // L'utilisateur choisit la deuxième ville voisine
-         InputStream in = new ByteArrayInputStream(input.getBytes());
-         System.setIn(in);
-
-         
-		 MoveAction moveAction = new MoveAction();
-		 
-         moveAction.actOn(anes); // Exécuter l'action de déplacement
-
-
-		 assertEquals(neighbors.get(1), anes.getCity()); // Vérifier que le joueur a été déplacé à la ville choisie
-
+    @Before
+    public void setUp() throws Exception {
+        // create a game board and a player to test MoveAction
+        board = new GameBoard();
+        City city1 = new City("City1");
+        City city2 = new City("City2");
+        City city3 = new City("City3");
+        city1.addNeighbor(city2);
+        city1.addNeighbor(city3);
+        city2.addNeighbor(city1);
+        city3.addNeighbor(city1);
+        board.addCity(city1);
+        board.addCity(city2);
+        board.addCity(city3);
+        player = new Player("Player1", city1);
+        city1.addPlayer(player);
     }
 
-   @Test
-   public void isPossibleTest() {
-    	 City city = game.getWorld().getSectors().get(0).getCities().get(0);
-         Player anes=new Doctor("ANES",city,game);
-         game.getPlayers().add(anes);
+    @Test
+    public void testActOn() {
+        // create a MoveAction for the player to move to city2
+        MoveAction moveAction = new MoveAction() {
+            @Override
+            public int getChoice() {
+                // simulate player choosing city2
+                return 1;
+            }
+        };
+        // perform the move action
+        moveAction.actOn(player);
+        // check that the player is in city2
+        assertEquals("City2", player.getCity().getName());
+        // check that city1 no longer has the player
+        assertFalse(board.getCity("City1").hasPlayer(player));
+        // check that city2 has the player
+        assertTrue(board.getCity("City2").hasPlayer(player));
+    }
 
-        List <City> neighbors = city.getNeighborsCities();// récuperer les viles voisines de cette ville
-        
-
-		 MoveAction moveAction = new MoveAction();
-		 
-         moveAction.actOn(anes); // Exécuter l'action de déplacement
-
-
-		 assertEquals(neighbors.get(1), anes.getCity()); // Vérifier que le joueur a été déplacé à la ville choisie
-
-         assertEquals(true,moveAction.isPossible(anes));// on vérifie si le déplacement est bien effectué
-    
-   } 
-
-
-
+    @Test
+    public void testIsPossible() {
+        // create a MoveAction for the player to move to city3
+        MoveAction moveAction = new MoveAction() {
+            @Override
+            public int getChoice() {
+                // simulate player choosing city3
+                return 2;
+            }
+        };
+        // check that the move is possible
+        assertTrue(moveAction.isPossible(player));
+        // move the player to city3
+        moveAction.actOn(player);
+        // create a MoveAction for the player to move back to city1
+        moveAction = new MoveAction() {
+            @Override
+            public int getChoice() {
+                // simulate player choosing city1
+                return 1;
+            }
+        };
+        // check that the move is not possible (city1 is not a neighbor of city3)
+        assertFalse(moveAction.isPossible(player));
+    }
 
 }
