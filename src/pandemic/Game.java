@@ -142,9 +142,11 @@ public class Game {
 	 * @param p the player who take a card
 	 */
 	public void DrawAPlayerCard(Player p) {
-
 		PileCardPlayer card = this.drawPlayer.pop();
 		card.comportement(p);
+		if(card instanceof EpidemicCard) { // si c une carte epidemie on doit la defausser
+			this.discardPlayer.add(card);
+		}
 	}
 
 	public ArrayList<Player> getPlayers(){
@@ -172,6 +174,17 @@ public class Game {
 		InfectionCard card =this.drawInfection.pop();
 		System.out.println("La carte infection prise ajoute à la ville :"+ card.getCity().getName()+ " le virus :" + card.getDisease().getName());
 		card.comportement(p);
+		this.discardInfectionCard(card); // on defausse la carte
+	}
+	
+	// FONCTIONS POUR DEFAUSSER LES CARTES 
+	
+	public void discardPlayerCard(PileCardPlayer card) {
+		this.discardPlayer.add(card);
+	}
+	
+	public void discardInfectionCard(InfectionCard card) {
+		this.discardInfection.add(card);
 	}
 
 
