@@ -71,7 +71,7 @@ public class FindCureAction implements Action {
                     Disease disease = entry.getKey();
                     // Défausser les 5 cartes de cette maladie.
                     for (int i = 0; i < 5; i++) {
-                        player.discardPlayerCard(disease);
+                        player.discardFiveCardsOfDisease(disease);
                     }
                     // Ajouter le remède pour cette maladie.
                     disease.findAnAntidote();

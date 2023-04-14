@@ -99,11 +99,26 @@ public abstract class Player{
 	
 	// cette fonction permet au joueur de deffausser les cartes d'une maladie guerrie.
 	// Je completerai plutard aprés discussion avec mes camarades.
-	public void discardPlayerCard(Disease disease) {
+	public void discardFiveCardsOfDisease(Disease disease) {
 		// TODO Auto-generated method stub
-		
+		int count = 0;
+	    List<PlayerCard> cardsToRemove = new ArrayList<>();
+	    for (PlayerCard card : this.getCards()) {
+	        if (card.getDisease().equals(disease)) {
+	            cardsToRemove.add(card);
+	            count++;
+	            if (count == 5) {
+	                break;
+	            }
+	        }
+	    }
+	    for (PlayerCard card : cardsToRemove) {
+	    	this.getGame().discardPlayerCard(card);
+	    }
+	    this.getCards().removeAll(cardsToRemove);
 	}
-
+	
+	}
 
 
 	
@@ -122,4 +137,3 @@ public abstract class Player{
 
 
 
-}
