@@ -31,10 +31,14 @@ public class MoveActionTest {
 
 		 List <City> neighbors = city.getNeighborsCities();// récuperer les viles voisines de cette ville
         
+         String input = "2"; // L'utilisateur choisit la deuxième ville voisine
+         InputStream in = new ByteArrayInputStream(input.getBytes());
+         System.setIn(in);
 
+         
 		 MoveAction moveAction = new MoveAction();
 		 
-         moveAction.getChoice().actOn(anes); // Exécuter l'action de déplacement
+         moveAction.actOn(anes); // Exécuter l'action de déplacement
 
 
 		 assertEquals(neighbors.get(1), anes.getCity()); // Vérifier que le joueur a été déplacé à la ville choisie
@@ -52,7 +56,7 @@ public class MoveActionTest {
 
 		 MoveAction moveAction = new MoveAction();
 		 
-         moveAction.getChoice().actOn(anes); // Exécuter l'action de déplacement
+         moveAction.actOn(anes); // Exécuter l'action de déplacement
 
 
 		 assertEquals(neighbors.get(1), anes.getCity()); // Vérifier que le joueur a été déplacé à la ville choisie
