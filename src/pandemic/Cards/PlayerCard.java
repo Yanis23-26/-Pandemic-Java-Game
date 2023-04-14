@@ -20,7 +20,11 @@ public class PlayerCard extends IntermediateCard implements PileCardPlayer{
      */
     public void comportement(Player player) {
         player.addPlayerCard(this);
+      //Affichage
+		System.out.println("The player "+ player.getName() + " has drawn a player card indicating the city of :"+ this.getCity() +",and disease : "+ this.getDisease());
     }
+    
+    
     public City getCity() {
     	return this.city;
     }

@@ -14,6 +14,9 @@ public class EpidemicCard implements Card, PileCardPlayer{
 			game.DrawAInfectionCardWhenEpidemic(p);
 			game.IncreasedInfectionRate();
 			game.shuffleInfectionCards(game.getDrawInfection());
+			
+			//Affichage
+			System.out.println("The player "+ p.getName() + " has drawn an epidemic card.");
 
 
 
