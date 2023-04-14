@@ -635,7 +635,7 @@ public class Game {
 	public void play() {
 		this.displayIntro();
 		this.askAndDisplayPlayersInfo(); // demander les info des joueurs
-		System.out.println(" Les "+this.getPlayers().size()+" se trouve actuellement sur la ville "+this.getPlayers().get(0).getCity().getName()+"\n");
+		System.out.println(" Les "+this.getPlayers().size()+" joueurs se trouve actuellement sur la "+this.getPlayers().get(0).getCity().getName()+"\n");
 		this.displayCards(); // affichage simple des cartes existantes dans le jeu
 		this.initializePlayersHandWithCard(this.getPlayers().size()); // distribution de cartes 
 		this.finalPreparePlayerCardPiles(); // preparation finale des piles de cartes joueurs
