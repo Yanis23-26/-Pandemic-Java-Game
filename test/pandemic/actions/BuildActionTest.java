@@ -28,30 +28,90 @@ public class BuildActionTest {
 	      this.game= new Game(path);
 	   }
 
+    // test n°1 : teste la mthode isPossible.
     @Test
-    public void buildAvtionTest() {
-    	Disease disease = new Disease("Influenza", 1);
-		Sector sector1 = new Sector("Europe", disease,1);
-        City city = new City("Paris", sector1);
-        PlayerCard playerCard = new PlayerCard(city, null);
-        Player rayane =new GlobeTrotter("rayane",city,game);
-        rayane.addPlayerCard(playerCard);
+    public void testIsPossibleWithMatchingPlayerCard() {
+    	// Création de la ville et du joueur
+    	Disease flue = new Disease("Influenza", 1);
+    	Disease grippe = new Disease("Grippe",2);
+		Sector europe = new Sector("Europe", flue,1);
+        City lille = new City("Lille", europe);
+        PlayerCard playerCard = new PlayerCard(lille, flue);
         
-        
-        BuildAction buildAction = new BuildAction();
-        assertFalse(buildAction.isPossible(rayane));
-        
-        // pose de la carte joueur
-        rayane.addPlayerCard(playerCard);
-        
-        // vérification que l'action est possible après avoir posé la carte joueur
-        assertTrue(buildAction.isPossible(rayane));
-        
-        // exécution de l'action
-        buildAction.actOn(rayane);
-        
-        // vérification que la ville contient maintenant une station de recherche
-        assertTrue(city.hasResearchStation());
+        Player yanis =new GlobeTrotter("Yanis Gherdane",lille,game);
+    	
+    	// Ajout d'une carte joueur associée à la ville du joueur
+    	PlayerCard matchingCard = new PlayerCard(lille,grippe);
+    	yanis.addPlayerCard(matchingCard);
+    	
+    	// Vérification que l'action est possible
+    	BuildAction buildAction = new BuildAction();
+    	assertTrue(buildAction.isPossible(yanis));
     }
+ // test n°2 : verifier le fonctionnement de isPossible()
+    @Test
+    public void testIsPossibleWithoutMatchingPlayerCard(){
+    	// Création de la ville et du joueur
+    	Disease flue = new Disease("Influenza", 1);
+    	Disease grippe = new Disease("Grippe",2);
+		Sector europe = new Sector("Europe", flue,1);
+        City lille = new City("Lille", europe);
+        PlayerCard playerCard = new PlayerCard(lille, flue);
+        
+        Player rayane =new GlobeTrotter("Rayane Slimani",lille,game);
+    	
+         // Vérification que l'action n'est pas possible car aucune carte joueur n'est associée à la ville
+    	BuildAction buildAction = new BuildAction();
+    	assertFalse(buildAction.isPossible(rayane));
+    }
+
+    
+    // test n°3 : verifie que aprés exécution de la fonction actOn, une station de recherche sera ajouté à la ville du joueur
+    @Test
+    public void testActOn() {
+    	// Création de la ville et du joueur
+    	Disease flue = new Disease("Influenza", 1);
+    	Disease grippe = new Disease("Grippe",2);
+		Sector europe = new Sector("Europe", flue,1);
+        City lille = new City("Lille", europe);
+        PlayerCard playerCard = new PlayerCard(lille, flue);
+        
+        Player manil =new GlobeTrotter("Manil Diaf",lille,game);
+    	
+    	// Ajout de la station de recherche à la ville
+    	BuildAction buildAction = new BuildAction();
+    	buildAction.actOn(manil);
+    	
+    	// Vérification que la ville contient maintenant une station de recherche
+    	assertTrue(lille.hasResearchStation());
+    }
+    
+    // test n°4 : verifie qu'une station de recherche se crie dans une ville, suite à l'éxécution de actOn
+    @Test
+    public void testActOn2() {
+        // Création de la ville et du joueur
+    	Disease flue = new Disease("Influenza", 1);
+    	Disease grippe = new Disease("Grippe",2);
+		Sector europe = new Sector("Europe", flue,1);
+        City berlin = new City("Berlin", europe);
+        City paris = new City("Paris", europe);
+        PlayerCard playerCard = new PlayerCard(berlin, flue);
+        
+        Player anes =new GlobeTrotter("Anes Seghir",berlin,game);
+        
+        // Création de l'action
+        BuildAction buildAction = new BuildAction();
+        
+        // Appel de la méthode actOn sur le joueur
+        anes.addPlayerCard(new PlayerCard(paris,flue));
+        buildAction.actOn(anes);
+        
+        // Vérification que la ville a bien une station de recherche maintenant
+        assertTrue(berlin.hasResearchStation());
+        
+       
+    }
+
+    
 
 }
