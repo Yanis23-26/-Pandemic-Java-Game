@@ -11,7 +11,7 @@ public class EpidemicCard implements Card, PileCardPlayer{
 			// on augmente le taux global d'infection 
 			// on melange les cartes d'infections
 			Game game=p.getGame();
-			game.DrawAInfectionCard(p);
+			game.DrawAInfectionCardWhenEpidemic(p);
 			game.IncreasedInfectionRate();
 			game.shuffleInfectionCards(game.getDrawInfection());
 

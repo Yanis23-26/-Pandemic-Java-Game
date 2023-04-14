@@ -168,12 +168,19 @@ public class Game {
 	/**
 	 * a player take a infection card
 	 */
-	public void DrawAInfectionCard(Player p) {
+	public void DrawAInfectionCardWhenEpidemic(Player p) {
 
 		InfectionCard card =this.drawInfection.pop();
-		System.out.println("La carte infection prise ajoute à la ville :"+ card.getCity().getName()+ " le virus :" + card.getDisease().getName());
 		card.comportement(p);
 		this.discardInfectionCard(card); // on defausse la carte
+	}
+	
+	public void DrawAInfectionCard(Player p) {
+		for(int i=0; i<this.getTotalInfectionRate(); i++) {
+			InfectionCard card =this.drawInfection.pop();
+			card.comportement(p);
+			this.discardInfectionCard(card);  // on defausse la carte
+		}
 	}
 	
 	// FONCTIONS POUR DEFAUSSER LES CARTES 
