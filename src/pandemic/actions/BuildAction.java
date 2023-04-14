@@ -21,21 +21,23 @@ public class BuildAction implements Action {
 			if(card.getCity().equals(city)) {
 				return true;
 			}
-			else {
-				System.out.println(" OOPS !!! The player don't have player card associated to the current city.");
-			}
 		}
 		 // si aucune carte joueur n'est associée à la ville, l'action n'est pas possible
-		System.out.println(" Impossible to build a research station, the conditions are not met !!!");
 		return false;
 	}
 	
 	@Override
 	public void actOn(Player p) {
+		if(isPossible(p)) {
+			
 		p.getCity().addResearchStation();
 		//Affichage 
 		System.out.println("The player : " + p.getName() + " has créated a research station in " + p.getCity()+ "!");
 
 	}
+	else {
+		System.out.println(" Impossible to build a research station, the conditions are not met !!!");
+	}
 
+}
 }
