@@ -19,14 +19,10 @@ public class FindCureAction implements Action {
         // Condition 1 : vérifier si le joueur est dans une ville qui a une station de recherche.
         if (!player.getCity().hasResearchStation()) {
         	return false;
-            
-        }
-        
-        //Condition 2: vérifier si le joueur dispose de 5 cartes joueur de la meme maladie.
-        
+        }        
+        //Condition 2: vérifier si le joueur dispose de 5 cartes joueur de la meme maladie.        
         // Récupère toutes les cartes joueur de la main du joueur
-        List<PlayerCard> playerCards = player.getCards();
-        
+        List<PlayerCard> playerCards = player.getCards();        
         // Compte le nombre de cartes joueur pour chaque maladie
         Map<Disease, Integer> cardCounts = new HashMap<>();
         for (PlayerCard card : playerCards) {
@@ -40,8 +36,7 @@ public class FindCureAction implements Action {
                 cardCounts.put(disease, count + 1);
                 // incrémenter le nombre de cartes joueur pour cette maladie
             }
-        }
-        
+        }        
         // Vérifie si le joueur possède au moins 5 cartes joueur pour une même maladie
         for (int count : cardCounts.values()) {
             if (count >= 5) {
@@ -75,13 +70,14 @@ public class FindCureAction implements Action {
                 if (entry.getValue() >= 5) {
                     Disease disease = entry.getKey();
                     // Défausser les 5 cartes de cette maladie.
+                  //Affichage console
+                	System.out.println("The player " + player.getName() + " has cured the disease " + disease + " ^_^");
                     for (int i = 0; i < 5; i++) {
                         player.discardFiveCardsOfDisease(disease);
                     }
                     // Ajouter le remède pour cette maladie.
                     disease.findAnAntidote();
-                    //Affichage 
-                    System.out.println("The player : " + player.getName() + " has cured the disease : " + disease + "!");
+                   
                 }
             }
         }
