@@ -12,10 +12,6 @@ public class MoveAction implements Action {
 	
 	
 	
-	
-	
-	
-	
 	/**
 	 *@param p  
 	 *  return true si laction est possible 
