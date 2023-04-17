@@ -54,6 +54,7 @@ public class MoveAction implements Action {
 	 * return the number of the choice of the player 
 	 */
 	private int getChoice() {
+		System.out.println("veuillez choisir la city ou aller selon le chiffre");
 		Scanner scan = new Scanner(System.in);
 		int choice = scan.nextInt();
 		return choice;
@@ -66,7 +67,6 @@ public class MoveAction implements Action {
 	 * @param list de neighbors 
 	 */
 	private void displayNeighbors(List<City> neighbors) {
-		System.out.println("veuillez choisir la city ou aller selen le chiffre");
 		int idx = 1;
 		for(City n :neighbors ) {
 			System.out.println(idx+"-" + n.getName());
