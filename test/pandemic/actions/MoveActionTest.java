@@ -87,7 +87,7 @@ public class MoveActionTest {
 
     public void testActOnIfDestinationIsNeighbor4() {
 
-        City alger = game.getWorld().getSectors().get(0).getCities(0).get(3);
+        City alger = game.getWorld().getSectors().get(0).getCities().get(3);
 
         // le joueur rayane
 
