@@ -24,48 +24,78 @@ public class MoveActionTest {
 		  this.path="./src/pandemic/carte2.json";
 	      this.game= new Game(path);
 	}
-
-    public int getChoice() {
-        Scanner scan = new Scanner(System.in);
-        int choice = scan.nextInt();
-        return choice;
-    }
     
 
     ////////////////////// LES TESTS /////////////////////////////////////////
 
 
 
-    // Test n°1 : isPossible() si la destination est une ville voisine.
+    // Test n°1 : isPossible() si la destination est une ville voisine et si le déplacement peut être effectuer
 
     @Test
 
-    public void testActOnIfDestinationIsNeighbor() {
+    public void testActOnIfDestinationIsNeighbor1() {
 
-        //City lille = game.getWorld().getSectors().get(0).getCities().get(0); 
-        //City paris = game.getWorld().getSectors().get(0).getCities().get(1);
         City tokyo = game.getWorld().getSectors().get(0).getCities().get(2);
-        //City alger = game.getWorld().getSectors().get(0).getCities(0).get(3);
 
-        
+        // le joueur anes
 
-        // les joueurs
-
-        //Player yanis = new Doctor("Yanis GHERDANE",lille,game);
-        //Player manil = new Doctor("Manil DIAF",paris,game);
         Player anes = new Doctor("Anes Seghir",tokyo,game);
-        //Player rayane = new Doctor("Rayane SLIMANI",alger,game);
-
-        List <City> neighbors=tokyo.getNeighborsCities();
-        
 
         MoveAction action = new MoveAction();
         
-        action.actOn(anes);
-
         assertEquals(true,action.isPossible(anes));
 
 
+    }
+
+    @Test
+
+    public void testActOnIfDestinationIsNeighbor2() {
+
+        City lille = game.getWorld().getSectors().get(0).getCities().get(0); 
+
+        // le joueur yanis
+
+        Player yanis = new Doctor("Yanis GHERDANE",lille,game);
+
+        MoveAction action = new MoveAction();
+        
+        assertEquals(true,action.isPossible(yanis));
+
+
+    }
+
+    @Test
+
+    public void testActOnIfDestinationIsNeighbor3() {
+
+        City paris = game.getWorld().getSectors().get(0).getCities().get(1);
+
+        // le joueur manil
+
+        Player manil = new Doctor("Manil DIAF",paris,game);
+
+        MoveAction action = new MoveAction();
+
+        assertEquals(true,action.isPossible(manil));
+
+
+    }
+
+    @Test
+
+    public void testActOnIfDestinationIsNeighbor4() {
+
+        City alger = game.getWorld().getSectors().get(0).getCities(0).get(3);
+
+        // le joueur rayane
+
+        Player rayane = new Doctor("Rayane SLIMANI",alger,game);
+
+        MoveAction action = new MoveAction();
+        
+        assertEquals(true,action.isPossible(rayane));
 
 
     }
