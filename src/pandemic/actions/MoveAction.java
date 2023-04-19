@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class MoveAction implements Action {
 	
 	
-	
+	private int choice=0;
 	
 	/**
 	 *@param p  
@@ -21,7 +21,9 @@ public class MoveAction implements Action {
 	public boolean isPossible(Player p) {
 		City currentCity = p.getCity();
 		List<City> neighbors = currentCity.getNeighborsCities();
-		City destination = neighbors.get(this.getChoice()-1);;
+		displayNeighbors(neighbors);
+		City destination = neighbors.get(getChoice()-1);
+		actOn(p);
 		if (!neighbors.contains(destination)) {
 			System.out.println("The player could not move \n !");
 			return false;
@@ -30,7 +32,17 @@ public class MoveAction implements Action {
 
 }
 	
-	
+	/**
+	 * return the number of the choice of the player 
+	 */
+	public int getChoice() {
+		System.out.println("veuillez choisir la city ou aller selon le chiffre");
+		Scanner scan = new Scanner(System.in);
+		int choice = scan.nextInt();
+		return choice;
+	} 
+
+
 	/**
 	 * deplacement du joueur apres choisir ca ville voisine 
 	 * @param player 
@@ -39,9 +51,7 @@ public class MoveAction implements Action {
 	public void actOn(Player p) {
 		City currentCity = p.getCity();
 		List <City> neighbors = currentCity.getNeighborsCities();
-		displayNeighbors(neighbors);
-		int choice = getChoice();
-		City destination =neighbors.get(choice-1); 
+        City destination =neighbors.get(choice); 
 		p.setCity(destination);
 		destination.addPlayer(p);
 		//Affichage 
@@ -50,15 +60,7 @@ public class MoveAction implements Action {
 	}
     
 	
-	/**
-	 * return the number of the choice of the player 
-	 */
-	private int getChoice() {
-		System.out.println("veuillez choisir la city ou aller selon le chiffre");
-		Scanner scan = new Scanner(System.in);
-		int choice = scan.nextInt();
-		return choice;
-	}
+
     
 	
 	
