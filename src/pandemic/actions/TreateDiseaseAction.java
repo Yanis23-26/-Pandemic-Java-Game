@@ -6,6 +6,7 @@ import java.util.Map;
 
 
 import pandemic.Board.City;
+import pandemic.Board.CityException;
 import pandemic.Board.Disease;
 import pandemic.Cards.PlayerCard;
 import pandemic.Roles.*;
@@ -15,7 +16,7 @@ public class TreateDiseaseAction implements Action {
 	
 	
 	@Override
-	public void actOn(Player p) {
+	public void actOn(Player p)  {
 		if(isPossible(p)) {
 		City cp = p.getCity();
 		if(cp.hasResearchStation()) {
@@ -30,11 +31,18 @@ public class TreateDiseaseAction implements Action {
 					tmp.put(carte.getDisease(),tmp.get(carte.getDisease())+1);
 			}
 			for(Disease dise : tmp.keySet()) {
-				if(tmp.get(dise)>=5) {
-					dise.findAnAntidote();
-					//Affichage 
-					System.out.println("The player : " + p.getName() + " has treated the disease : " + dise + "!");
-				}
+//				if(tmp.get(dise)>=5) {
+//					//dise.findAnAntidote();
+//					//Affichage 
+//					System.out.println("The player : " + p.getName() + " has treated the disease : " + dise + "!");
+//				}
+					try {
+						cp.removeInfection(dise);
+					}
+					catch( CityException e) {
+						System.out.println("CityException");
+						
+					}
 			}
 			
 		}
