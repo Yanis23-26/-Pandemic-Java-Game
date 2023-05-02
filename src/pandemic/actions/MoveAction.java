@@ -51,6 +51,8 @@ public class MoveAction implements Action {
 	public void actOn(Player p) {
 		City currentCity = p.getCity();
 		List <City> neighbors = currentCity.getNeighborsCities();
+		displayNeighbors(neighbors);
+		int choice=this.getChoice()-1;
         City destination =neighbors.get(choice); 
 		p.setCity(destination);
 		destination.addPlayer(p);
