@@ -82,18 +82,18 @@ public class Game {
 		return this.totalFoyerInfection;
 	}
 	
-	/*
-	 * decrease the total nb of FoyerInfection
-	 */
-	public void decreaseNbOfFoyerInfection() {
-		this.totalFoyerInfection-=1;
-	}
 	
 	/*
-	 * increase the total nb of foyerInfection
+	 * update the total nb of foyerInfection
 	 */
-	public void increaseNbOfFoyerInfection() {
-		this.totalFoyerInfection+=1;
+	public void updateNbOfFoyerInfection() {
+		int cpt=0;
+		for(City c : this.getWorld().getAllCities()) {
+			if(c.isFoyerInfection()) {
+				cpt+=1;
+			}
+		}
+		this.totalFoyerInfection=cpt;
 	}
 	
 	
@@ -251,6 +251,7 @@ public class Game {
 			InfectionCard card =this.drawInfection.pop();
 			System.out.println(p.getName()+"has drown an Infection Card .\n");
 			card.comportement(p);
+			this.updateNbOfFoyerInfection();
 			this.discardInfectionCard(card);  // on defausse la carte
 			System.out.println(" ");
 		}
@@ -325,7 +326,8 @@ public class Game {
 		for(PileCardPlayer card : tasDeCartes) {
 			this.getDrawplayer().push(card);
 		}
-		this.shufflePlayerCards(this.getDrawplayer());
+		this.
+(this.getDrawplayer());
 		System.out.println(" ");
 	}
 
@@ -709,10 +711,6 @@ public class Game {
 		this.initializePlayersHandWithCard(this.getPlayers().size()); // distribution de cartes 
 		this.finalPreparePlayerCardPiles(); // preparation finale des piles de cartes joueurs
 		this.initialInfection(); // infection initiale
-		System.out.println("\n");
-		System.out.println("\n");
-		System.out.println("\n");
-		System.out.println(this.getactualNbOfCubes());
 		this.doingTheActions(); // faire les actions
 	}
 
