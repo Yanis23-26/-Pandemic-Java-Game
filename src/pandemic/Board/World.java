@@ -148,10 +148,16 @@ public class World { // this class contains all the sectors
 				System.out.println("");
 			}
 		}
-		//return null;
 	}
 	
+	public ArrayList<City> getAllCities(){
+		ArrayList<City> allCities = new ArrayList<City>();
+	for(int i=0; i<4; i++) {
+		for(City c : this.sectors.get(i).getCities()) {
+			allCities.add(c);
+		}
+	}
 	
-	
-
+	return allCities;
+}
 }

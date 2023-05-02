@@ -29,6 +29,8 @@ public class Game {
 	private int totalInfectionRate;
 	/* nb of Station*/
 	private int actualNbOfStations ;
+	/* actual diseases*/
+	private ArrayList<Disease> diseases;
 
 
 
@@ -44,7 +46,9 @@ public class Game {
 		this.initializeDraw();
 		this.discardPlayer=new Stack<PileCardPlayer>();
 		this.discardInfection = new Stack<InfectionCard>();
+		this.diseases = new ArrayList<Disease>();
 		this.initializeDisease();
+		
 
 	}
 
@@ -112,6 +116,13 @@ public class Game {
 	public Stack<PileCardPlayer> getDiscardplayer(){
 		return this.discardPlayer;
 	}
+	
+	/*
+	 * get the list of the diseases
+	*/
+	public ArrayList<Disease> getDiseases(){
+		return this.diseases;
+	}	
 
 
 
@@ -157,9 +168,13 @@ public class Game {
 		for(Sector sector : world.getSectors()) {
 			for(City city : sector.getCities()) {
 				city.initDisease(this.getWorld().getSectors().get(0).getSectorDisease());
+				this.diseases.add(this.getWorld().getSectors().get(0).getSectorDisease());
 				city.initDisease(this.getWorld().getSectors().get(1).getSectorDisease());
+				this.diseases.add(this.getWorld().getSectors().get(1).getSectorDisease());
 				city.initDisease(this.getWorld().getSectors().get(2).getSectorDisease());
+				this.diseases.add(this.getWorld().getSectors().get(2).getSectorDisease());
 				city.initDisease(this.getWorld().getSectors().get(3).getSectorDisease());
+				this.diseases.add(this.getWorld().getSectors().get(3).getSectorDisease());
 			}
 		}
 	}

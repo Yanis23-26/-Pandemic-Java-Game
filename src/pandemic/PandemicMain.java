@@ -24,7 +24,6 @@ public class PandemicMain {
 		
 		try {
 			Game game = new Game("./src/pandemic/carte2.json");
-			
 			game.play();
 			
 			
