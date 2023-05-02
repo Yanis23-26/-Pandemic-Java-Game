@@ -31,6 +31,10 @@ public class Game {
 	private int actualNbOfStations ;
 	/* actual diseases*/
 	private ArrayList<Disease> diseases;
+	/*total foyer d infection*/
+	private int totalFoyerInfection;
+	/*nb total of cubes*/
+	private int totalNbOfCubes;
 
 
 
@@ -48,6 +52,8 @@ public class Game {
 		this.discardInfection = new Stack<InfectionCard>();
 		this.diseases = new ArrayList<Disease>();
 		this.initializeDisease();
+		this.totalFoyerInfection=0;
+		this.totalNbOfCubes=96;
 		
 
 	}
@@ -72,8 +78,40 @@ public class Game {
 	 * Get actual nb of resarshStation
 	 * @return  nb of resarshStation
 	 */
+	public int getactualNbOfFoyerInfection() {
+		return this.totalFoyerInfection;
+	}
+	
+	/*
+	 * decrease the total nb of FoyerInfection
+	 */
+	public void decreaseNbOfFoyerInfection() {
+		this.totalFoyerInfection-=1;
+	}
+	
+	/*
+	 * increase the total nb of foyerInfection
+	 */
+	public void increaseNbOfFoyerInfection() {
+		this.totalFoyerInfection+=1;
+	}
+	
+	
+
+	/*
+	 * Get actual nb of foyerInfection
+	 * @return  nb of foyerInfection
+	 */
 	public int getactualNbOfStations() {
 		return this.actualNbOfStations;
+	}
+	
+	/*
+	 * Get actual nb of foyerInfection
+	 * @return  nb of foyerInfection
+	 */
+	public int getactualNbOfCubes() {
+		return this.totalNbOfCubes;
 	}
 
 
@@ -82,6 +120,20 @@ public class Game {
 	 */
 	public void IncreasedInfectionRate() {
 		this.totalInfectionRate+=1;
+	}
+	
+	/*
+	 * decrease the total nb of cubes
+	 */
+	public void decreaseNbOfCubes() {
+		this.totalNbOfCubes-=1;
+	}
+	
+	/*
+	 * increase the total infectionRate
+	 */
+	public void IncreaseNbOfCubes() {
+		this.totalNbOfCubes+=1;
 	}
 
 
@@ -156,7 +208,9 @@ public class Game {
 		if(card instanceof EpidemicCard) { // si c une carte epidemie on doit la defausser
 			this.discardPlayer.add(card);
 		}
-
+		if(p.getCards().size()>7) {
+			p.getCards().remove(7);
+		}
 	}
 
 	public ArrayList<Player> getPlayers(){
@@ -655,6 +709,10 @@ public class Game {
 		this.initializePlayersHandWithCard(this.getPlayers().size()); // distribution de cartes 
 		this.finalPreparePlayerCardPiles(); // preparation finale des piles de cartes joueurs
 		this.initialInfection(); // infection initiale
+		System.out.println("\n");
+		System.out.println("\n");
+		System.out.println("\n");
+		System.out.println(this.getactualNbOfCubes());
 		this.doingTheActions(); // faire les actions
 	}
 
