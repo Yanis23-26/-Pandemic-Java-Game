@@ -52,8 +52,12 @@ public class MoveAction implements Action {
 		City currentCity = p.getCity();
 		List <City> neighbors = currentCity.getNeighborsCities();
 		displayNeighbors(neighbors);
-		int choice=this.getChoice()-1;
-        City destination =neighbors.get(choice); 
+		int choice=this.getChoice();
+		while(choice<1 || choice>neighbors.size()) {
+			System.out.println("Désolé vous ne pouvez pas aller vers cette ville");
+			choice=this.getChoice();
+		}
+        City destination =neighbors.get(choice-1); 
 		p.setCity(destination);
 		destination.addPlayer(p);
 		//Affichage 

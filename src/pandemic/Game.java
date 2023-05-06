@@ -267,6 +267,7 @@ public class Game {
 	public void DrawAInfectionCard(Player p) {
 		for(int i=0; i<this.getTotalInfectionRate(); i++) {
 			InfectionCard card =this.drawInfection.pop();
+			this.totalNbOfCubes--;
 			System.out.println(p.getName()+"has drown an Infection Card .\n");
 			card.comportement(p);
 			this.updateNbOfFoyerInfection();
@@ -671,7 +672,7 @@ public class Game {
 
 
 	private void getPlayerInfo(int numPlayers) {
-		City city = world.getSectors().get((int)(Math.random() * 5)).getCities().get((int)(Math.random() * 12));
+		City city = world.getSectors().get(0).getCities().get(0);
 		List<String> availableRoles = new ArrayList<>(Arrays.asList("doctor", "expert", "globetrotter", "scientist"));
 		Scanner scanner = new Scanner(System.in);
 		for (int i = 0; i < numPlayers; i++) {
