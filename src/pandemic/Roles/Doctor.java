@@ -14,7 +14,7 @@ public class Doctor extends Player {
 	@Override
 	public Action initRoll() {
 		
-		return new TreateDiseaseAction();
+		return new DoctorTreatDiseaseAction();
 	}
 
 }

@@ -13,7 +13,7 @@ public class Expert extends Player {
 	@Override
 	public Action initRoll() {
 		// TODO Auto-generated method stub
-		return new BuildAction();
+		return new ExpertBuildAction();
 	}
 
 }

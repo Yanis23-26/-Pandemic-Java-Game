@@ -12,7 +12,7 @@ public class GlobeTrotter extends Player {
 	@Override
 	public Action initRoll() {
 		
-		return new MoveAction();
+		return new GlobeTrotterMoveAction();
 	}
 
 	

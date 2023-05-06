@@ -74,7 +74,7 @@ public class ScientistFindCureAction implements Action {
                   //Affichage console
                 	System.out.println("The Scientist " + player.getName() + " has cured the disease " + disease + " ^_^");
                     for (int i = 0; i < 4; i++) {
-                        player.discardFiveCardsOfDisease(disease);
+                        player.discardFourCardsOfDisease(disease);
                     }
                     // Ajouter le remède pour cette maladie.
                     disease.findAnAntidote();
