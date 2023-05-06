@@ -12,7 +12,8 @@ public class Scientist extends Player {
 	@Override
 	public Action initRoll() {
 		
-		return new FindCureAction();
+		
+		return new ScientistFindCureAction();
 	}
 
 	
