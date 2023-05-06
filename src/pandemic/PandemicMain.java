@@ -1,29 +1,51 @@
 package pandemic;
 import java.io.FileNotFoundException;
+import java.util.InputMismatchException;
+import java.util.Scanner;
 import java.io.File;
 public class PandemicMain {
 
 	
-	private static String argumentsVerification(String args[]) {
+	private static Boolean argumentsVerification(String args) {
 		// Vérification de la présence d'arguments
-        if (args.length !=1) {
+        if (args.equals("")) {
             System.err.println("Aucun argument spécifié");
             System.exit(1);
         }
 
         // Vérification  argument
-            File file = new File(args[0]);
+            File file = new File(args);
             if (!file.isFile()) {
-                throw new IllegalArgumentException("L'argument '" + args[0] + "' n'est pas un chemin valide vers un fichier");
+            	System.out.println("L'argument '" + args + "' n'est pas un chemin valide vers un fichier");
+            	return false;
             }
-            
-        return args[0];
+            else {
+            	return true;
+            }
+         
 	}		
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		
 		try {
-			Game game = new Game("./src/pandemic/carte2.json");
+			Boolean validPath = false;
+			Scanner scanner = new Scanner(System.in);
+			String path = null;
+			while (!validPath) {
+				System.out.print("Please enter the path to your json file.\n");
+				try {
+					path = scanner.next();
+					if (argumentsVerification(path)) {
+						validPath = true;
+					} else {
+						System.out.println("E R R O R !");
+					}
+				} catch (InputMismatchException e) {
+					System.out.println("Please enter a valid path.\n");
+					scanner.next();
+				}
+			}
+			Game game = new Game(path);
 			game.play();
 			
 			

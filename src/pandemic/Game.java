@@ -201,8 +201,10 @@ public class Game {
 	/**
 	 * a player take a card 
 	 * @param p the player who take a card
+	 * @throws InterruptedException 
 	 */
-	public void DrawAPlayerCard(Player p) {
+	public void DrawAPlayerCard(Player p) throws InterruptedException {
+		if(!this.getDrawplayer().isEmpty()) {
 		PileCardPlayer card = this.drawPlayer.pop();
 		card.comportement(p);
 		if(card instanceof EpidemicCard) { // si c une carte epidemie on doit la defausser
@@ -210,6 +212,22 @@ public class Game {
 		}
 		if(p.getCards().size()>7) {
 			p.getCards().remove(7);
+		}
+		}
+		else {
+			// le jeu est terminé
+			System.out.println("#############################");
+	        System.out.println("#                           #");
+	        System.out.println("#         Game Over         #");
+	        System.out.println("#                           #");
+	        System.out.println("#############################");
+	        System.out.println("#############################");
+	        System.out.println("#                           #");
+	        System.out.println(" THE PLAYERS DRAW IS EMPTY ! ");
+	        System.out.println("#                           #");
+	        System.out.println("#############################");
+	        Thread.sleep(5000);
+	        System.exit(0);
 		}
 	}
 
@@ -283,7 +301,7 @@ public class Game {
 		Collections.shuffle(iCards);
 	}
 
-	public void initializePlayersHandWithCard(int nbOfPlayers) {
+	public void initializePlayersHandWithCard(int nbOfPlayers) throws InterruptedException {
 		int nbCartesParJoueur = 0;
 
 		if (nbOfPlayers == 2) {
@@ -326,8 +344,6 @@ public class Game {
 		for(PileCardPlayer card : tasDeCartes) {
 			this.getDrawplayer().push(card);
 		}
-		this.
-(this.getDrawplayer());
 		System.out.println(" ");
 	}
 
@@ -479,6 +495,7 @@ public class Game {
 	@SuppressWarnings("resource")
 	public  void choseAndExecuteActionScientist(Player p) {
 		for(int i=0; i<4; i++) {
+			
 			// Créer un objet Scanner pour la saisie utilisateur
 			Scanner scanner = new Scanner(System.in);
 			// Afficher les actions possibles
@@ -514,10 +531,9 @@ public class Game {
 
 
 
-	public void doingTheActions() {
-		int i=0; // juste pour jouer deux tour chacun
-		while (i<2){
-
+	public void doingTheActions() throws InterruptedException {
+		//condition d arret
+		while ((this.getactualNbOfCubes()>0) & (this.getactualNbOfFoyerInfection()<8) ){
 			for(Player p : this.getPlayers()) {
 				if(p instanceof Doctor) {
 					this.choseAndExecuteActionDoctor(p);
@@ -549,8 +565,38 @@ public class Game {
 				}
 
 			}
-			i++;
 		}
+		if(this.getactualNbOfCubes()<=0) {
+			// le jeu est terminé
+			System.out.println("#############################");
+	        System.out.println("#                           #");
+	        System.out.println("#         Game Over         #");
+	        System.out.println("#                           #");
+	        System.out.println("#############################");
+	        System.out.println("#############################");
+	        System.out.println("#                           #");
+	        System.out.println(" THE CUBES STOCK IS EMPTY !  ");
+	        System.out.println("#                           #");
+	        System.out.println("#############################");
+	        Thread.sleep(5000);
+	        System.exit(0);
+		}
+		else {
+			// le jeu est terminé
+			System.out.println("############################################");
+	        System.out.println("#######                           ##########");
+	        System.out.println("#######         Game Over         ##########");
+	        System.out.println("########                           #########");
+	        System.out.println("############################################");
+	        System.out.println("############################################");
+	        System.out.println("#                           ################");
+	        System.out.println("THE NUMBER OF FOYERINFACTION HAS REACHED 8 !");
+	        System.out.println("#                           ################");
+	        System.out.println("############################################");
+	        Thread.sleep(5000);
+	        System.exit(0);
+		}
+		
 	}
 
 
@@ -586,7 +632,7 @@ public class Game {
 
 
 	public void askAndDisplayPlayersInfo() {
-		int numPlayers = getNumberOfPlayers();
+		int numPlayers = this.getNumberOfPlayers();
 		System.out.println(" ");
 		getPlayerInfo(numPlayers);
 	}
@@ -618,7 +664,6 @@ public class Game {
 		City city = world.getSectors().get((int)(Math.random() * 5)).getCities().get((int)(Math.random() * 12));
 		List<String> availableRoles = new ArrayList<>(Arrays.asList("doctor", "expert", "globetrotter", "scientist"));
 		Scanner scanner = new Scanner(System.in);
-		scanner.nextLine();
 		for (int i = 0; i < numPlayers; i++) {
 			System.out.printf("\nPlayer %d, enter your name: ", i + 1);
 			String name = scanner.nextLine();
@@ -703,7 +748,7 @@ public class Game {
 
 
 
-	public void play() {
+	public void play() throws InterruptedException {
 		this.displayIntro();
 		this.askAndDisplayPlayersInfo(); // demander les info des joueurs
 		System.out.println(" Les "+this.getPlayers().size()+" joueurs se trouve actuellement sur la "+this.getPlayers().get(0).getCity().getName()+"\n");
