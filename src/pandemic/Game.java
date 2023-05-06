@@ -384,13 +384,7 @@ public class Game {
 	@SuppressWarnings("resource")
 	public  void choseAndExecuteActionDoctor(Player p) {
 		for(int i=0; i<4; i++) {
-			// Créer un objet Scanner pour la saisie utilisateur
-			Scanner scanner = new Scanner(System.in);
-			// Afficher les actions possibles
-			System.out.println("Actions possibles : move, build, find, treat, pass");
-			// Demander au joueur de choisir une action
-			System.out.printf(p.getName()+" quelle action souhaitez-vous réaliser ?\n");
-			String action = scanner.nextLine();
+			String action = displayChoosenAction(p);
 			// Exécuter l'action choisie
 			switch (action) {
 			case "move":
@@ -416,19 +410,47 @@ public class Game {
 		System.out.println(" ");
 	}
 
+	public String displayChoosenAction(Player p) {
+		List<String> possibleActions = new ArrayList<String>();
+		possibleActions.add("pass");
+		possibleActions.add("move");
+		if(p.getBuildAction().isPossible(p)) {
+			possibleActions.add("build");
+		}
+		if(p.getFindCureAction().isPossible(p)) {
+			possibleActions.add("find");
+		}
+		if(p.getTreatDiseaseAction().isPossible(p)) {
+			possibleActions.add("treat");
+		}
+			
+		// Créer un objet Scanner pour la saisie utilisateur
+		Scanner scanner = new Scanner(System.in);
+		// Afficher les actions possibles
+		String displayPossibleActions = "Actions possibles : ";
+		for(String s : possibleActions) {
+			displayPossibleActions=displayPossibleActions+s+", ";
+		}
+		System.out.println(displayPossibleActions);
+		// Demander au joueur de choisir une action
+		System.out.printf(p.getName()+" quelle action souhaitez-vous réaliser ?\n");
+		String action = scanner.nextLine();
+		action.toLowerCase();
+		while(!displayPossibleActions.contains(action)) {
+			System.out.println("Action invalide !");
+			System.out.printf(p.getName()+" quelle action souhaitez-vous réaliser ??\n");
+			action = scanner.nextLine();
+		}
+		return action;
+	}
+
 
 	// Fonction pour demander à un expert de choisir et exécuter une action
 	@SuppressWarnings("resource")
 	public  void choseAndExecuteActionExpert(Player p) {
 		for(int i=0; i<4; i++) {
-			// Créer un objet Scanner pour la saisie utilisateur
-			Scanner scanner = new Scanner(System.in);
-			// Afficher les actions possibles
-			System.out.println("Actions possibles : move, build, find, treat, pass");
-			// Demander au joueur de choisir une action
-			System.out.printf(p.getName()+" quelle action souhaitez-vous réaliser ?\n");
-			String action = scanner.nextLine();
-			// Exécuter l'action choisie
+			String action = displayChoosenAction(p);
+			
 			switch (action) {
 			case "move":
 				p.getMoveAction().actOn(p);
@@ -458,13 +480,8 @@ public class Game {
 	@SuppressWarnings("resource")
 	public  void choseAndExecuteActionGlobetrotter(Player p) {
 		for(int i=0; i<4; i++) {
-			// Créer un objet Scanner pour la saisie utilisateur
-			Scanner scanner = new Scanner(System.in);
-			// Afficher les actions possibles
-			System.out.println("Actions possibles : move, build, find, treat, pass");
-			// Demander au joueur de choisir une action
-			System.out.printf(p.getName()+" quelle action souhaitez-vous réaliser ?\n");
-			String action = scanner.nextLine();
+			String action = displayChoosenAction(p);
+
 			// Exécuter l'action choisie
 			switch (action) {
 			case "move":
@@ -495,15 +512,8 @@ public class Game {
 	@SuppressWarnings("resource")
 	public  void choseAndExecuteActionScientist(Player p) {
 		for(int i=0; i<4; i++) {
-			
-			// Créer un objet Scanner pour la saisie utilisateur
-			Scanner scanner = new Scanner(System.in);
-			// Afficher les actions possibles
-			System.out.println("Actions possibles : move, build, find, treat, pass");
-			// Demander au joueur de choisir une action
-			System.out.printf(p.getName()+" quelle action souhaitez-vous réaliser ?\n");
-			String action = scanner.nextLine();
-			// Exécuter l'action choisie
+			String action = displayChoosenAction(p);
+
 			switch (action) {
 			case "move":
 				p.getMoveAction().actOn(p);
