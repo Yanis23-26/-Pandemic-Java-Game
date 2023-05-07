@@ -254,9 +254,24 @@ public class Game {
 
 	/**
 	 * a player take a infection card
+	 * @throws InterruptedException 
 	 */
-	public void DrawAInfectionCardWhenEpidemic(Player p) {
-
+	public void DrawAInfectionCardWhenEpidemic(Player p) throws InterruptedException {
+		if(this.drawInfection.isEmpty()) {
+			// le jeu est terminé
+						System.out.println("#############################");
+				        System.out.println("#                           #");
+				        System.out.println("#         Game Over         #");
+				        System.out.println("#                           #");
+				        System.out.println("#############################");
+				        System.out.println("#############################");
+				        System.out.println("#                           #");
+				        System.out.println(" THE CUBES STOCK IS EMPTY !  ");
+				        System.out.println("#                           #");
+				        System.out.println("#############################");
+				        Thread.sleep(5000);
+				        System.exit(0);
+		}
 		InfectionCard card =this.drawInfection.pop();
 		System.out.println(p.getName()+" has drown a infection Card \n");
 		card.comportement(p);
@@ -264,7 +279,22 @@ public class Game {
 		System.out.println(" ");
 	}
 
-	public void DrawAInfectionCard(Player p) {
+	public void DrawAInfectionCard(Player p) throws InterruptedException {
+		if(this.drawInfection.isEmpty()) {
+			// le jeu est terminé
+						System.out.println("#############################");
+				        System.out.println("#                           #");
+				        System.out.println("#         Game Over         #");
+				        System.out.println("#                           #");
+				        System.out.println("#############################");
+				        System.out.println("#############################");
+				        System.out.println("#                           #");
+				        System.out.println(" THE CUBES STOCK IS EMPTY !  ");
+				        System.out.println("#                           #");
+				        System.out.println("#############################");
+				        Thread.sleep(5000);
+				        System.exit(0);
+		}
 		for(int i=0; i<this.getTotalInfectionRate(); i++) {
 			InfectionCard card =this.drawInfection.pop();
 			this.totalNbOfCubes--;
@@ -385,6 +415,7 @@ public class Game {
 	@SuppressWarnings("resource")
 	public  void choseAndExecuteActionDoctor(Player p) {
 		for(int i=0; i<4; i++) {
+			this.displayPlayerCards(p);
 			String action = displayChoosenAction(p);
 			// Exécuter l'action choisie
 			switch (action) {
@@ -450,6 +481,7 @@ public class Game {
 	@SuppressWarnings("resource")
 	public  void choseAndExecuteActionExpert(Player p) {
 		for(int i=0; i<4; i++) {
+			this.displayPlayerCards(p);
 			String action = displayChoosenAction(p);
 			
 			switch (action) {
@@ -481,6 +513,7 @@ public class Game {
 	@SuppressWarnings("resource")
 	public  void choseAndExecuteActionGlobetrotter(Player p) {
 		for(int i=0; i<4; i++) {
+			this.displayPlayerCards(p);
 			String action = displayChoosenAction(p);
 
 			// Exécuter l'action choisie
@@ -513,6 +546,7 @@ public class Game {
 	@SuppressWarnings("resource")
 	public  void choseAndExecuteActionScientist(Player p) {
 		for(int i=0; i<4; i++) {
+			this.displayPlayerCards(p);
 			String action = displayChoosenAction(p);
 
 			switch (action) {
@@ -750,6 +784,23 @@ public class Game {
 		System.out.println("+------------------+");
 		System.out.println(" ");
 
+	}
+	
+	
+	
+	
+	public void displayPlayerCards(Player p) {
+		
+		for(IntermediateCard c : p.getCards()) {
+			System.out.println(" ");
+			String city = c.getCity().getName();
+			String disease = c.getDisease().getName();
+			System.out.println("|      Player       |");
+			System.out.println("|     "+city+"     |");
+			System.out.println("|     "+disease+"     |");
+			System.out.println(" ");
+		}
+		
 	}
 
 

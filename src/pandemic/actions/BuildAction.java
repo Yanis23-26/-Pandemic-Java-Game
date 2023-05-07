@@ -11,7 +11,9 @@ public class BuildAction implements Action {
 
 	@Override
 	public boolean isPossible(Player p) {
-		
+		if(p.getGame().getactualNbOfStations()==6) {
+			return false;
+		}
 		// on récupère toutes les cartes joueur du joueur.
 		List<PlayerCard> playerCards = p.getCards(); 
 		// on récupère la ville où se trouve le joueur
