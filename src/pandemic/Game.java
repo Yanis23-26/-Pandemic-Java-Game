@@ -107,6 +107,13 @@ public class Game {
 	}
 	
 	/*
+	 * increment nb of station
+	 */
+	public void increaseNbOfStations() {
+		this.actualNbOfStations+=1;
+	}
+	
+	/*
 	 * Get actual nb of foyerInfection
 	 * @return  nb of foyerInfection
 	 */

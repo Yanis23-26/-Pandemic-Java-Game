@@ -12,7 +12,7 @@ public class BuildAction implements Action {
 
 	@Override
 	public boolean isPossible(Player p) {
-		if((p.getGame().getactualNbOfStations()==6) && (p.getCity().hasResearchStation()) ) {
+		if((p.getGame().getactualNbOfStations()==6) || (p.getCity().hasResearchStation()) ) {
 			return false;
 		}
 		// on récupère toutes les cartes joueur du joueur.
@@ -34,6 +34,7 @@ public class BuildAction implements Action {
 		if(isPossible(p)) {
 			// ajout d'une station de recherche à la ville du joueur	
 			p.getCity().addResearchStation();
+			p.getGame().increaseNbOfStations();
 			//Affichage 
 			System.out.println("The player : " + p.getName() + " has créated a research station in " + p.getCity()+ "!");
 			
