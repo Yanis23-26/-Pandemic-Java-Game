@@ -142,7 +142,7 @@ public abstract class Player{
 
 
  
-	// cette fonction est pour permettre de deffausser les 4 cartes du scientist.
+	// cette fonction est codé pour permettre de deffausser les 4 cartes du scientist.
 	public void discardFourCardsOfDisease(Disease disease) {
 		// TODO Auto-generated method stub
 		int count = 0;
