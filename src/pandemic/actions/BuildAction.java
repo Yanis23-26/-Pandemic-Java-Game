@@ -39,17 +39,22 @@ public class BuildAction implements Action {
 			
 			
 			// déffausser la carte joueur qui à permit au joueur de créer cette station de recherche
-			// p.getGame().discardPlayerCard(card);
 			List<PlayerCard> playerCards = p.getCards(); 
+			PlayerCard cardToDiscard = null;
 			City city = p.getCity();
 			for (PlayerCard card : playerCards) {
 				if(card.getCity().equals(city)) {
-					p.getGame().discardPlayerCard(card);
-					// ça risque de deffausser plus d'une carte !!! 
+					cardToDiscard = card;
+					break; // pour deffausser une seule carte
+				}
+			}
+			if (cardToDiscard != null) {
+					p.getGame().discardPlayerCard(cardToDiscard);
+					p.getCards().remove(cardToDiscard);
 				}
 			}
 			
-		}
+		
 		    
 		else {
 		System.out.println(" Impossible to build a research station, the conditions are not met !!!");
