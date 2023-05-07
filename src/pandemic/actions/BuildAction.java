@@ -40,7 +40,7 @@ public class BuildAction implements Action {
 			
 			// déffausser la carte joueur qui à permit au joueur de créer cette station de recherche
 			List<PlayerCard> playerCards = p.getCards(); 
-			PlayerCard cardToDiscard = null;
+			PlayerCard cardToDiscard = null; // pour séléctionner une seule carte
 			City city = p.getCity();
 			for (PlayerCard card : playerCards) {
 				if(card.getCity().equals(city)) {
@@ -49,7 +49,10 @@ public class BuildAction implements Action {
 				}
 			}
 			if (cardToDiscard != null) {
-					p.getGame().discardPlayerCard(cardToDiscard);
+					/* on deffausse la carte (en remplie la pile 
+					 * des cartes joueur de deffausse */
+				    p.getGame().discardPlayerCard(cardToDiscard); 
+				    /* mntnt, on retire cette carte de la main du joueur */
 					p.getCards().remove(cardToDiscard);
 				}
 			}
