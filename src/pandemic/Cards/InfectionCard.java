@@ -18,6 +18,7 @@ public class InfectionCard extends IntermediateCard{
      */
     public void comportement(Player p) {
     	p.getGame().decreaseNbOfCubes();
+    	this.getDisease().decreaseNbCubes();
         this.getCity().addInfection(this.getDisease());
         //Affichage
 		System.out.println( " The city : "+ this.getCity() +",has been infected by the disease : "+ this.getDisease());

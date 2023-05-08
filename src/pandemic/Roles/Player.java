@@ -116,15 +116,15 @@ public abstract class Player{
 	}
 	
 	public Action getGlobeTrotterAction() {
-		return this.getActions().get(4);
+		return this.getActions().get(6);
 	}
 
 	public Action getScientistFindCureAction() {
-		return this.getActions().get(5);
+		return this.getActions().get(4);
 	}
 
 	public Action getDoctorTreatDiseaseAction() {
-		return this.getActions().get(6);
+		return this.getActions().get(5);
 	}
 	
 	public Action getExpertBuidAction() {

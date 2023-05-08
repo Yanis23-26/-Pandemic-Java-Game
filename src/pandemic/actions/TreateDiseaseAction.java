@@ -1,9 +1,11 @@
 package pandemic.actions;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-
-
+import java.util.Map.Entry;
+import java.util.Scanner;
 
 import pandemic.Board.City;
 import pandemic.Board.CityException;
@@ -12,69 +14,102 @@ import pandemic.Cards.PlayerCard;
 import pandemic.Roles.*;
 
 public class TreateDiseaseAction implements Action {
+	/**
+	 * return the number of the choice of the player 
+	 */
+	public int getChoice() {
+		System.out.println("veuillez choisir la maladie selon le chiffre");
+		Scanner scan = new Scanner(System.in);
+		int choice = scan.nextInt();
+		return choice;
+	} 
 
-	
-	
+
+	/**
+	 * deplacement du joueur apres choisir ca ville voisine 
+	 * @param player 
+	 */
 	@Override
-	public void actOn(Player p)  {
-		if(isPossible(p)) {
-		City cp = p.getCity();
-		if(cp.hasResearchStation()) {
-			int cpt = 0;
-			Map<Disease,Integer> d = cp.getDiseases();
-			Map<Disease,Integer> tmp = new HashMap<>();
-			for(Disease dise : d.keySet()) {
-				tmp.put(dise, 0);
+	public void actOn(Player p) {
+		City currentCity = p.getCity();
+		Map<Disease, Integer> diseases = currentCity.getDiseases();
+		List<Disease> diseasesWhithCubes = new ArrayList<Disease>();
+		for(Entry<Disease, Integer> entry : diseases.entrySet()) {
+			if(entry.getValue() >0) {
+				diseasesWhithCubes.add(entry.getKey());
 			}
-			for (PlayerCard carte:p.getCards()) {
-				if(tmp.keySet().contains(carte.getDisease()) )
-					tmp.put(carte.getDisease(),tmp.get(carte.getDisease())+1);
-			}
-			for(Disease dise : tmp.keySet()) {
-//				if(tmp.get(dise)>=5) {
-//					//dise.findAnAntidote();
-//					//Affichage 
-//					System.out.println("The player : " + p.getName() + " has treated the disease : " + dise + "!");
-//				}
-					try {
-						cp.removeInfection(dise);
-					}
-					catch( CityException e) {
-						System.out.println("CityException");
-						
-					}
-			}
-			
 		}
+
+		displayDiseases(diseasesWhithCubes);
+		int choice=this.getChoice();
+		while(choice<1 || choice>diseasesWhithCubes.size()) {
+			System.out.println("Désolé vous ne pouvez pas choisir cette maladie");
+			choice=this.getChoice();
+		}
+        Disease chosenDisease =diseasesWhithCubes.get(choice-1); 
+		if(chosenDisease.hasAntiDote()) {
+			for(int i=0; i<diseases.get(chosenDisease); i++) {
+				try {
+					currentCity.removeInfection(chosenDisease);
+					p.getGame().IncreaseNbOfCubes();
+					System.out.println("The player : " + p.getName() + " has removed all cubes of "+chosenDisease.getName()+"\n");
+				} catch (CityException e) {
+					e.printStackTrace();
+				}
+
+			}
+			if(chosenDisease.getNbCubes()==24) {
+				// eradiquer la maladie
+				System.out.println(""+chosenDisease.getName()+" est eradiquée \n");
+			}
 		}
 		else {
-			System.out.println(" Impossible to treat the disease !!! the conditions are not met. ");
+			try {
+				currentCity.removeInfection(chosenDisease);
+				p.getGame().IncreaseNbOfCubes();
+				System.out.println("The player : " + p.getName() + " has removed one cube of "+chosenDisease.getName()+"\n");
+			} catch (CityException e) {
+				e.printStackTrace();
+			}
 		}
+		//Affichage 
+		
 
+	}
+    
+	
+
+    
+	
+	
+	/**
+	 *  elle affiche dans le terminal les ville a choisir 
+	 * @param list de neighbors 
+	 */
+	private void displayDiseases(List<Disease> diseases) {
+		int idx = 1;
+		for(Disease n :diseases ) {
+			System.out.println(idx+"-" + n.getName());
+			idx++;
+		}
 	}
 
 	@Override
 	public boolean isPossible(Player p) {
-		City cp = p.getCity();
-		if(cp.hasResearchStation()) {
-			int cpt = 0;
-			Map<Disease,Integer> d = cp.getDiseases();
-			Map<Disease,Integer> tmp = new HashMap<>();
-			for(Disease dise : d.keySet()) {
-				tmp.put(dise, 0);
+		City currentCity = p.getCity();
+		Map<Disease, Integer> diseases = currentCity.getDiseases();
+		List<Disease> diseasesWhithCubes = new ArrayList<Disease>();
+		for(Entry<Disease, Integer> entry : diseases.entrySet()) {
+			if(entry.getValue() >0) {
+				diseasesWhithCubes.add(entry.getKey());
 			}
-			for (PlayerCard carte:p.getCards()) {
-				if(tmp.keySet().contains(carte.getDisease()) )
-					tmp.put(carte.getDisease(),tmp.get(carte.getDisease())+1);
-			}
-			for(Disease dise : tmp.keySet()) {
-				if(tmp.get(dise)>=5) {
-					return true;
-				}
-				}
-			
 		}
-		return false;
+		if(diseasesWhithCubes.size()>0) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 
 }

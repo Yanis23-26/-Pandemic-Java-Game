@@ -75,9 +75,7 @@ public class FindCureAction implements Action {
                     //déffausser les 5 cartes d'une maladie guérie.
                 	// la méthode sera appelée autant de fois qu'il y 
                 	//a de maladies guéries pour lesquelles le joueur possède 5 cartes
-                	for (int i = 0; i < 5; i++) {
                         player.discardFiveCardsOfDisease(disease);
-                    }
                     // Ajouter le remède pour cette maladie.
                     disease.findAnAntidote();
                    

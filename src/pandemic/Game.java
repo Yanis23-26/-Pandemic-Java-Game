@@ -190,7 +190,6 @@ public class Game {
 	 */
 	public void initializeDraw() {
 		//creation des cartes
-
 		for(Sector sector : world.getSectors()) {
 			for(City city : sector.getCities()) {
 				PlayerCard pCard = new PlayerCard(city,sector.getSectorDisease());
@@ -287,24 +286,24 @@ public class Game {
 	}
 
 	public void DrawAInfectionCard(Player p) throws InterruptedException {
-		if(this.drawInfection.isEmpty()) {
-			// le jeu est terminé
-						System.out.println("#############################");
-				        System.out.println("#                           #");
-				        System.out.println("#         Game Over         #");
-				        System.out.println("#                           #");
-				        System.out.println("#############################");
-				        System.out.println("#############################");
-				        System.out.println("#                           #");
-				        System.out.println(" THE CUBES STOCK IS EMPTY !  ");
-				        System.out.println("#                           #");
-				        System.out.println("#############################");
-				        Thread.sleep(5000);
-				        System.exit(0);
-		}
+		
 		for(int i=0; i<this.getTotalInfectionRate(); i++) {
+			if(this.drawInfection.isEmpty()) {
+				// le jeu est terminé
+							System.out.println("#############################");
+					        System.out.println("#                           #");
+					        System.out.println("#         Game Over         #");
+					        System.out.println("#                           #");
+					        System.out.println("#############################");
+					        System.out.println("#############################");
+					        System.out.println("#                           #");
+					        System.out.println(" THE CUBES STOCK IS EMPTY !  ");
+					        System.out.println("#                           #");
+					        System.out.println("#############################");
+					        Thread.sleep(5000);
+					        System.exit(0);
+			}
 			InfectionCard card =this.drawInfection.pop();
-			this.totalNbOfCubes--;
 			System.out.println(p.getName()+"has drown an Infection Card .\n");
 			card.comportement(p);
 			this.updateNbOfFoyerInfection();
@@ -453,15 +452,40 @@ public class Game {
 		List<String> possibleActions = new ArrayList<String>();
 		possibleActions.add("pass");
 		possibleActions.add("move");
-		if(p.getBuildAction().isPossible(p)) {
-			possibleActions.add("build");
+		if(p instanceof Expert) {
+			if(p.getExpertBuidAction().isPossible(p)) {
+				possibleActions.add("build");
+			}
 		}
-		if(p.getFindCureAction().isPossible(p)) {
-			possibleActions.add("find");
+		else {
+			if(p.getBuildAction().isPossible(p)) {
+				possibleActions.add("build");
+			}
 		}
-		if(p.getTreatDiseaseAction().isPossible(p)) {
-			possibleActions.add("treat");
+		
+		if(p instanceof Scientist) {
+			if(p.getScientistFindCureAction().isPossible(p)) {
+				possibleActions.add("find");
+			}
 		}
+		else {
+			if(p.getFindCureAction().isPossible(p)) {
+				possibleActions.add("find");
+			}
+		}
+		
+		if(p instanceof Doctor) {
+			if(p.getDoctorTreatDiseaseAction().isPossible(p)) {
+				possibleActions.add("treat");
+			}
+		}
+		else {
+			if(p.getTreatDiseaseAction().isPossible(p)) {
+				possibleActions.add("treat");
+			}
+		}
+		
+
 			
 		// Créer un objet Scanner pour la saisie utilisateur
 		Scanner scanner = new Scanner(System.in);
@@ -585,7 +609,7 @@ public class Game {
 
 	public void doingTheActions() throws InterruptedException {
 		//condition d arret
-		while ((this.getactualNbOfCubes()>0) & (this.getactualNbOfFoyerInfection()<8) ){
+		while ((this.getactualNbOfCubes()>0) && (this.getactualNbOfFoyerInfection()<8) && (!this.gameWon()) ){
 			for(Player p : this.getPlayers()) {
 				if(p instanceof Doctor) {
 					this.choseAndExecuteActionDoctor(p);
@@ -633,6 +657,23 @@ public class Game {
 	        Thread.sleep(5000);
 	        System.exit(0);
 		}
+		
+		else if(this.gameWon()) {
+			// le jeu est terminé
+			System.out.println("#############################");
+	        System.out.println("#                           #");
+	        System.out.println("#     CONGRATULATIONS !     #");
+	        System.out.println("#                           #");
+	        System.out.println("#############################");
+	        System.out.println("#############################");
+	        System.out.println("#                           #");
+	        System.out.println("#    YOU SAVED THE WORLD    #");
+	        System.out.println("#                           #");
+	        System.out.println("#############################");
+	        Thread.sleep(5000);
+	        System.exit(0);
+		}
+		
 		else {
 			// le jeu est terminé
 			System.out.println("############################################");
@@ -808,6 +849,13 @@ public class Game {
 			System.out.println(" ");
 		}
 		
+	}
+	
+	public boolean gameWon() {
+		if(this.getDiseases().get(0).hasAntiDote() && this.getDiseases().get(1).hasAntiDote() && this.getDiseases().get(2).hasAntiDote() && this.getDiseases().get(3).hasAntiDote()) {
+			return true;
+		}
+		return false;
 	}
 
 

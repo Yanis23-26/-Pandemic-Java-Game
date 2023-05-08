@@ -2,8 +2,11 @@ package pandemic.actions;
 import pandemic.Roles.*;
 import pandemic.Board.*;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.Map.Entry;
 
 
 
@@ -50,6 +53,34 @@ public class MoveAction implements Action {
 	@Override
 	public void actOn(Player p) {
 		City currentCity = p.getCity();
+		if(p instanceof Doctor) {
+			Map<Disease, Integer> diseases = currentCity.getDiseases();
+			List<Disease> diseasesWhithCubes = new ArrayList<Disease>();
+			for(Entry<Disease, Integer> entry : diseases.entrySet()) {
+				if(entry.getValue() >0) {
+					diseasesWhithCubes.add(entry.getKey());
+				}
+			} 
+				for(Disease d : diseasesWhithCubes) {
+					if(d.hasAntiDote()) {
+					try {
+						currentCity.removeInfection(d);
+						p.getGame().IncreaseNbOfCubes();
+						System.out.println("The doctor : " + p.getName() + " has removed all cubes of "+d.getName()+"\n");
+					} catch (CityException e) {
+						e.printStackTrace();
+					}
+
+				}
+				if(d.getNbCubes()==24) {
+					// eradiquer la maladie
+					System.out.println(""+d.getName()+" est eradiquée \n");
+				}
+			//Affichage
+				}
+			
+
+		}
 		List <City> neighbors = currentCity.getNeighborsCities();
 		displayNeighbors(neighbors);
 		int choice=this.getChoice();

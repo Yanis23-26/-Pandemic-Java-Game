@@ -191,6 +191,7 @@ public class City {
 		else {
 			if(this.getinfectionRate(disease)!=0) {
 				this.infectionRate.replace(disease,previousdiseaseInfc-1);
+				disease.increaseNbCubes();
 				this.foyerInfection=false;
 			}
 			else {

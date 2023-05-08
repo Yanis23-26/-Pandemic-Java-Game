@@ -4,6 +4,7 @@ public class Disease {
 	private String name;//name of disease
 	private int id;//id of Disease
 	private boolean antiDote; 
+	private int cubes;
 	/**
 	 * Disease constructor
 	 * @param name String,the name of disease
@@ -14,6 +15,7 @@ public class Disease {
 		this.name=name;
 		this.id=id;
 		this.antiDote=false;
+		this.cubes=24;
 	}
 	/**
 	 * @return the name of disease
@@ -41,6 +43,19 @@ public class Disease {
 	public boolean hasAntiDote(){
 		return this.antiDote;
 	}
+	
+	public int getNbCubes(){
+		return this.cubes;
+	}
+	
+	public void increaseNbCubes() {
+		this.cubes+=1;
+	}
+	
+	public void decreaseNbCubes() {
+		this.cubes-=1;
+	}
+	
 	
 	
 	
