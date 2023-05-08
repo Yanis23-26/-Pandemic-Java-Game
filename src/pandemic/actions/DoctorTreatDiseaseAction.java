@@ -45,7 +45,8 @@ public class DoctorTreatDiseaseAction implements Action {
 				try {
 					currentCity.removeInfection(chosenDisease);
 					p.getGame().IncreaseNbOfCubes();
-					System.out.println("The player : " + p.getName() + " has removed all cubes of "+chosenDisease.getName()+"\n");
+					if(i==0)
+						System.out.println("The player : " + p.getName() + " has removed all cubes of "+chosenDisease.getName()+"\n");
 				} catch (CityException e) {
 					e.printStackTrace();
 				}
@@ -53,6 +54,7 @@ public class DoctorTreatDiseaseAction implements Action {
 			}
 			if(chosenDisease.getNbCubes()==24) {
 				// eradiquer la maladie
+				p.getGame().eradicateDisease(chosenDisease);
 				System.out.println(""+chosenDisease.getName()+" est eradiquée \n");
 			}
 		//Affichage 

@@ -858,6 +858,15 @@ public class Game {
 		return false;
 	}
 
+	
+	public void eradicateDisease(Disease d) {
+
+		for(InfectionCard card : this.getDrawInfection()) {
+			if(card.getDisease().equals(d)) {
+				this.drawInfection.remove(card);
+			}
+		}
+	}
 
 
 

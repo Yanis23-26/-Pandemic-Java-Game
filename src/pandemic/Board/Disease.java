@@ -15,7 +15,7 @@ public class Disease {
 		this.name=name;
 		this.id=id;
 		this.antiDote=false;
-		this.cubes=24;
+		this.cubes=2;
 	}
 	/**
 	 * @return the name of disease

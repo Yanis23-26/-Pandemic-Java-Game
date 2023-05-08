@@ -60,6 +60,7 @@ public class TreateDiseaseAction implements Action {
 			}
 			if(chosenDisease.getNbCubes()==24) {
 				// eradiquer la maladie
+				p.getGame().eradicateDisease(chosenDisease);
 				System.out.println(""+chosenDisease.getName()+" est eradiquée \n");
 			}
 		}

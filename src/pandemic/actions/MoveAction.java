@@ -38,12 +38,28 @@ public class MoveAction implements Action {
 	/**
 	 * return the number of the choice of the player 
 	 */
-	public int getChoice() {
+	/*public int getChoice() {
 		System.out.println("veuillez choisir la city ou aller selon le chiffre");
 		Scanner scan = new Scanner(System.in);
 		int choice = scan.nextInt();
 		return choice;
-	} 
+	} */
+	public int getChoice() {
+	    Scanner scan = new Scanner(System.in);
+	    int choice = 0;
+	    boolean isValidInput = false;
+	    while (!isValidInput) {
+	        System.out.println("Veuillez choisir la ville où aller en entrant le chiffre correspondant :");
+	        if (scan.hasNextInt()) {
+	            choice = scan.nextInt();
+	            isValidInput = true;
+	        } else {
+	            System.out.println("Désolé, votre choix doit être un entier. Veuillez réessayer.");
+	            scan.next(); // consomme la ligne invalide pour éviter une boucle infinie
+	        }
+	    }
+	    return choice;
+	}
 
 
 	/**
