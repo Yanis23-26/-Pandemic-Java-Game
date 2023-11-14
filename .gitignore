@@ -1,6 +1,8 @@
 *.class
 classes/
 docs/
+.gitignore
+*/*.class
 
 /bin/
 .project
